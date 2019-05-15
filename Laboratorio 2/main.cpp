@@ -1,4 +1,5 @@
 #include "main.hpp"
+#include "math.h"
 
 //----------------------------------------------------------------
 /* Clear display and redraw Status */
@@ -57,6 +58,22 @@ void LCD_DrawAccelData()
 }
 
 //----------------------------------------------------------------
+
+//Dibujar línea de Roll
+void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
+    uint16_t l_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
+
+    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
+        l_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
+                                               + 64*sin(i_fPitchAngle)
+                                               - 64 );
+    }
+//    printf("x_0: %d \t y_0: %d \t x_f: %d \t y_f: %d Pitch: %f \t Roll: %f \n",0,l_u16XYCoordinates[0],128,l_u16XYCoordinates[128], i_fPitchAngle, i_fRollAngle);
+    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+    Graphics_drawLine(&g_sContext, 0, 128, l_u16XYCoordinates[0], l_u16XYCoordinates[128]);
+
+}
+
 //Cambiar yInitPosition segun lectura acelerometro
 void LCD_DrawRectangle(const int yInitPosition)
 {
@@ -71,8 +88,8 @@ void LCD_DrawRectangle(const int yInitPosition)
     Graphics_fillRectangle(&g_sContext, &t_Rectangle1);
 
     //draws white line
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    Graphics_drawLine(&g_sContext, 0, 128, 128, 0);
+//    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+//    Graphics_drawLine(&g_sContext, 0, 128, 128, 0);
 
     //displays info (para debugging)
 

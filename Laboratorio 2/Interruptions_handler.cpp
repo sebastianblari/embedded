@@ -54,7 +54,7 @@ void ADC14_IRQHandler(void)
         if (x < 0 && y < 0) {
             theta_x_deg = - theta_x_deg;
         } else if (x < 0 && y >= 0){
-            theta_x_deg = 180 - theta_x_deg;
+            theta_x_deg = 180 + theta_x_deg;
         } else if (x >= 0 && y >= 0){
             theta_x_deg = 180 + theta_x_deg;
         } else {
@@ -63,9 +63,12 @@ void ADC14_IRQHandler(void)
         float theta_y_deg = atan(y/sqrt(z*z + x*x))*180/M_PI;
         float theta_z_deg = atan(z/sqrt(x*x + y*y))*180/M_PI;
         float theta_z_rad = (float)theta_z_deg*M_PI/180;
+        g_fRollAngle  = theta_x_deg*M_PI/180;
+        g_fPitchAngle = theta_z_rad;
         int position = 64*(1-sin(theta_z_rad));
+
         g_iyInitPosition = position;
-        printf("Roll angle: %f \n",theta_x_deg);
+//        printf("Roll angle: %f \n",theta_x_deg);
     }
 }
 //----------------------------------------------------------------
@@ -75,7 +78,7 @@ void ADC14_IRQHandler(void)
         TIMER32_1->INTCLR = 0U; //Clear interrup Flag
 
         LCD_DrawRectangle(g_iyInitPosition);
-
+        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
         __enable_irq();
         return;
     }
