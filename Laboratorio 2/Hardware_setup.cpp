@@ -127,6 +127,8 @@ void InitialConditions_setup(void){
     P2->OUT &= ~BIT0;
     P2->OUT &= ~BIT1;
     P2->OUT &= ~BIT2;
+    
+    
 
     return;
 }

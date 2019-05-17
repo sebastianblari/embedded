@@ -63,14 +63,23 @@ void LCD_DrawAccelData()
 void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
     uint16_t l_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
 
+    // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
     for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
         l_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
                                                + 64*sin(i_fPitchAngle)
                                                - 64 );
     }
-//    printf("x_0: %d \t y_0: %d \t x_f: %d \t y_f: %d Pitch: %f \t Roll: %f \n",0,l_u16XYCoordinates[0],128,l_u16XYCoordinates[128], i_fPitchAngle, i_fRollAngle);
+
+//    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+//    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
+    for (uint8_t line_index = 0; line_index < 129; line_index++) {
+        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
+        Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] - 1, line_index, 0);
+        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
+        Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] + 1, line_index, 128);
+    }
     Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    Graphics_drawLine(&g_sContext, 0, 128, l_u16XYCoordinates[0], l_u16XYCoordinates[128]);
+    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
 
 }
 

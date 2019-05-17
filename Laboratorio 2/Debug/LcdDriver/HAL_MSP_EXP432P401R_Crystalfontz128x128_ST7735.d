@@ -1,7 +1,7 @@
 # FIXED
 
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: ../LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.c
-LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/main.hpp
+LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/main.hpp
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp432p401r.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdint.h
@@ -61,16 +61,16 @@ LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Applications/ti/c
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stdarg.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/assert.h
-LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/Crystalfontz128x128_ST7735.h
+LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/Crystalfontz128x128_ST7735.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h
-LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/Hardware_setup.hpp
-LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/Interruptions_handler.hpp
-LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h
+LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Hardware_setup.hpp
+LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Interruptions_handler.hpp
+LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h
 LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 
 ../LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.c: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/main.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/main.hpp: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp432p401r.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdint.h: 
@@ -130,10 +130,10 @@ LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.obj: /Users/sebastianbl
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stdarg.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/assert.h: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/Crystalfontz128x128_ST7735.h: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/Crystalfontz128x128_ST7735.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/Hardware_setup.hpp: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/Interruptions_handler.hpp: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Hardware_setup.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Interruptions_handler.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 

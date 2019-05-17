@@ -135,34 +135,34 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-Lab_02_v2_du.out \
+Laboratorio\ 2.out \
 
 EXE_OUTPUTS__QUOTED += \
-"Lab_02_v2_du.out" \
+"Laboratorio 2.out" \
 
 BIN_OUTPUTS += \
-Lab_02_v2_du.hex \
+Laboratorio\ 2.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"Lab_02_v2_du.hex" \
+"Laboratorio 2.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "Lab_02_v2_du.out"
+	@$(MAKE) --no-print-directory -Onone "Laboratorio 2.out"
 
 # Tool invocations
-Lab_02_v2_du.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+Laboratorio\ 2.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --preinclude="/Users/sebastianblanco/Downloads/LabFinalDunia/main.hpp" --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --rtti --cpp_default --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"Lab_02_v2_du.map" --stack_size=512 -i"/Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source" -i"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Lab_02_v2_du_linkInfo.xml" --rom_model -o "Lab_02_v2_du.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --preinclude="/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio 2/main.hpp" --define=__MSP432P401R__ --define=DeviceFamily_MSP432P401x -g --rtti --cpp_default --diag_warning=225 --diag_warning=255 --diag_wrap=off --display_error_number --gen_func_subsections=on -z -m"Laboratorio 2.map" --stack_size=512 -i"/Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source" -i"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/lib" --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Laboratorio 2_linkInfo.xml" --rom_model -o "Laboratorio 2.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-Lab_02_v2_du.hex: $(EXE_OUTPUTS)
+Laboratorio\ 2.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/bin/armhex"  -o "Lab_02_v2_du.hex" $(EXE_OUTPUTS__QUOTED)
+	"/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/bin/armhex"  -o "Laboratorio 2.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 

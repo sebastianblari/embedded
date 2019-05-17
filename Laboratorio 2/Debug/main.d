@@ -1,7 +1,7 @@
 # FIXED
 
 main.obj: ../main.cpp
-main.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/main.hpp
+main.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/main.hpp
 main.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp.h
 main.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp432p401r.h
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdint.h
@@ -61,18 +61,31 @@ main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/incl
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stdarg.h
 main.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/assert.h
-main.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/Crystalfontz128x128_ST7735.h
+main.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/Crystalfontz128x128_ST7735.h
 main.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h
-main.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/Hardware_setup.hpp
-main.obj: /Users/sebastianblanco/Downloads/LabFinalDunia/Interruptions_handler.hpp
+main.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Hardware_setup.hpp
+main.obj: /Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Interruptions_handler.hpp
 main.obj: ../main.hpp
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h
 main.obj: /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h
 main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/math.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/math.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/_defs.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/machine/_limits.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/type_traits
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/cstddef
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stddef.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/__nullptr
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/limits
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/support/ti/__limit_defs.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/float.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/float.h
+main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/__undef_macros
 
 ../main.cpp: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/main.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/main.hpp: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/inc/msp432p401r.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdint.h: 
@@ -132,12 +145,25 @@ main.obj: /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/incl
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stdarg.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/assert.h: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/LcdDriver/Crystalfontz128x128_ST7735.h: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/LcdDriver/Crystalfontz128x128_ST7735.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/Hardware_setup.hpp: 
-/Users/sebastianblanco/Downloads/LabFinalDunia/Interruptions_handler.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Hardware_setup.hpp: 
+/Users/sebastianblanco/Development/EmbeddedSystems/Embedded_Systems/Laboratorio//\ 2/Interruptions_handler.hpp: 
 ../main.hpp: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h: 
 /Users/sebastianblanco/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/grlib/grlib.h: 
 /Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/stdio.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/math.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/math.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/_defs.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/machine/_limits.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/type_traits: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/cstddef: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/stddef.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/__nullptr: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/limits: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/support/ti/__limit_defs.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/float.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/float.h: 
+/Applications/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/include/libcxx/__undef_macros: 
