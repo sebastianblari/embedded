@@ -1,7 +1,19 @@
+/*
+ * Tasks
+ *
+ * Task.hpp
+ *
+ *  Created on: May 18, 2019
+ *
+ *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
+ *
+ *      Authors: Dunia, Laura, Sebastian
+ */
+
 #ifndef TASK_HPP_
 #define TASK_HPP_
 
-#include "msp.h"
+//#include "msp.h"
 
 #define NO_ERR 0
 #define RET_ERR 1
@@ -10,7 +22,7 @@ class Task
 {
 	public:
 		Task();
-		uint8_t m_u8TaskID;
+		uint8_t m_u8TaskID; //Task id
 		virtual uint8_t     run(void){return(0);};
 		virtual uint8_t     setup(void){return(0);};
 		bool                IsTaskFinished(void){return m_bIsFinished;};
