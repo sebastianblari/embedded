@@ -12,7 +12,8 @@
 
 #include "Scheduler.hpp"
 
-//Scheduler constructor ---------------------------------
+//-------------------------------------------------------
+// Scheduler constructor
 Scheduler::Scheduler()
 {
     m_u8OpenSlots = static_cast<uint8_t>(NUMBER_OF_SLOTS);
@@ -24,8 +25,8 @@ Scheduler::Scheduler()
     return;
 }
 
-//Attach function ----------------------------------------
-//inserts the task into the schedule slots.
+//-------------------------------------------------------
+// The attach function, inserts the task into the schedule slots.
 uint8_t Scheduler::attach(Task * i_ToAttach, uint64_t i_u64TickInterval)
 {
     uint8_t l_ErrorCode = NO_ERR;
@@ -49,9 +50,8 @@ uint8_t Scheduler::attach(Task * i_ToAttach, uint64_t i_u64TickInterval)
     return l_ErrorCode;
 }
 
-
-//Scheduler ---------------------------------------------
-//execute the current schedule
+//-------------------------------------------------------
+// Execute the current schedule
 uint8_t Scheduler::run(void)
 {
     int l_iNextTaskSlot = 0U;
@@ -80,7 +80,7 @@ uint8_t Scheduler::run(void)
 }
 
 //-------------------------------------------------------
-//execute the setup function for all tasks
+// Execute the setup function for all tasks
 uint8_t Scheduler::setup(void)
 {
     int l_iNextTaskSlot = 0U;
