@@ -21,6 +21,8 @@ GetBorder::GetBorder()
 
 /*--------------------------------------------------*/
 /* Obtains the necessary coordinates to delimit the horizon line
+ * saves this coordinates in the g_u16XYCoordinates array
+ * expected to send this array to DrawMark and FillScreen Tasks as a message
  * only works in a range within +-45 degrees
  * uses g_fRollAngle and g_fPitchAngle given by the ADC14 converter
  * expected to receive this values from a message

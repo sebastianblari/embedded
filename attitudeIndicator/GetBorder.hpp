@@ -7,7 +7,7 @@
  *
  *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
  *
- *      Authors: Dunia, Laura, Sebastian
+ *      Authors: Dunia, Laura, Sebastián
  */
 
 
