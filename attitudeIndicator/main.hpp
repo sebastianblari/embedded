@@ -1,9 +1,9 @@
 /*
- * SMART LAMP
+ * ATTITUDE INDICATOR
  *
  * main.hpp
  *
- *  Created on: Apr 15, 2019
+ *  Created on: May 1, 2019
  *
  *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
  *
@@ -12,19 +12,15 @@
 
 #include <ti/devices/msp432p4xx/inc/msp.h>
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
+#include <ti/grlib/grlib.h>
+
+#include "LcdDriver/Crystalfontz128x128_ST7735.h"
+//#include "HAL_I2C.h"
+//#include "HAL_OPT3001.h"
 
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
-
-#include <ti/devices/msp432p4xx/inc/msp.h>
-#include <ti/devices/msp432p4xx/driverlib/driverlib.h>
-#include <ti/grlib/grlib.h>
-#include "LcdDriver/Crystalfontz128x128_ST7735.h"
-#include <stdio.h>
-
-//#include "HAL_I2C.h"
-//#include "HAL_OPT3001.h"
 
 #include "Hardware_setup.hpp"
 #include "Interruptions_handler.hpp"
@@ -32,16 +28,14 @@
 #ifndef MAIN_HPP_
 #define MAIN_HPP_
 
-/* Graphic library context */
-Graphics_Context g_sContext;
-
-/* ADC results buffer */
-//static uint16_t resultsBuffer[3];
-
+/* GLOBAL VARIABLES */
+uint16_t g_u16XYCoordinates[128]; //Array with (x,y) coordinates to determine limits
+Graphics_Context g_sContext; //Graphic library context
+float g_fRollAngle; //angle
+float g_fPitchAngle;//angle
 int g_iyInitPosition;
-float g_fRollAngle;
-float g_fPitchAngle;
 
+/* FUNCTIONS */
 void LCD_DrawStatus();
 void LCD_DrawTitle();
 void LCD_DrawAccelData();
