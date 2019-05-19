@@ -64,27 +64,26 @@ void Pin_setup(void){
 //*****************************************************************
 void T32_1_setup(void){
 
-    TIMER32_1->LOAD |= TIMER32_1_COUNT_100ms;
+    TIMER32_1->LOAD |= TIMER32_COUNT_100ms;
     TIMER32_1->CONTROL = TIMER32_CONTROL_SIZE | TIMER32_CONTROL_PRESCALE_1 |
                          TIMER32_CONTROL_MODE | TIMER32_CONTROL_IE | TIMER32_CONTROL_ENABLE;
-    //TIMER32_CONTROL_PRESCALE_1: 0 stages of prescale, clock is divided by 16
     NVIC_SetPriority(T32_INT1_IRQn,2);
     NVIC_EnableIRQ(T32_INT1_IRQn);
 
     return;
 }
 //*****************************************************************
-/*void T32_2_setup(void){
+void T32_2_setup(void){
 
-    TIMER32_2->LOAD |= TIMER32_2_COUNT_med1s;
-    TIMER32_2->CONTROL = TIMER32_CONTROL_SIZE | TIMER32_CONTROL_PRESCALE_2 |
+    //slot time: 1ms
+    TIMER32_2->LOAD |= TIMER32_COUNT_1ms;
+    TIMER32_2->CONTROL = TIMER32_CONTROL_SIZE | TIMER32_CONTROL_PRESCALE_1 |
                          TIMER32_CONTROL_MODE | TIMER32_CONTROL_IE | TIMER32_CONTROL_ENABLE;
-    //TIMER32_CONTROL_PRESCALE_2: 4 stages of prescale, clock is divided by 256
     NVIC_SetPriority(T32_INT2_IRQn,1);
     NVIC_EnableIRQ(T32_INT2_IRQn);
 
     return;
-}*/
+}
 //*****************************************************************
 void ADC_setup(void){
 
@@ -128,7 +127,7 @@ void InitialConditions_setup(void){
     P2->OUT &= ~BIT1;
     P2->OUT &= ~BIT2;
     
-    
+    g_SystemTicks = 0;
 
     return;
 }
@@ -140,7 +139,7 @@ void Power_up(void){
     Pin_setup();
     ADC_setup();
     T32_1_setup();
-    //T32_2_setup();
+    T32_2_setup();
 
     //Initial Conditions
     InitialConditions_setup();
