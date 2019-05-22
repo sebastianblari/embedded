@@ -79,19 +79,22 @@ void ADC14_IRQHandler(void)
 
 //        LCD_DrawRectangle(g_iyInitPosition);
 //        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
+<<<<<<< HEAD
         LCD_DrawRollRect(g_fRollAngle,g_fPitchAngle);
+=======
+>>>>>>> 16bd71a37f61d1d20adce34456a48691655479ec
         __enable_irq();
         return;
     }
 //----------------------------------------------------------------
-    /*void T32_INT2_IRQHandler(void) {
+    void T32_INT2_IRQHandler(void) {
 
         __disable_irq();
         TIMER32_2->INTCLR = 0U; //Clear interrup Flag
 
-        //...
+        g_SystemTicks++;
 
         __enable_irq();
         return;
-    }*/
+    }
 }
