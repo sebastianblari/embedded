@@ -59,16 +59,38 @@ void LCD_DrawAccelData()
 
 //----------------------------------------------------------------
 
-//Dibujar línea de Roll
-void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
-    uint16_t l_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
-
-    // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
+void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle) {
+    Graphics_clearDisplay(&g_sContext);
+    int16_t l_u16XYCoordinates[129];
     for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-        l_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
+        l_u16XYCoordinates[l_u16XpixelCounter] = abs (tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
                                                + 64*sin(i_fPitchAngle)
                                                - 64 );
+        if (l_u16XYCoordinates[l_u16XpixelCounter] > 128) {
+            l_u16XYCoordinates[l_u16XpixelCounter] = 128;
+        } else if (l_u16XYCoordinates[l_u16XpixelCounter] < 0) {
+            l_u16XYCoordinates[l_u16XpixelCounter] = 0;
+        }
     }
+    printf("x0: %d \t y0: %d \t xf: %d \t yf: %d \t Roll: %f, tan(Roll): %f\n",0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128], i_fRollAngle*180/M_PI, tan(i_fRollAngle));
+    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
+}
+
+
+
+//Dibujar línea de Roll
+void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
+    int16_t l_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
+    int16_t l_u8xMinValue, l_u8xMaxValue;
+    // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
+    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
+        l_u16XYCoordinates[l_u16XpixelCounter] = - ( tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
+                                               + 64*sin(i_fPitchAngle)
+                                               - 64 );
+
+    }
+
 
 //    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
 //    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);

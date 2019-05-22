@@ -47,5 +47,6 @@ void LCD_DrawTitle();
 void LCD_DrawAccelData();
 void LCD_DrawRectangle(const int yInitPosition);
 void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle);
+void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle);
 
 #endif /* MAIN_HPP_ */

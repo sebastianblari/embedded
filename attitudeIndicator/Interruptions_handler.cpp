@@ -46,29 +46,29 @@ void ADC14_IRQHandler(void)
     {
         //Store ADC14 conversion results
 
-        int16_t x = (ADC14_getResult(ADC_MEM0) - 8192);
-        int16_t y = (ADC14_getResult(ADC_MEM1) - 8192);
-        int16_t z = ADC14_getResult(ADC_MEM2) - 8192;
+        int16_t fXg = ADC14_getResult(ADC_MEM0) - 8192;
+        int16_t fYg = ADC14_getResult(ADC_MEM1) - 8192;
+        int16_t fZg = ADC14_getResult(ADC_MEM2) - 8192;
 
-        float theta_x_deg = atan(x/sqrt(y*y + z*z))*180/M_PI; // Get a counter clockwise angle movement
-        if (x < 0 && y < 0) {
-            theta_x_deg = - theta_x_deg;
-        } else if (x < 0 && y >= 0){
-            theta_x_deg = 180 + theta_x_deg;
-        } else if (x >= 0 && y >= 0){
-            theta_x_deg = 180 + theta_x_deg;
-        } else {
-            theta_x_deg = 360 - theta_x_deg;
+
+
+        g_fRollAngle  = atan2(-fYg, fXg);
+        if( g_fRollAngle >= M_PI/2 &&  g_fRollAngle <= M_PI) {
+            g_fRollAngle = M_PI/2 - g_fRollAngle;
+        } else if (g_fRollAngle > - M_PI &&  g_fRollAngle < - 0) {
+            printf("juasjuas");
+            g_fRollAngle = 3*M_PI/2 + g_fRollAngle;
+        } else if (g_fRollAngle > 0 && g_fRollAngle <= M_PI/2) {
+            g_fRollAngle = 3*M_PI/2 + g_fRollAngle;
         }
-        float theta_y_deg = atan(y/sqrt(z*z + x*x))*180/M_PI;
-        float theta_z_deg = atan(z/sqrt(x*x + y*y))*180/M_PI;
-        float theta_z_rad = (float)theta_z_deg*M_PI/180;
-        g_fRollAngle  = theta_x_deg*M_PI/180;
-        g_fPitchAngle = theta_z_rad;
-        int position = 64*(1-sin(theta_z_rad));
+        if (g_fRollAngle > - M_PI/2 && g_fRollAngle < 0){
+            g_fRollAngle = -g_fRollAngle;
+        }
+        g_fPitchAngle = atan2(fZg, sqrt(fYg*fYg + fXg*fXg));
 
-        g_iyInitPosition = position;
-//        printf("Roll angle: %f \n",theta_x_deg);
+//        g_iyInitPosition = position
+//        printf("Roll: %f \t Pitch: %f \n", g_fRollAngle*180/M_PI,g_fPitchAngle*180/M_PI);
+//        printf("x: %d \t y: %d \t z: %d \n", fXg,fYg,fZg);
     }
 }
 //----------------------------------------------------------------
@@ -78,7 +78,8 @@ void ADC14_IRQHandler(void)
         TIMER32_1->INTCLR = 0U; //Clear interrup Flag
 
 //        LCD_DrawRectangle(g_iyInitPosition);
-        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
+//        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
+        LCD_DrawRollRect(g_fRollAngle,g_fPitchAngle);
         __enable_irq();
         return;
     }
