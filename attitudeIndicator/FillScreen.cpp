@@ -26,12 +26,12 @@ FillScreen::FillScreen()
  */
 uint8_t FillScreen::run()
 {
-    for (uint8_t line_index = 0; line_index < 129; line_index++) {
-        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index] - 1, line_index, 0);
-        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index] + 1, line_index, 128);
-    }
+//    for (uint8_t line_index = 0; line_index < 129; line_index++) {
+//        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
+//        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index] - 1, line_index, 0);
+//        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
+//        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index] + 1, line_index, 128);
+//    }
     return(NO_ERR);
 }
 

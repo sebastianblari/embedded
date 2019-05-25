@@ -51,12 +51,10 @@ void ADC14_IRQHandler(void)
         int16_t fZg = ADC14_getResult(ADC_MEM2) - 8192;
 
 
-
         g_fRollAngle  = atan2(-fYg, fXg);
         if( g_fRollAngle >= M_PI/2 &&  g_fRollAngle <= M_PI) {
             g_fRollAngle = M_PI/2 - g_fRollAngle;
         } else if (g_fRollAngle > - M_PI &&  g_fRollAngle < - 0) {
-            printf("juasjuas");
             g_fRollAngle = 3*M_PI/2 + g_fRollAngle;
         } else if (g_fRollAngle > 0 && g_fRollAngle <= M_PI/2) {
             g_fRollAngle = 3*M_PI/2 + g_fRollAngle;
@@ -64,11 +62,13 @@ void ADC14_IRQHandler(void)
         if (g_fRollAngle > - M_PI/2 && g_fRollAngle < 0){
             g_fRollAngle = -g_fRollAngle;
         }
-        g_fPitchAngle = atan2(fZg, sqrt(fYg*fYg + fXg*fXg));
 
-//        g_iyInitPosition = position
-//        printf("Roll: %f \t Pitch: %f \n", g_fRollAngle*180/M_PI,g_fPitchAngle*180/M_PI);
-//        printf("x: %d \t y: %d \t z: %d \n", fXg,fYg,fZg);
+
+        g_fPitchAngle = atan2(fZg, sqrt(fYg*fYg + fXg*fXg));
+//        g_fPitchAngle = atan(fZg / sqrt(fYg*fYg + fXg*fXg));
+//        printf("pitchAngle: %f\n", g_fPitchAngle*180/M_PI);
+//        printf("x: %d \t y: %d \t z: %d \n",fXg,fYg,fZg);
+
     }
 }
 //----------------------------------------------------------------
@@ -78,11 +78,8 @@ void ADC14_IRQHandler(void)
         TIMER32_1->INTCLR = 0U; //Clear interrup Flag
 
 //        LCD_DrawRectangle(g_iyInitPosition);
-//        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
-<<<<<<< HEAD
-        LCD_DrawRollRect(g_fRollAngle,g_fPitchAngle);
-=======
->>>>>>> 16bd71a37f61d1d20adce34456a48691655479ec
+        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
+
         __enable_irq();
         return;
     }

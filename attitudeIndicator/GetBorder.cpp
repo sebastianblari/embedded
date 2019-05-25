@@ -29,11 +29,11 @@ GetBorder::GetBorder()
  */
 uint8_t GetBorder::run()
 {
-    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-        g_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
-                                                      + 64*sin(g_fPitchAngle)
-                                                      - 64 );
-    }
+//    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
+//        g_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
+//                                                      + 64*sin(g_fPitchAngle)
+//                                                      - 64 );
+//    }
 
     return(NO_ERR);
 }
