@@ -3,7 +3,7 @@
  *
  */
 
-#include <Mailbox.hpp>
+#include "Mailbox.hpp"
 
 Mailbox::Mailbox(){}
 
@@ -11,8 +11,8 @@ uint8_t Mailbox::ReceiveMsg(st_MsgInfo NewMail){
     int l_iInstanceMsgCounter = msg_counter[NewMail.source];
     //Check the mailbox availability
     if (l_iInstanceMsgCounter<6){
-        MsgBoard[NewMail.source][l_iInstanceMsgCounter] = NewMail;
-        msg_counter[NewMail.source]++;
+        MsgBoard[NewMail.destiny][l_iInstanceMsgCounter] = NewMail;
+        msg_counter[NewMail.destiny]++;
         return 1; //Message sucesfully saved
     }
     else{
@@ -25,27 +25,24 @@ int Mailbox::CheckMailbox(uint8_t TaskID){
 }
 
 st_MsgInfo Mailbox::SendMsg(uint8_t MsgSource, uint8_t MsgDestiny){
-    bool l_msgfind = false;
-    int index = msg_counter[MsgSource]-1;
+    bool l_msgfound = false;
+    int index = msg_counter[MsgDestiny]-1;
     st_MsgInfo Msg;
     Msg.source = MsgSource;
     Msg.destiny = MsgDestiny;
 
     if (this->CheckMailbox(MsgSource)>0){
-        while(!l_msgfind){
-                if(MsgBoard[MsgSource][index].destiny == MsgDestiny){
-                    Msg.data_ptr = MsgBoard[MsgSource][index].data_ptr;
-                    for(int i = 0; i<8; i++){
-                        Msg.data[i] = MsgBoard[MsgSource][index].data[i];
-                    }
+        while(!l_msgfound){
+                if(MsgBoard[MsgDestiny][index].source == MsgSource){
+                    Msg.data_ptr = MsgBoard[MsgDestiny][index].data_ptr;
 
-                    msg_counter[MsgSource]--;
-                    l_msgfind = true;
+                    msg_counter[MsgDestiny]--;
+                    l_msgfound = true;
                 }
                 else if(index>0){
                     index--;}
-                else{// doesnt header found
-                    l_msgfind = true;
+                else{// doesnt found the header
+                    l_msgfound = true;
                 }
             }
         }

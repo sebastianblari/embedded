@@ -6,7 +6,8 @@
 #include "FillScreen.hpp"
 #include "GetBorder.hpp"
 #include "DrawMark.hpp"
-#include "LED.hpp"
+//#include "LED.hpp"
+
 
 //----------------------------------------------------------------
 uint8_t Task::m_u8NextTaskID = 0;   //init task ID
@@ -168,13 +169,16 @@ int main(void)
     DrawMark WhiteMark;
     FillScreen Fill;
 
+    //Mailbox instance
+    Mailbox g_MailHandler;
+
     //attach the Tasks to the Scheduler;
     g_MainScheduler.attach(&BorderLine, 100);
     g_MainScheduler.attach(&WhiteMark, 101);
     g_MainScheduler.attach(&Fill, 102);
 
     //run the Setup for the scheduler and all tasks
-    g_MainScheduler.setup();
+    g_MainScheduler.setup(&g_MailHandler);
 
     /* Halting WDT and disabling master interrupts */
     MAP_WDT_A_holdTimer();

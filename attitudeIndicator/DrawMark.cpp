@@ -16,7 +16,7 @@
 //constructor
 DrawMark::DrawMark()
 {
-    //...
+    m_lastCoodinates = nullptr;
 }
 
 /*--------------------------------------------------*/
@@ -26,14 +26,45 @@ DrawMark::DrawMark()
  */
 uint8_t DrawMark::run()
 {
+      uint16_t* Coordinates_ptr = DecodeMsgData();
 //    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
 //    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
+      BuidMsgData();
 
     return(NO_ERR);
 }
 
 /*--------------------------------------------------*/
-uint8_t DrawMark::setup()
+uint8_t DrawMark::setup(Mailbox *i_MailboxPtr)
 {
+   TaskMailbox = i_MailboxPtr;
+
     return(NO_ERR);
+}
+/*--------------------------------------------------*/
+uint8_t DrawMark::BuidMsgData()
+{
+    st_MsgInfo CoordinatesPtrMsg;
+    CoordinatesPtrMsg.source = m_u8TaskID;
+    CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
+
+    //building the message
+    CoordinatesPtrMsg.data_ptr = g_u16XYCoordinates;
+    TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
+
+    return 0;
+}
+
+uint16_t* DrawMark::DecodeMsgData()
+{
+    st_MsgInfo ParametersReceived;
+    if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
+        ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID,m_u8TaskID+1);
+        m_lastCoodinates = ParametersReceived.data_ptr;
+    }
+    else{
+        ParametersReceived.data_ptr = m_lastCoodinates;
+
+    }
+    return(ParametersReceived.data_ptr);
 }

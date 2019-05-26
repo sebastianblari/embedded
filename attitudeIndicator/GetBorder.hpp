@@ -27,9 +27,11 @@ class GetBorder : public Task
 {
     public:
         GetBorder(); //constructor
-
+        uint16_t* m_lastCoodinates;
         virtual uint8_t run(void);
-        virtual uint8_t setup(void);
+        virtual uint8_t setup(Mailbox *i_MailboxPtr);
+        uint8_t BuidMsgData(void);
+        uint16_t* DecodeMsgData(void);
 
     protected:
     private:

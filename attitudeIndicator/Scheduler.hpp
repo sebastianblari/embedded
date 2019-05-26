@@ -36,7 +36,7 @@ public:
     uint64_t m_u64ticks;
     uint8_t attach(Task * i_ToAttach, uint64_t i_u64TickInterval);
     uint8_t run(void);
-    uint8_t setup(void);
+    uint8_t setup(Mailbox *i_MailboxPtr);
 private:
     uint8_t m_u8OpenSlots; // Available slots
     uint8_t m_u8NextSlot;  // Next available slot

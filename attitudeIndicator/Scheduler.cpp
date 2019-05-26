@@ -81,7 +81,7 @@ uint8_t Scheduler::run(void)
 
 //-------------------------------------------------------
 // Execute the setup function for all tasks
-uint8_t Scheduler::setup(void)
+uint8_t Scheduler::setup(Mailbox *i_MailboxPtr)
 {
     int l_iNextTaskSlot = 0U;
     Task * l_pNextTask = (uintptr_t) 0;
@@ -92,7 +92,7 @@ uint8_t Scheduler::setup(void)
         l_pNextTask = static_cast<Task *> (m_aSchedule[l_iNextTaskSlot].pToAttach);
         if(l_pNextTask != ((uintptr_t) 0))
         {
-            l_pNextTask->setup();
+            l_pNextTask->setup(i_MailboxPtr);
         }
         l_iNextTaskSlot++;
     }
