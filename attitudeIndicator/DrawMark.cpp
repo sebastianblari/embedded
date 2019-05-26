@@ -26,8 +26,8 @@ DrawMark::DrawMark()
  */
 uint8_t DrawMark::run()
 {
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
+//    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+//    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
 
     return(NO_ERR);
 }

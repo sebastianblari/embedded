@@ -69,7 +69,7 @@ void LCD_DrawAccelData()
 }
 
 //----------------------------------------------------------------
-<<<<<<< HEAD
+
 
 void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle) {
     Graphics_clearDisplay(&g_sContext);
@@ -89,10 +89,6 @@ void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle) {
     Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
 }
 
-
-
-=======
->>>>>>> 16bd71a37f61d1d20adce34456a48691655479ec
 //Dibujar línea de Roll
 void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
     int16_t l_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
@@ -102,20 +98,38 @@ void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
         l_u16XYCoordinates[l_u16XpixelCounter] = - ( tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
                                                + 64*sin(i_fPitchAngle)
                                                - 64 );
-
+        if (l_u16XYCoordinates[l_u16XpixelCounter] > 128) {
+            l_u16XYCoordinates[l_u16XpixelCounter] = 129;
+        } else if (l_u16XYCoordinates[l_u16XpixelCounter] < 0) {
+            l_u16XYCoordinates[l_u16XpixelCounter] = -1;
+        }
     }
 
-
-//    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-//    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
-    for (uint8_t line_index = 0; line_index < 129; line_index++) {
-        Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-        Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] - 1, line_index, 0);
+    if(i_fPitchAngle <=  M_PI/2 && i_fPitchAngle > i_fPitchAngle >  0.95*M_PI/2) {
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-        Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] + 1, line_index, 128);
+            Graphics_Rectangle t_Rectangle2 = {0,0,128,128};
+            Graphics_fillRectangle(&g_sContext, &t_Rectangle2);
+    } else if(i_fPitchAngle >= - M_PI/2 && i_fPitchAngle <=  M_PI/2 ) {
+        if (i_fRollAngle <= M_PI/2 || i_fRollAngle >= 3*M_PI/2) {
+            for (uint8_t line_index = 0; line_index < 129; line_index++) {
+                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
+                Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] - 1, line_index, 0);
+                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
+                Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] + 1, line_index, 128);
+            }
+            Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+            Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
+        } else if (i_fRollAngle > M_PI/2 && i_fRollAngle < 3*M_PI/2) {
+            for (uint8_t line_index = 0; line_index < 129; line_index++) {
+                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
+                Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] - 1, line_index, 0);
+                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
+                Graphics_drawLine(&g_sContext, line_index, l_u16XYCoordinates[line_index] + 1, line_index, 128);
+            }
+            Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
+            Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
+        }
     }
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
 
 }
 
