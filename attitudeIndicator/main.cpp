@@ -232,10 +232,10 @@ int main(void)
 
             __wfe(); // Wait for Event
 
-            if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+            if(g_SystemTicks != g_MainScheduler.m_u64Ticks)
             {
                 //only execute the tasks if one tick has passed.
-                g_MainScheduler.m_u64ticks = g_SystemTicks;
+                g_MainScheduler.m_u64Ticks = g_SystemTicks;
                 g_MainScheduler.run();
             }
         }

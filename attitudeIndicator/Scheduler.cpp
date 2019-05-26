@@ -141,7 +141,7 @@ uint8_t Scheduler::setup(Mailbox *i_MailboxPtr)
             l_pNextTask = static_cast<Task *> (m_aSchedule[l_iNextTaskSlot].pToTask);
             if(l_pNextTask != ((uintptr_t) 0))
             {
-                l_pNextTask->setup();
+                l_pNextTask->setup(i_MailboxPtr);
             }
             l_iNextTaskSlot++;
         }
