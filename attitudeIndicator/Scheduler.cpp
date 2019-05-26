@@ -49,7 +49,21 @@ uint8_t Scheduler::attach(Task * i_ToAttach, uint64_t i_u64TickInterval)
     }
     return l_ErrorCode;
 }
+//-------------------------------------------------------
+// The remove function, inserts the task into the schedule slots.
+uint8_t Scheduler::remove(Task * i_ToRemove)
+{
+    if(m_u8OpenSlots < NUMBER_OF_SLOTS)
+    {
+        for(uint8_t i=(i_ToRemove->m_u8TaskID); i<m_u8NextSlot; i++){
+            m_aSchedule[i].pToAttach = m_aSchedule[i+1].pToAttach;
+            m_aSchedule[i].pToAttach->m_u8TaskID--;
+        }
+        m_u8OpenSlots++;
+        m_u8NextSlot--;
 
+    }
+}
 //-------------------------------------------------------
 // Execute the current schedule
 uint8_t Scheduler::run(void)

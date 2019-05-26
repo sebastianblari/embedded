@@ -35,6 +35,7 @@ public:
     Scheduler();
     uint64_t m_u64ticks;
     uint8_t attach(Task * i_ToAttach, uint64_t i_u64TickInterval);
+    uint8_t remove(Task * i_ToRemove);
     uint8_t run(void);
     uint8_t setup(Mailbox *i_MailboxPtr);
 private:
