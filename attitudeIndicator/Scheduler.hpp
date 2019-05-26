@@ -13,7 +13,6 @@
 #ifndef TASKS_SCHEDULER_HPP_
 #define TASKS_SCHEDULER_HPP_
 
-//#include "msp.h"
 #include "Task.hpp"
 
 #define NUMBER_OF_SLOTS 255
@@ -37,7 +36,7 @@ public:
     uint8_t attach(Task * i_ToAttach, uint64_t i_u64TickInterval);
     uint8_t remove(Task * i_ToRemove);
     uint8_t run(void);
-    uint8_t setup(void);
+    uint8_t setup(Mailbox *i_MailboxPtr);
 private:
     uint8_t m_u8OpenSlots;  //available slots
     uint8_t m_u8NextSlot;   //next available slot
