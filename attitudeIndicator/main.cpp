@@ -6,6 +6,7 @@
 #include "FillScreen.hpp"
 #include "GetBorder.hpp"
 #include "DrawMark.hpp"
+#include "GetDifference.hpp"
 //#include "LED.hpp"
 
 
@@ -164,10 +165,12 @@ void LCD_DrawRectangle(const int yInitPosition)
 //----------------------------------------------------------------
 int main(void)
 {
+    bool done = false;
     //Instantiate new Tasks
     GetBorder BorderLine;
     DrawMark WhiteMark;
     FillScreen Fill;
+    GetDifference GD;
 
     //Mailbox instance
     Mailbox g_MailHandler;
@@ -192,7 +195,7 @@ int main(void)
     MAP_ADC14_toggleConversionTrigger();
 
 
-    while(1)
+    while(!done)
     {
         //MAP_PCM_gotoLPM0(); //do not know what it does
 
@@ -203,6 +206,23 @@ int main(void)
             //only execute the tasks if one tick has passed.
             g_MainScheduler.m_u64ticks = g_SystemTicks;
             g_MainScheduler.run();
+            done = true;
         }
+        g_MainScheduler.remove(&Fill);
+            //g_MainScheduler.remove(&WhiteMark);
+            g_MainScheduler.attach(&GD, 102);
+            while(done){
+                //MAP_PCM_gotoLPM0(); //do not know what it does
+
+                __wfe(); // Wait for Event
+
+                if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+                {
+                    //only execute the tasks if one tick has passed.
+                    g_MainScheduler.m_u64ticks = g_SystemTicks;
+                    g_MainScheduler.run();
+                }
+            }
     }
+
 }

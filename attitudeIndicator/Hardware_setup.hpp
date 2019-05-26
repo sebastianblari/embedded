@@ -33,8 +33,8 @@
 #define TIMER32_COUNT_1s  0x002DC6BF
 
 /* T interrupts with 48MHz clock and clock divided by 256 */
-#define TIMER32_COUNT_500ms 0x00016E35    //~0.5s
-#define TIMER32_COUNT_1s 0x0002DC6B   //~1s
+//#define TIMER32_COUNT_500ms 0x00016E35    //~0.5s
+//#define TIMER32_COUNT_1s 0x0002DC6B   //~1s
 #define TIMER32_COUNT_5s 0x000E4E1B   //~5s
 #define TIMER32_COUNT_60s 0x00ABA94F  //~60s
 #define TIMER32_COUNT_30s 0x0055D4A7  //~30s

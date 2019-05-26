@@ -22,7 +22,7 @@ uint8_t LED::run()
 }
 
 //setup -------------------------------------
-uint8_t LED::setup()
+uint8_t LED::setup(Mailbox *i_MailboxPtr)
 {
     //LED Setup, assuming PORT2
     P2->DIR |= m_u16BITN; //Selects the LED: Red, Blue or Green

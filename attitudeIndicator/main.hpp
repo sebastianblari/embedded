@@ -30,6 +30,7 @@
 
 /* GLOBAL VARIABLES */
 uint16_t g_u16XYCoordinates[128]; //Array with (x,y) coordinates to determine limits
+uint16_t g_u16XYCoordinates_initial[128];
 Graphics_Context g_sContext; //Graphic library context
 float g_fRollAngle; //angle
 float g_fPitchAngle;//angle
