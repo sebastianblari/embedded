@@ -22,13 +22,11 @@ class GetDifference : public Task
         //uint16_t g_u16XYCoordinates_f[128]; //Array with (x,y) final coordinates (new)
 
         uint16_t m_u16InitialValue;
-        int m_iDiffInitialPoint;
-        int m_iDiffFinalPoint;
+        //int m_iDiffInitialPoint;
+        //int m_iDiffFinalPoint;
 
         virtual uint8_t run(void);
-        virtual uint8_t setup(Mailbox *i_MailboxPtr);
-        uint8_t fill();
-        uint8_t fill2();
+        virtual uint8_t setup(void);
 
     protected:
     private:
