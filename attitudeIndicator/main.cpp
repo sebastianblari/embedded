@@ -107,10 +107,11 @@ void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
         }
     }
 
-    if(i_fPitchAngle <=  M_PI/2 && i_fPitchAngle > i_fPitchAngle >  0.95*M_PI/2) {
+    if(i_fPitchAngle <=  M_PI/2 && i_fPitchAngle > i_fPitchAngle >=  0.95*M_PI/2) {
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-            Graphics_Rectangle t_Rectangle2 = {0,0,128,128};
-            Graphics_fillRectangle(&g_sContext, &t_Rectangle2);
+        Graphics_Rectangle t_Rectangle2 = {0,0,128,128};
+        printf("90");
+        Graphics_fillRectangle(&g_sContext, &t_Rectangle2);
     } else if(i_fPitchAngle >= - M_PI/2 && i_fPitchAngle <=  M_PI/2 ) {
         if (i_fRollAngle <= M_PI/2 || i_fRollAngle >= 3*M_PI/2) {
             for (uint8_t line_index = 0; line_index < 129; line_index++) {
@@ -195,34 +196,48 @@ int main(void)
     MAP_ADC14_toggleConversionTrigger();
 
 
-    while(!done)
-    {
-        //MAP_PCM_gotoLPM0(); //do not know what it does
+//    while(!done)
+//    {
+//        //MAP_PCM_gotoLPM0(); //do not know what it does
+//
+//        __wfe(); // Wait for Event
+//
+//        if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+//        {
+//            //only execute the tasks if one tick has passed.
+//            g_MainScheduler.m_u64ticks = g_SystemTicks;
+//            g_MainScheduler.run();
+//            done = true;
+//        }
+//        g_MainScheduler.remove(&Fill);
+//            //g_MainScheduler.remove(&WhiteMark);
+//            g_MainScheduler.attach(&GD, 102);
+//            while(done){
+//                //MAP_PCM_gotoLPM0(); //do not know what it does
+//
+//                __wfe(); // Wait for Event
+//
+//                if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+//                {
+//                    //only execute the tasks if one tick has passed.
+//                    g_MainScheduler.m_u64ticks = g_SystemTicks;
+//                    g_MainScheduler.run();
+//                }
+//            }
+//    }
 
-        __wfe(); // Wait for Event
-
-        if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+    while(1)
         {
-            //only execute the tasks if one tick has passed.
-            g_MainScheduler.m_u64ticks = g_SystemTicks;
-            g_MainScheduler.run();
-            done = true;
-        }
-        g_MainScheduler.remove(&Fill);
-            //g_MainScheduler.remove(&WhiteMark);
-            g_MainScheduler.attach(&GD, 102);
-            while(done){
-                //MAP_PCM_gotoLPM0(); //do not know what it does
+            //MAP_PCM_gotoLPM0(); //do not know what it does
 
-                __wfe(); // Wait for Event
+            __wfe(); // Wait for Event
 
-                if(g_SystemTicks != g_MainScheduler.m_u64ticks)
-                {
-                    //only execute the tasks if one tick has passed.
-                    g_MainScheduler.m_u64ticks = g_SystemTicks;
-                    g_MainScheduler.run();
-                }
+            if(g_SystemTicks != g_MainScheduler.m_u64ticks)
+            {
+                //only execute the tasks if one tick has passed.
+                g_MainScheduler.m_u64ticks = g_SystemTicks;
+                g_MainScheduler.run();
             }
-    }
+        }
 
 }

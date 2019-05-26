@@ -29,12 +29,12 @@ uint8_t GetDifference::run()
 
     if( (g_u16XYCoordinates[0] >= ((g_u16XYCoordinates_initial[0]*0.10)+g_u16XYCoordinates_initial[0]))||(g_u16XYCoordinates[0] <= (g_u16XYCoordinates_initial[0]-(g_u16XYCoordinates_initial[0]*0.10))) ){
         m_iDiffInitialPoint = static_cast<int>(g_u16XYCoordinates[0])-static_cast<int>(g_u16XYCoordinates_initial[0]);
-        printf("Initial \t %i \n", m_iDiffInitialPoint);
+//        printf("Initial \t %i \n", m_iDiffInitialPoint);
         //fill2();
     }
     if( (g_u16XYCoordinates[128] >= ((g_u16XYCoordinates_initial[128]*0.10)+g_u16XYCoordinates_initial[128]))||(g_u16XYCoordinates[128] <= (g_u16XYCoordinates_initial[128]-(g_u16XYCoordinates_initial[128]*0.10))) ){
         m_iDiffFinalPoint = static_cast<int>(g_u16XYCoordinates[128])-static_cast<int>(g_u16XYCoordinates_initial[128]);
-        printf("Final \t %i\n", m_iDiffFinalPoint);
+//        printf("Final \t %i\n", m_iDiffFinalPoint);
         //fill2();
     }
     //printf("Initial \t %i \nFinal \t %i\n", m_iDiffInitialPoint,m_iDiffFinalPoint);

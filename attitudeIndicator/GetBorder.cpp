@@ -29,12 +29,21 @@ GetBorder::GetBorder()
  */
 uint8_t GetBorder::run()
 {
+//    printf("getborder->run\n");
     uint16_t* Coordinates_ptr = DecodeMsgData();
-//    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-//        g_u16XYCoordinates[l_u16XpixelCounter] = abs( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
-//                                                      + 64*sin(g_fPitchAngle)
-//                                                      - 64 );
-//    }
+//    int16_t g_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
+    // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
+    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
+        g_u16XYCoordinates[l_u16XpixelCounter] = - ( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
+                                               + 64*sin(g_fPitchAngle)
+                                               - 64 );
+        if (g_u16XYCoordinates[l_u16XpixelCounter] > 128) {
+            g_u16XYCoordinates[l_u16XpixelCounter] = 129;
+        } else if (g_u16XYCoordinates[l_u16XpixelCounter] < 0) {
+            g_u16XYCoordinates[l_u16XpixelCounter] = -1;
+        }
+//        printf("Par ordenado X,Y:\t (%d,%d)\n",l_u16XpixelCounter,g_u16XYCoordinates[l_u16XpixelCounter]);
+    }
     BuidMsgData();
     return(NO_ERR);
 }

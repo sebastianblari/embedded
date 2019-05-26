@@ -26,11 +26,18 @@ DrawMark::DrawMark()
  */
 uint8_t DrawMark::run()
 {
-      uint16_t* Coordinates_ptr = DecodeMsgData();
-//    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-//    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
-      BuidMsgData();
+//    printf("drawmark->run\n");
+    uint16_t* Coordinates_ptr = DecodeMsgData();
 
+    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_GREEN);
+//    printf("(0,%d)->(128,%d)\n",g_u16XYCoordinates[0],g_u16XYCoordinates[128]);
+//    for (int index = 0; index < 129; index++){
+//        printf("Par ordenado X,Y:\t (%d,%d)\n",index,g_u16XYCoordinates[index]);
+//    }
+    Graphics_drawLine(&g_sContext, 0, 128, 128, 128);
+//    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
+    BuidMsgData();
+    Graphics_drawLine(&g_sContext, 0, 128, 128, 128);
     return(NO_ERR);
 }
 

@@ -78,7 +78,7 @@ void ADC14_IRQHandler(void)
         TIMER32_1->INTCLR = 0U; //Clear interrup Flag
 
 //        LCD_DrawRectangle(g_iyInitPosition);
-        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
+//        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
 
         __enable_irq();
         return;
