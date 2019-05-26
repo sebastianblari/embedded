@@ -22,10 +22,10 @@
 //-------------------------------------------------------
 // This structure defines the Task Information
 struct st_TaskInfo {
-	Task * pToAttach;           //pointer to the Task
-	uint64_t u64TickInterval;   //how often the task is executed
-	uint64_t u64ticks;          //current tick count
-	uint64_t u64TickIntervalInitValue; //value to reset
+    Task * pToTask;     //pointer to the Task
+    uint64_t u64Ticks;  //current tick count
+    uint64_t u64TaskTicks;      //current task tick count
+    uint64_t u64TickInterval;   //how often the task is executed
 };
 
 //-------------------------------------------------------
@@ -33,18 +33,18 @@ class Scheduler
 {
 public:
     Scheduler();
-    uint64_t m_u64ticks;
+    uint64_t m_u64Ticks;    //current tick count: class member
     uint8_t attach(Task * i_ToAttach, uint64_t i_u64TickInterval);
     uint8_t remove(Task * i_ToRemove);
     uint8_t run(void);
-    uint8_t setup(Mailbox *i_MailboxPtr);
+    uint8_t setup(void);
 private:
-    uint8_t m_u8OpenSlots; // Available slots
-    uint8_t m_u8NextSlot;  // Next available slot
-    st_TaskInfo m_aSchedule[NUMBER_OF_SLOTS];       // Current schedule to be executed
-    st_TaskInfo m_aNextSchedule[NUMBER_OF_SLOTS];   // Next schedule to be executed (not implemented)
-    uint8_t CalculateNextSchedule(void);            // Calculate next schedule tasks (not implemented)
-    uint8_t SortScheduleByPriority(Task * i_pSchedule); // Sorts a schedule based on priority (not implemented)
+    uint8_t m_u8OpenSlots;  //available slots
+    uint8_t m_u8NextSlot;   //next available slot
+    st_TaskInfo m_aSchedule[NUMBER_OF_SLOTS];       //current schedule to be executed
+    st_TaskInfo m_aNextSchedule[NUMBER_OF_SLOTS];   //next schedule to be executed (not implemented)
+    uint8_t CalculateNextSchedule(void);            //calculate next schedule tasks (not implemented)
+    uint8_t SortScheduleByPriority(Task * i_pSchedule); //sorts a schedule based on priority (not implemented)
 };
 
 #endif /* TASKS_SCHEDULER_HPP_ */
