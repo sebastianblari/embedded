@@ -27,8 +27,10 @@ FillScreen::FillScreen()
  */
 uint8_t FillScreen::run()
 {
-//    printf("fillscreen->run\n");
-    uint16_t* Coordinates_ptr = DecodeMsgData();
+    printf("--");
+    int* Coordinates_ptr = this->DecodeMsgData();
+//    printf("FillS received %p\n", Coordinates_ptr);
+
     if(g_fPitchAngle <=  M_PI/2 && g_fPitchAngle >=  0.95*M_PI/2) {
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
         Graphics_Rectangle t_Rectangle2 = {0,0,128,128};
@@ -64,7 +66,6 @@ uint8_t FillScreen::run()
             g_u16XYCoordinates_previous[line_index] = Coordinates_ptr[line_index];
         }
     }
-    BuidMsgData();
     return(NO_ERR);
 }
 
@@ -76,26 +77,28 @@ uint8_t FillScreen::setup(Mailbox *i_MailboxPtr)
 }
 
 /*--------------------------------------------------*/
-uint8_t FillScreen::BuidMsgData()
+uint8_t FillScreen::BuildMsgData()
 {
     st_MsgInfo CoordinatesPtrMsg;
     CoordinatesPtrMsg.source = m_u8TaskID;
     CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
 
     //building the message
-    CoordinatesPtrMsg.data_ptr = m_lastCoodinates;
+    CoordinatesPtrMsg.data_ptr[0] = m_lastCoodinates;
     TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
 
     return 0;
 }
 /*--------------------------------------------------*/
-uint16_t* FillScreen::DecodeMsgData()
+int* FillScreen::DecodeMsgData()
 {
+
     st_MsgInfo ParametersReceived;
         if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
+
             ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
-            m_lastCoodinates = ParametersReceived.data_ptr;
-            return ParametersReceived.data_ptr;
+            m_lastCoodinates = ParametersReceived.data_ptr[0];
+            return ParametersReceived.data_ptr[0];
         }
         else{
             return m_lastCoodinates;

@@ -5,9 +5,11 @@
 
 #include "Mailbox.hpp"
 
-Mailbox::Mailbox(){}
+Mailbox::Mailbox(){
+}
 
 uint8_t Mailbox::ReceiveMsg(st_MsgInfo NewMail){
+
     int l_iInstanceMsgCounter = msg_counter[NewMail.destiny];
     //Check the mailbox availability
     if (l_iInstanceMsgCounter<6){
@@ -34,7 +36,8 @@ st_MsgInfo Mailbox::SendMsg(uint8_t MsgSource, uint8_t MsgDestiny){
     if (this->CheckMailbox(MsgDestiny)>0){
         while(!l_msgfound){
                 if(MsgBoard[MsgDestiny][index].source == MsgSource){
-                    Msg.data_ptr = MsgBoard[MsgDestiny][index].data_ptr;
+                    Msg.data_ptr[0] = MsgBoard[MsgDestiny][index].data_ptr[0];
+                    Msg.data_ptr[1] = MsgBoard[MsgDestiny][index].data_ptr[1];
 
                     msg_counter[MsgDestiny]--;
                     l_msgfound = true;
@@ -43,6 +46,7 @@ st_MsgInfo Mailbox::SendMsg(uint8_t MsgSource, uint8_t MsgDestiny){
                     index--;}
                 else{// doesnt found the header
                     l_msgfound = true;
+                    Msg.data_ptr[0] = nullptr;
                 }
             }
         }

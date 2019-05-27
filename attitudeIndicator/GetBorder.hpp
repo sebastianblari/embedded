@@ -18,7 +18,7 @@
 #include "Task.hpp"
 
 #define __NOP __nop
-#define PIXELS 128 //cantidad de pixeles
+#define PIXELS 129 //cantidad de pixeles
 
 /* Class: GetBorder
  * inherit from Class Task
@@ -27,11 +27,11 @@ class GetBorder : public Task
 {
     public:
         GetBorder(); //constructor
-        uint16_t m_oXYZarrayValues[129];
+        int m_oXYZarrayValues[PIXELS];
         virtual uint8_t run(void);
         virtual uint8_t setup(Mailbox *i_MailboxPtr);
-        uint8_t BuidMsgData(void);
-        uint16_t* DecodeMsgData(void);
+        uint8_t BuildMsgData(void);
+        int* DecodeMsgData(void);
 
     protected:
     private:

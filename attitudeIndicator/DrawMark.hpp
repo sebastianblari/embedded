@@ -22,11 +22,11 @@ class DrawMark : public Task
 {
     public:
         DrawMark(); //constructor
-        uint16_t* m_lastCoodinates;
+        int* m_lastCoodinates;
         virtual uint8_t run(void);
         virtual uint8_t setup(Mailbox *i_MailboxPtr);
-        uint8_t BuidMsgData(void);
-        uint16_t* DecodeMsgData(void);
+        uint8_t BuildMsgData(void);
+        int* DecodeMsgData(void);
 
     protected:
     private:

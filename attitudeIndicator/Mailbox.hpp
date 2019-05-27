@@ -18,8 +18,7 @@ const uint8_t NUMBER_MAX_MSG =  6;
 struct st_MsgInfo {
     uint8_t source;
     uint8_t destiny;
-    uint16_t* data_ptr = 0;
-    uint8_t data[8] = {}; //arreglo de 8 bytes, donde se contiene el dato
+    int* data_ptr[2];
 };
 
 class Mailbox
