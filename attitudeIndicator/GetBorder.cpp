@@ -77,14 +77,5 @@ uint8_t GetBorder::BuidMsgData()
 /*--------------------------------------------------*/
 uint16_t* GetBorder::DecodeMsgData()
 {
-    st_MsgInfo ParametersReceived;
-    if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
-        ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
-//        m_lastCoodinates = ParametersReceived.data_ptr;
-    }
-    else{
-//        ParametersReceived.data_ptr = m_lastCoodinates;
-
-    }
-    return(ParametersReceived.data_ptr);
+    return nullptr;
 }
