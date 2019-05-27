@@ -29,15 +29,15 @@ uint8_t DrawMark::run()
 //    printf("drawmark->run\n");
     uint16_t* Coordinates_ptr = DecodeMsgData();
 
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_GREEN);
+    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
 //    printf("(0,%d)->(128,%d)\n",g_u16XYCoordinates[0],g_u16XYCoordinates[128]);
-//    for (int index = 0; index < 129; index++){
+    for (int index = 0; index < 129; index++){
 //        printf("Par ordenado X,Y:\t (%d,%d)\n",index,g_u16XYCoordinates[index]);
-//    }
-    Graphics_drawLine(&g_sContext, 0, 128, 128, 128);
-//    Graphics_drawLine(&g_sContext, 0, g_u16XYCoordinates[0], 128, g_u16XYCoordinates[128]);
+        if(g_u16XYCoordinates[index] >= 0 && g_u16XYCoordinates[index] <= 128 ) {
+            Graphics_drawLine(&g_sContext, index, g_u16XYCoordinates[index], index, g_u16XYCoordinates[index]);
+        }
+    }
     BuidMsgData();
-    Graphics_drawLine(&g_sContext, 0, 128, 128, 128);
     return(NO_ERR);
 }
 
@@ -56,7 +56,7 @@ uint8_t DrawMark::BuidMsgData()
     CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
 
     //building the message
-    CoordinatesPtrMsg.data_ptr = g_u16XYCoordinates;
+//    CoordinatesPtrMsg.data_ptr = g_u16XYCoordinates;
     TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
 
     return 0;
