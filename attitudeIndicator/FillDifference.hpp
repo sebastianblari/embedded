@@ -1,38 +1,42 @@
 /*
- * GetDifference.hpp
+ * Task :FillDIfference
+ *
+ * FillDifference.hpp
  *
  *  Created on: May 25, 2019
- *      Author: du
+ *
+ *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
+ *
+ *      Authors: Dunia, Laura, Sebastian
  */
 
-#ifndef GETDIFFERENCE_HPP_
-#define GETDIFFERENCE_HPP_
+#ifndef FILLDIFFERENCE_HPP_
+#define FILLDIFFERENCE_HPP_
 
 #include "Task.hpp"
 
-/* Class: GetDifference
+/* Class: FillDifference
  * inherit from Class Task
  */
-class GetDifference : public Task
+class FillDifference : public Task
 {
     public:
-        GetDifference(); //constructor
+        FillDifference(); //constructor
 
         //uint16_t m_u16XYCoordinates_initial[128]; //Array with (x,y) initial coordinates (old)
         //uint16_t g_u16XYCoordinates_f[128]; //Array with (x,y) final coordinates (new)
 
         uint16_t m_u16InitialValue;
         uint16_t* m_lastCoodinates;
-        //int m_iDiffInitialPoint;
-        //int m_iDiffFinalPoint;
 
         virtual uint8_t run(void);
         virtual uint8_t setup(Mailbox *i_MailboxPtr);
         uint8_t BuidMsgData(void);
         uint16_t* DecodeMsgData(void);
+        uint8_t fill();
 
     protected:
     private:
 };
 
-#endif /* GETDIFFERENCE_HPP_ */
+#endif /* FILLDIFFERENCE_HPP_ */

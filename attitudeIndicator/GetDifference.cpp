@@ -19,7 +19,9 @@ GetDifference::GetDifference()
 }
 
 /*--------------------------------------------------*/
-//refresh the initial value of coordinates
+/*obtains the difference between initial and final point of previous and actual Border line
+ * receives values from global variables
+ * it is expected to receive and send values through messages*/
 uint8_t GetDifference::run()
 {
     //    printf("fillscreen->run\n");
@@ -99,78 +101,33 @@ uint8_t GetDifference::run()
 /*--------------------------------------------------*/
 uint8_t GetDifference::setup(Mailbox *i_MailboxPtr)
 {
+    TaskMailbox = i_MailboxPtr;
     return(NO_ERR);
 }
-
 /*--------------------------------------------------*/
-uint8_t GetDifference::fill()
+uint8_t GetDifference::BuidMsgData()
 {
-//    for (uint8_t line_index = m_u16InitialValue; line_index < 129; line_index++) {
-//        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, g_u16XYCoordinates_initial[line_index]);
-//
-//        if (g_u16XYCoordinates[line_index] == g_u16XYCoordinates_initial[line_index]){
-//            m_u16InitialValue = line_index + 1;
-//            line_index = 129;
-//        }
-//        /*else{
-//            l_u16InitialValue = 0u;
-//        }*/
-//    }
+    st_MsgInfo CoordinatesPtrMsg;
+    CoordinatesPtrMsg.source = m_u8TaskID;
+    CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
+
+    //building the message
+    CoordinatesPtrMsg.data_ptr = m_lastCoodinates;
+    TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
+
     return 0;
 }
-
 /*--------------------------------------------------*/
-uint8_t GetDifference::fill2()
+uint16_t* GetDifference::DecodeMsgData()
 {
-//    if(m_iDiffInitialPoint > 0){
-//                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-//
-//                if(m_iDiffFinalPoint < 0){
-//                    //Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-//                    fill();
-//                    m_u16InitialValue = 0u;
-//                }
-//                //si punto inicial es positivo empieza pintar cafe hasta que las coordenadas sean iguales desde el nuevo hasta el viejo
-//                //else if(l_iDiffFinalPoint < 0){
-//                else{
-//                    //Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                }
-//            }
-//            //si los dos son negativos pinta cafe
-//            else if(m_iDiffInitialPoint < 0){
-//                Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-//            //si es cero o negativo
-//                if(m_iDiffFinalPoint > 0){
-//                    //Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-//                    fill();
-//                    m_u16InitialValue = 0;
-//                }
-//                //else if(l_iDiffFinalPoint > 0){
-//                else{
-//                    //Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                }
-//            }
-//            else{
-//                if(m_iDiffFinalPoint > 0){
-//                    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                }
-//                else if(m_iDiffFinalPoint > 0){
-//                    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-//                    m_u16InitialValue = 0;
-//                    fill();
-//                }
-//            }
-    return(NO_ERR);
+    st_MsgInfo ParametersReceived;
+        if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
+            ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
+            m_lastCoodinates = ParametersReceived.data_ptr;
+            return ParametersReceived.data_ptr;
+        }
+        else{
+            return m_lastCoodinates;
+
+        }
 }

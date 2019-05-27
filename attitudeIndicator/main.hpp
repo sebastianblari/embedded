@@ -15,8 +15,6 @@
 #include <ti/grlib/grlib.h>
 
 #include "LcdDriver/Crystalfontz128x128_ST7735.h"
-//#include "HAL_I2C.h"
-//#include "HAL_OPT3001.h"
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -36,12 +34,9 @@ float g_fRollAngle; //angle
 float g_fPitchAngle;//angle
 int g_iyInitPosition;
 
-/* FUNCTIONS */
-void LCD_DrawStatus();
-void LCD_DrawTitle();
-void LCD_DrawAccelData();
-void LCD_DrawRectangle(const int yInitPosition);
-void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle);
-void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle);
+int g_iDiffInitialPoint;
+int g_iDiffFinalPoint;
+
+bool done;
 
 #endif /* MAIN_HPP_ */

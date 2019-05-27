@@ -22,7 +22,7 @@ FillScreen::FillScreen()
 /*--------------------------------------------------*/
 /* Fills the screen with each color
  * it can be optimized by decreasing the filling area
- * uses g_u16XYCoordinates[i] values
+ * uses Coordinates_ptr[i] values
  * expected to receive this values from a message
  */
 uint8_t FillScreen::run()
@@ -36,7 +36,7 @@ uint8_t FillScreen::run()
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
         Graphics_drawLine(&g_sContext, 0, 0, 128, 0);
         for (uint8_t line_index = 0; line_index < 129; line_index++){
-            g_u16XYCoordinates_previous[line_index] = g_u16XYCoordinates[line_index];
+            g_u16XYCoordinates_previous[line_index] = Coordinates_ptr[line_index];
         }
     } else if (g_fPitchAngle <=  -0.95*M_PI/2 && g_fPitchAngle >=  -M_PI/2) {
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
@@ -45,23 +45,23 @@ uint8_t FillScreen::run()
         Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
         Graphics_drawLine(&g_sContext, 0, 128, 128, 128);
         for (uint8_t line_index = 0; line_index < 129; line_index++){
-            g_u16XYCoordinates_previous[line_index] = g_u16XYCoordinates[line_index];
+            g_u16XYCoordinates_previous[line_index] = Coordinates_ptr[line_index];
         }
     } else if (g_fRollAngle <= M_PI/2 || g_fRollAngle > 3*M_PI/2) {
         for (uint8_t line_index = 0; line_index < 129; line_index++) {
             Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-            Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, 0);
+            Graphics_drawLine(&g_sContext, line_index, Coordinates_ptr[line_index], line_index, 0);
             Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-            Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, 128);
-            g_u16XYCoordinates_previous[line_index] = g_u16XYCoordinates[line_index];
+            Graphics_drawLine(&g_sContext, line_index, Coordinates_ptr[line_index], line_index, 128);
+            g_u16XYCoordinates_previous[line_index] = Coordinates_ptr[line_index];
         }
     } else if (g_fRollAngle > M_PI/2 && g_fRollAngle <= 3*M_PI/2) {
         for (uint8_t line_index = 0; line_index < 129; line_index++) {
             Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BROWN);
-            Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, 0);
+            Graphics_drawLine(&g_sContext, line_index, Coordinates_ptr[line_index], line_index, 0);
             Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_BLUE);
-            Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, 128);
-            g_u16XYCoordinates_previous[line_index] = g_u16XYCoordinates[line_index];
+            Graphics_drawLine(&g_sContext, line_index, Coordinates_ptr[line_index], line_index, 128);
+            g_u16XYCoordinates_previous[line_index] = Coordinates_ptr[line_index];
         }
     }
     BuidMsgData();
@@ -83,7 +83,7 @@ uint8_t FillScreen::BuidMsgData()
     CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
 
     //building the message
-//    CoordinatesPtrMsg.data_ptr = g_u16XYCoordinates;
+    CoordinatesPtrMsg.data_ptr = m_lastCoodinates;
     TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
 
     return 0;
@@ -92,13 +92,13 @@ uint8_t FillScreen::BuidMsgData()
 uint16_t* FillScreen::DecodeMsgData()
 {
     st_MsgInfo ParametersReceived;
-    if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
-        ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID,m_u8TaskID+1);
-        m_lastCoodinates = ParametersReceived.data_ptr;
-    }
-    else{
-        ParametersReceived.data_ptr = m_lastCoodinates;
+        if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
+            ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
+            m_lastCoodinates = ParametersReceived.data_ptr;
+            return ParametersReceived.data_ptr;
+        }
+        else{
+            return m_lastCoodinates;
 
-    }
-    return(ParametersReceived.data_ptr);
+        }
 }

@@ -7,89 +7,16 @@
 #include "GetBorder.hpp"
 #include "DrawMark.hpp"
 #include "GetDifference.hpp"
-//#include "LED.hpp"
-
+#include "FillDifference.hpp"
 
 //----------------------------------------------------------------
 uint8_t Task::m_u8NextTaskID = 0;   //init task ID
 Scheduler g_MainScheduler;          //instantiate a Scheduler
 
 //----------------------------------------------------------------
-/* Clear display and redraw Status */
-void LCD_DrawStatus()
+int main(void)
 {
-    Graphics_clearDisplay(&g_sContext);
-    LCD_DrawRectangle(64);
-
-    Graphics_drawStringCentered(&g_sContext, (int8_t *)"NIVELADO:",
-                                AUTO_STRING_LENGTH, 64, 30, OPAQUE_TEXT);
-}
-
-//----------------------------------------------------------------
-/* Clear display and redraw title + accelerometer data */
-void LCD_DrawTitle()
-{
-    //Graphics_clearDisplay(&g_sContext);
-    Graphics_drawStringCentered(&g_sContext,
-                                    (int8_t *)"Accelerometer:",
-                                    AUTO_STRING_LENGTH,
-                                    64,
-                                    30,
-                                    OPAQUE_TEXT);
-    LCD_DrawAccelData();
-}
-
-//----------------------------------------------------------------
-/* Redraw accelerometer data */
-void LCD_DrawAccelData()
-{
-    char string[10];
-    sprintf(string, "X: %5d", resultsBuffer[0]);
-    Graphics_drawStringCentered(&g_sContext,
-                                    (int8_t *)string,
-                                    8,
-                                    64,
-                                    50,
-                                    OPAQUE_TEXT);
-
-    sprintf(string, "Y: %5d", resultsBuffer[1]);
-    Graphics_drawStringCentered(&g_sContext,
-                                    (int8_t *)string,
-                                    8,
-                                    64,
-                                    70,
-                                    OPAQUE_TEXT);
-
-    sprintf(string, "Z: %5d", resultsBuffer[2]);
-    Graphics_drawStringCentered(&g_sContext,
-                                    (int8_t *)string,
-                                    8,
-                                    64,
-                                    90,
-                                    OPAQUE_TEXT);
-
-}
-
-//----------------------------------------------------------------
-
-
-void LCD_DrawRollRect (const float i_fRollAngle, const float i_fPitchAngle) {
-    Graphics_clearDisplay(&g_sContext);
-    int16_t l_u16XYCoordinates[129];
-    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-        l_u16XYCoordinates[l_u16XpixelCounter] = abs (tan(i_fRollAngle)*(l_u16XpixelCounter - 64)
-                                               + 64*sin(i_fPitchAngle)
-                                               - 64 );
-        if (l_u16XYCoordinates[l_u16XpixelCounter] > 128) {
-            l_u16XYCoordinates[l_u16XpixelCounter] = 128;
-        } else if (l_u16XYCoordinates[l_u16XpixelCounter] < 0) {
-            l_u16XYCoordinates[l_u16XpixelCounter] = 0;
-        }
-    }
-    printf("x0: %d \t y0: %d \t xf: %d \t yf: %d \t Roll: %f, tan(Roll): %f\n",0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128], i_fRollAngle*180/M_PI, tan(i_fRollAngle));
-    Graphics_setForegroundColor(&g_sContext, GRAPHICS_COLOR_WHITE);
-    Graphics_drawLine(&g_sContext, 0, l_u16XYCoordinates[0], 128, l_u16XYCoordinates[128]);
-}
+    //bool done = false;
 
 //Dibujar línea de Roll
 void LCD_DrawRollLine(const float i_fRollAngle, const float i_fPitchAngle) {
@@ -171,35 +98,29 @@ void LCD_DrawRectangle(const int yInitPosition)
     return;
 }
 
-//----------------------------------------------------------------
-int main(void)
-{
-    bool done = false;
-    //Instantiate new Tasks
+	/** instantiate new Tasks **/
     GetBorder BorderLine;
     DrawMark WhiteMark;
     FillScreen Fill;
     GetDifference GD;
+	FillDifference FillDiff;
 
-    //Mailbox instance
+	/** Mailbox instance **/
     Mailbox g_MailHandler;
 
-    //attach the Tasks to the Scheduler;
+	/** attach the Tasks to the Scheduler **/
     g_MainScheduler.attach(&BorderLine, 100);
     g_MainScheduler.attach(&WhiteMark, 101);
     g_MainScheduler.attach(&Fill, 102);
 
-    //run the Setup for the scheduler and all tasks
+	/** run the Setup for the scheduler and all tasks **/
     g_MainScheduler.setup(&g_MailHandler);
 
-    /* Halting WDT and disabling master interrupts */
-    MAP_WDT_A_holdTimer();
-    MAP_Interrupt_disableMaster();
 
-    //configurations and initial conditions
+	/** configurations and initial conditions **/
     Power_up();
 
-    /* Triggering the start of the sample */
+	/** Triggering the start of the sample **/
     MAP_ADC14_enableConversion();
     MAP_ADC14_toggleConversionTrigger();
 
@@ -248,4 +169,17 @@ int main(void)
 //            }
 //        }
 
+
+    while(1)
+	{
+		//MAP_PCM_gotoLPM0(); //do not know what it does
+		__wfe(); // Wait for Event
+
+		//only execute the tasks if one tick has passed.
+		if(g_SystemTicks != g_MainScheduler.m_u64Ticks)
+		{
+			g_MainScheduler.m_u64Ticks = g_SystemTicks;
+			g_MainScheduler.run();
+		}
+	}
 }
