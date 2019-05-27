@@ -67,8 +67,9 @@ uint8_t FillDifference::run()
 }
 
 /*--------------------------------------------------*/
-uint8_t FillDifference::setup()
+uint8_t FillDifference::setup(Mailbox *i_MailboxPtr)
 {
+    TaskMailbox = i_MailboxPtr;
     return(NO_ERR);
 }
 
@@ -76,13 +77,41 @@ uint8_t FillDifference::setup()
 //draws the lines to fill the differential area
 uint8_t FillDifference::fill()
 {
+    uint16_t* Coordinates_ptr = DecodeMsgData();
     for (uint8_t line_index = m_u16InitialValue; line_index < 129; line_index++) {
-        Graphics_drawLine(&g_sContext, line_index, g_u16XYCoordinates[line_index], line_index, g_u16XYCoordinates_initial[line_index]);
+        Graphics_drawLine(&g_sContext, line_index, Coordinates_ptr[line_index], line_index, g_u16XYCoordinates_initial[line_index]);
 
-        if (g_u16XYCoordinates[line_index] == g_u16XYCoordinates_initial[line_index]){
+        if (Coordinates_ptr[line_index] == g_u16XYCoordinates_initial[line_index]){
             m_u16InitialValue = line_index + 1;
             line_index = 129;
         }
     }
     return(NO_ERR);
+}
+/*--------------------------------------------------*/
+uint8_t FillDifference::BuidMsgData()
+{
+    st_MsgInfo CoordinatesPtrMsg;
+    CoordinatesPtrMsg.source = m_u8TaskID;
+    CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
+
+    //building the message
+    CoordinatesPtrMsg.data_ptr = m_lastCoodinates;
+    TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
+
+    return 0;
+}
+/*--------------------------------------------------*/
+uint16_t* FillDifference::DecodeMsgData()
+{
+    st_MsgInfo ParametersReceived;
+        if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
+            ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
+            m_lastCoodinates = ParametersReceived.data_ptr;
+            return ParametersReceived.data_ptr;
+        }
+        else{
+            return m_lastCoodinates;
+
+        }
 }

@@ -30,22 +30,27 @@ GetBorder::GetBorder()
 uint8_t GetBorder::run()
 {
 //    printf("getborder->run\n");
-    uint16_t* Coordinates_ptr = DecodeMsgData();
 //    int16_t g_u16XYCoordinates[129]; // Cambiar 129 por un parámetro
     // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
     for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-        g_u16XYCoordinates[l_u16XpixelCounter] = - ( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
-                                               + 64*sin(g_fPitchAngle)
-                                               - 64 );
-        if (g_u16XYCoordinates[l_u16XpixelCounter] > 128) {
-            g_u16XYCoordinates[l_u16XpixelCounter] = 129;
-        } else if (g_u16XYCoordinates[l_u16XpixelCounter] < 0) {
-            g_u16XYCoordinates[l_u16XpixelCounter] = -1;
+//            g_u16XYCoordinates[l_u16XpixelCounter] = - ( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
+//                                                   + 64*sin(g_fPitchAngle)
+//                                                   - 64 );
+
+            m_oXYZarrayValues[l_u16XpixelCounter] = - ( tan(g_fRollAngle)*(l_u16XpixelCounter - 64)
+                                                           + 64*sin(g_fPitchAngle)
+                                                           - 64 );
+            if (m_oXYZarrayValues[l_u16XpixelCounter] > 128) {
+//                g_u16XYCoordinates[l_u16XpixelCounter] = 129;
+                m_oXYZarrayValues[l_u16XpixelCounter] = 129;
+            } else if (m_oXYZarrayValues[l_u16XpixelCounter] < 0) {
+//                g_u16XYCoordinates[l_u16XpixelCounter] = -1;
+                m_oXYZarrayValues[l_u16XpixelCounter] = -1;
+            }
+    //        printf("Par ordenado X,Y:\t (%d,%d)\n",l_u16XpixelCounter,g_u16XYCoordinates[l_u16XpixelCounter]);
         }
-//        printf("Par ordenado X,Y:\t (%d,%d)\n",l_u16XpixelCounter,g_u16XYCoordinates[l_u16XpixelCounter]);
-    }
-    BuidMsgData();
-    return(NO_ERR);
+        BuidMsgData();
+        return(NO_ERR);
 }
 
 //---------------------------------------------------
@@ -62,8 +67,10 @@ uint8_t GetBorder::BuidMsgData()
     CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
 
     //building the message
-    CoordinatesPtrMsg.data_ptr = g_u16XYCoordinates;
+    CoordinatesPtrMsg.data_ptr = m_oXYZarrayValues;
     TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
+//    CoordinatesPtrMsg.destiny = m_u8TaskID + 2;
+//    TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
 
     return 0;
 }
@@ -73,10 +80,10 @@ uint16_t* GetBorder::DecodeMsgData()
     st_MsgInfo ParametersReceived;
     if (TaskMailbox->CheckMailbox(m_u8TaskID)>0){
         ParametersReceived = TaskMailbox->SendMsg(m_u8TaskID-1,m_u8TaskID);
-        m_lastCoodinates = ParametersReceived.data_ptr;
+//        m_lastCoodinates = ParametersReceived.data_ptr;
     }
     else{
-        ParametersReceived.data_ptr = m_lastCoodinates;
+//        ParametersReceived.data_ptr = m_lastCoodinates;
 
     }
     return(ParametersReceived.data_ptr);

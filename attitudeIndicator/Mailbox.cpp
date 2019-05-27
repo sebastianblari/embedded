@@ -8,7 +8,7 @@
 Mailbox::Mailbox(){}
 
 uint8_t Mailbox::ReceiveMsg(st_MsgInfo NewMail){
-    int l_iInstanceMsgCounter = msg_counter[NewMail.source];
+    int l_iInstanceMsgCounter = msg_counter[NewMail.destiny];
     //Check the mailbox availability
     if (l_iInstanceMsgCounter<6){
         MsgBoard[NewMail.destiny][l_iInstanceMsgCounter] = NewMail;
@@ -31,7 +31,7 @@ st_MsgInfo Mailbox::SendMsg(uint8_t MsgSource, uint8_t MsgDestiny){
     Msg.source = MsgSource;
     Msg.destiny = MsgDestiny;
 
-    if (this->CheckMailbox(MsgSource)>0){
+    if (this->CheckMailbox(MsgDestiny)>0){
         while(!l_msgfound){
                 if(MsgBoard[MsgDestiny][index].source == MsgSource){
                     Msg.data_ptr = MsgBoard[MsgDestiny][index].data_ptr;
