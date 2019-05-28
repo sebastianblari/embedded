@@ -39,4 +39,8 @@ int g_iDiffFinalPoint;
 
 bool done;
 
+int fXg;
+int fYg;
+int fZg;
+
 #endif /* MAIN_HPP_ */

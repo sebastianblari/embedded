@@ -46,9 +46,18 @@ void ADC14_IRQHandler(void)
     {
         //Store ADC14 conversion results
 
-        int16_t fXg = ADC14_getResult(ADC_MEM0) - 8192;
-        int16_t fYg = ADC14_getResult(ADC_MEM1) - 8192;
-        int16_t fZg = ADC14_getResult(ADC_MEM2) - 8192;
+        double alpha = 0.005;
+
+
+
+        int16_t Xg = ADC14_getResult(ADC_MEM0) - 8192;
+        int16_t Yg = ADC14_getResult(ADC_MEM1) - 8192;
+        int16_t Zg = ADC14_getResult(ADC_MEM2) - 8192;
+
+
+        fXg = Xg * alpha + (fXg * (1.0 - alpha));
+        fYg = Yg * alpha + (fYg * (1.0 - alpha));
+        fZg = Zg * alpha + (fZg * (1.0 - alpha));
 
 
         g_fRollAngle  = atan2(-fYg, fXg);

@@ -60,7 +60,7 @@ int main(void)
     }
 
     g_MainScheduler.remove(&Fill);
-    //g_MainScheduler.remove(&WhiteMark);
+    g_MainScheduler.remove(&WhiteMark);
     g_MainScheduler.attach(&GD, 102);
     g_MainScheduler.setup(&g_MailHandler);
 

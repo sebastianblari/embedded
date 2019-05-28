@@ -123,6 +123,10 @@ void InitialConditions_setup(void){
     
     g_SystemTicks = 0;
 
+    fXg = 0;
+    fYg = 0;
+    fZg = 0;
+
     return;
 }
 //*****************************************************************
