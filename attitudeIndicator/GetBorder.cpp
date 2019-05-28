@@ -31,18 +31,24 @@ uint8_t GetBorder::run()
 {
     // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
     for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
-
-            m_oXYZarrayValues[l_u16XpixelCounter] = - ( tan(-g_fRollAngle)*(l_u16XpixelCounter - 64)
-                                                           + 64*sin(g_fPitchAngle)
-                                                           - 64 );
-            if (m_oXYZarrayValues[l_u16XpixelCounter] > 128) {
-
-                m_oXYZarrayValues[l_u16XpixelCounter] = 129;
-            } else if (m_oXYZarrayValues[l_u16XpixelCounter] < 0) {
-
+        if(g_fPitchAngle <=  M_PI/2 && g_fPitchAngle >=  0.95*M_PI/2) {
                 m_oXYZarrayValues[l_u16XpixelCounter] = 0;
+            } else if (g_fPitchAngle <=  -0.95*M_PI/2 && g_fPitchAngle >=  -M_PI/2) {
+                m_oXYZarrayValues[l_u16XpixelCounter] = 127;
+            } else {
+                m_oXYZarrayValues[l_u16XpixelCounter] = - ( tan(-g_fRollAngle)*(l_u16XpixelCounter - 64)
+                                                               + 64*sin(g_fPitchAngle)
+                                                               - 64 );
+                if (m_oXYZarrayValues[l_u16XpixelCounter] > 128) {
+
+                    m_oXYZarrayValues[l_u16XpixelCounter] = 129;
+                } else if (m_oXYZarrayValues[l_u16XpixelCounter] < 0) {
+
+                    m_oXYZarrayValues[l_u16XpixelCounter] = 0;
+                }
+
             }
-        }
+    }
         BuildMsgData();
         return(NO_ERR);
 }
