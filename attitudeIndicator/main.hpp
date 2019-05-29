@@ -27,8 +27,8 @@
 #define MAIN_HPP_
 
 /* GLOBAL VARIABLES */
-int g_u16XYCoordinates[129]; //Array with (x,y) coordinates to determine limits
-int g_u16XYCoordinates_previous[129];
+//int g_u16XYCoordinates[129]; //Array with (x,y) coordinates to determine limits
+int g_iXYCoordinatesPrevious[129];
 Graphics_Context g_sContext; //Graphic library context
 float g_fRollAngle; //angle
 float g_fPitchAngle;//angle

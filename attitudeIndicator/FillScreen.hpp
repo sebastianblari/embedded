@@ -22,9 +22,9 @@ class FillScreen : public Task
 {
     public:
         FillScreen(); //constructor
-        int* m_lastCoodinates;
+        int* m_piLastCoodinates;
         virtual uint8_t run(void);
-        virtual uint8_t setup(Mailbox *i_MailboxPtr);
+        virtual uint8_t setup(Mailbox *i_pMailboxPtr);
         uint8_t BuildMsgData(void);
         int* DecodeMsgData(void);
 

@@ -27,9 +27,9 @@ class GetBorder : public Task
 {
     public:
         GetBorder(); //constructor
-        int m_oXYZarrayValues[PIXELS];
+        int m_iXYCoordinates[PIXELS];
         virtual uint8_t run(void);
-        virtual uint8_t setup(Mailbox *i_MailboxPtr);
+        virtual uint8_t setup(Mailbox *i_pMailboxPtr);
         uint8_t BuildMsgData(void);
         int* DecodeMsgData(void);
 

@@ -15,23 +15,7 @@
 extern "C" {
 
 //---------------------------------------------------------------
-/* Nivelado:
- * x = 8100 - 8300
- * y = 4900 - 5000
- * z = 8000 - 8700
- *
- * Viendo totalmente hacia abajo:
- * x = 8100 - 8300
- * y = 8000 - 8300: aumenta 2900 puntos
- * z = 11400 - 11600: aumenta 2940 puntos
- * cada vez que se aumente 45 en y se suma uno en yinicial
- *
- * * Viendo totalmente hacia arriba:
- * x = 8100 - 8300
- * y = 8300 - 8500: aumenta 3200 puntos
- * z = 4800 - 5000: disminuye 3200 puntos
- * cada vez que se aumente 50 en y se resta uno en yinicial
- *
+/*
  *
  */
 void ADC14_IRQHandler(void)
@@ -74,29 +58,14 @@ void ADC14_IRQHandler(void)
 
 
         g_fPitchAngle = atan2(fZg, sqrt(fYg*fYg + fXg*fXg));
-//        g_fPitchAngle = atan(fZg / sqrt(fYg*fYg + fXg*fXg));
-//        printf("pitchAngle: %f\n", g_fPitchAngle*180/M_PI);
-//        printf("x: %d \t y: %d \t z: %d \n",fXg,fYg,fZg);
 
     }
 }
 //----------------------------------------------------------------
-    void T32_INT1_IRQHandler(void) {
-
-        __disable_irq();
-        TIMER32_1->INTCLR = 0U; //Clear interrup Flag
-
-//        LCD_DrawRectangle(g_iyInitPosition);
-//        LCD_DrawRollLine(g_fRollAngle,g_fPitchAngle);
-
-        __enable_irq();
-        return;
-    }
-//----------------------------------------------------------------
     void T32_INT2_IRQHandler(void) {
 
         __disable_irq();
-        TIMER32_2->INTCLR = 0U; //Clear interrup Flag
+        TIMER32_2->INTCLR = 0U; //Clear interrupion's  Flag
 
         g_SystemTicks++;
 

@@ -14,7 +14,6 @@
 #define INTERRUPTIONS_HANDLER_HPP_
 
 /* GLOBAL VARIABLES */
-uint16_t resultsBuffer[3];  //ADC results buffer
 uint64_t g_SystemTicks;     //The system counter
 
 

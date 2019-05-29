@@ -19,11 +19,11 @@ class GetDifference : public Task
         GetDifference(); //constructor
 
         uint16_t m_u16InitialValue;
-        int* m_lastCoodinates;
-        uint8_t fillScreenTot();
-        uint8_t fillScreenDiff();
+        int* m_piLastCoodinates;
+        uint8_t FillScreenTot();
+        uint8_t FillScreenDiff();
         virtual uint8_t run(void);
-        virtual uint8_t setup(Mailbox *i_MailboxPtr);
+        virtual uint8_t setup(Mailbox *i_pMailboxPtr);
         uint8_t BuildMsgData(void);
         int* DecodeMsgData(void);
 

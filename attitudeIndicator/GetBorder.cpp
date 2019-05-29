@@ -21,30 +21,28 @@ GetBorder::GetBorder()
 
 /*--------------------------------------------------*/
 /* Obtains the necessary coordinates to delimit the horizon line
- * saves this coordinates in the g_u16XYCoordinates array
- * expected to send this array to DrawMark and FillScreen Tasks as a message
- * only works in a range within +-45 degrees
+ * saves this coordinates in the m_iXYCoordinates array
+ * expected to send this array to FillScreen and GetDifference Tasks as a message
  * uses g_fRollAngle and g_fPitchAngle given by the ADC14 converter
- * expected to receive this values from a message
  */
 uint8_t GetBorder::run()
 {
-    // Esta lógica funciona para para un -45 < ángulo de roll < 45, puede copiar y cambiar una serie de parámetros para la lógica de los demás cuadrantes.
-    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < 129; l_u16XpixelCounter++){
+
+    for (uint16_t l_u16XpixelCounter = 0; l_u16XpixelCounter < PIXELS; l_u16XpixelCounter++){
         if(g_fPitchAngle <=  M_PI/2 && g_fPitchAngle >=  0.95*M_PI/2) {
-                m_oXYZarrayValues[l_u16XpixelCounter] = 0;
+                m_iXYCoordinates[l_u16XpixelCounter] = 0;
             } else if (g_fPitchAngle <=  -0.95*M_PI/2 && g_fPitchAngle >=  -M_PI/2) {
-                m_oXYZarrayValues[l_u16XpixelCounter] = 127;
+                m_iXYCoordinates[l_u16XpixelCounter] = PIXELS-2;
             } else {
-                m_oXYZarrayValues[l_u16XpixelCounter] = - ( tan(-g_fRollAngle)*(l_u16XpixelCounter - 64)
+                m_iXYCoordinates[l_u16XpixelCounter] = - ( tan(-g_fRollAngle)*(l_u16XpixelCounter - 64)
                                                                + 64*sin(g_fPitchAngle)
                                                                - 64 );
-                if (m_oXYZarrayValues[l_u16XpixelCounter] > 128) {
+                if (m_iXYCoordinates[l_u16XpixelCounter] > PIXELS-1) {
 
-                    m_oXYZarrayValues[l_u16XpixelCounter] = 129;
-                } else if (m_oXYZarrayValues[l_u16XpixelCounter] < 0) {
+                    m_iXYCoordinates[l_u16XpixelCounter] = PIXELS;
+                } else if (m_iXYCoordinates[l_u16XpixelCounter] < 0) {
 
-                    m_oXYZarrayValues[l_u16XpixelCounter] = 0;
+                    m_iXYCoordinates[l_u16XpixelCounter] = 0;
                 }
 
             }
@@ -54,27 +52,28 @@ uint8_t GetBorder::run()
 }
 
 //---------------------------------------------------
-uint8_t GetBorder::setup(Mailbox *i_MailboxPtr)
+//Saves the mailbox instance pointer
+uint8_t GetBorder::setup(Mailbox *i_pMailboxPtr)
 {
-    TaskMailbox = i_MailboxPtr;
+    m_pTaskMailbox = i_pMailboxPtr;
     return(NO_ERR);
 }
 /*--------------------------------------------------*/
+/*Builds the data of the message, to be send for a the
+ * next task */
 uint8_t GetBorder::BuildMsgData()
 {
-    st_MsgInfo CoordinatesPtrMsg;
-    CoordinatesPtrMsg.source = m_u8TaskID;
-    CoordinatesPtrMsg.destiny = m_u8TaskID + 1;
+    st_MsgInfo l_stCoordinatesPtrMsg;
+    l_stCoordinatesPtrMsg.m_u8Source = m_u8TaskID;
+    l_stCoordinatesPtrMsg.m_u8Destiny = m_u8TaskID + 1;
 
     //building the message
-    CoordinatesPtrMsg.data_ptr[0] = m_oXYZarrayValues;
-    TaskMailbox->ReceiveMsg(CoordinatesPtrMsg);
+    l_stCoordinatesPtrMsg.m_piData = m_iXYCoordinates;
+    m_pTaskMailbox->ReceiveMsg(l_stCoordinatesPtrMsg);
+
+    l_stCoordinatesPtrMsg.m_u8Destiny = m_u8TaskID + 2;
+    m_pTaskMailbox->ReceiveMsg(l_stCoordinatesPtrMsg);
 
 
-    return 0;
-}
-/*--------------------------------------------------*/
-int* GetBorder::DecodeMsgData()
-{
-    return nullptr;
+    return(NO_ERR);
 }

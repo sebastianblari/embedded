@@ -40,32 +40,6 @@ void LCD_setup(void) {
 
     Graphics_clearDisplay(&g_sContext);
 }
-
-//*****************************************************************
-void Pin_setup(void){
-
-    //Configures Pin 4.0, 4.2, and 6.1 as ADC input
-    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P4, GPIO_PIN0 | GPIO_PIN2, GPIO_TERTIARY_MODULE_FUNCTION);
-    MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P6, GPIO_PIN1, GPIO_TERTIARY_MODULE_FUNCTION);
-
-    P1->DIR |= BIT0; //P1 Red LED - 0x00000001 puerto P1.0 como salida
-    P2->DIR |= BIT0; //P2 Red LED
-    P2->DIR |= BIT1; //P2 Green LED- 0x00000010 puerto P2.1 como salida
-    P2->DIR |= BIT2; //P2 Blue LED - 0x00000100 puerto P2.2 como salida
-
-    return;
-}
-//*****************************************************************
-void T32_1_setup(void){
-
-    TIMER32_1->LOAD |= TIMER32_COUNT_100ms;
-    TIMER32_1->CONTROL = TIMER32_CONTROL_SIZE | TIMER32_CONTROL_PRESCALE_1 |
-                         TIMER32_CONTROL_MODE | TIMER32_CONTROL_IE | TIMER32_CONTROL_ENABLE;
-    NVIC_SetPriority(T32_INT1_IRQn,2);
-    NVIC_EnableIRQ(T32_INT1_IRQn);
-
-    return;
-}
 //*****************************************************************
 void T32_2_setup(void){
 
@@ -115,11 +89,6 @@ void ADC_setup(void){
 }
 //*****************************************************************
 void InitialConditions_setup(void){
-
-    P1->OUT &= ~BIT0;
-    P2->OUT &= ~BIT0;
-    P2->OUT &= ~BIT1;
-    P2->OUT &= ~BIT2;
     
     g_SystemTicks = 0;
 
@@ -134,9 +103,7 @@ void Power_up(void){
 
     //Setup
     LCD_setup();
-    Pin_setup();
     ADC_setup();
-    T32_1_setup();
     T32_2_setup();
 
     //Initial Conditions
