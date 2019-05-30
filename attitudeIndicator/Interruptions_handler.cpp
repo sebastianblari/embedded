@@ -34,17 +34,17 @@ void ADC14_IRQHandler(void)
 
 
 
-        int16_t Xg = ADC14_getResult(ADC_MEM0) - 8192;
-        int16_t Yg = ADC14_getResult(ADC_MEM1) - 8192;
-        int16_t Zg = ADC14_getResult(ADC_MEM2) - 8192;
+        int16_t l_i16XGravityVectorRead = ADC14_getResult(ADC_MEM0) - 8192;
+        int16_t l_i16YGravityVectorRead = ADC14_getResult(ADC_MEM1) - 8192;
+        int16_t l_i16ZGravityVectorRead = ADC14_getResult(ADC_MEM2) - 8192;
 
 
-        fXg = Xg * alpha + (fXg * (1.0 - alpha));
-        fYg = Yg * alpha + (fYg * (1.0 - alpha));
-        fZg = Zg * alpha + (fZg * (1.0 - alpha));
+        g_i16XFilteredGravityVector = l_i16XGravityVectorRead * alpha + (g_i16XFilteredGravityVector * (1.0 - alpha));
+        g_i16YFilteredGravityVector = l_i16YGravityVectorRead * alpha + (g_i16YFilteredGravityVector * (1.0 - alpha));
+        g_i16ZFilteredGravityVector = l_i16ZGravityVectorRead * alpha + (g_i16ZFilteredGravityVector * (1.0 - alpha));
 
 
-        g_fRollAngle  = atan2(-fYg, fXg);
+        g_fRollAngle  = atan2(-g_i16YFilteredGravityVector, g_i16XFilteredGravityVector);
         if( g_fRollAngle >= M_PI/2 &&  g_fRollAngle <= M_PI) {
             g_fRollAngle = M_PI/2 - g_fRollAngle;
         } else if (g_fRollAngle > - M_PI &&  g_fRollAngle < - 0) {
@@ -57,7 +57,7 @@ void ADC14_IRQHandler(void)
         }
 
 
-        g_fPitchAngle = atan2(fZg, sqrt(fYg*fYg + fXg*fXg));
+        g_fPitchAngle = atan2(g_i16ZFilteredGravityVector, sqrt(g_i16YFilteredGravityVector*g_i16YFilteredGravityVector + g_i16XFilteredGravityVector*g_i16XFilteredGravityVector));
 
     }
 }

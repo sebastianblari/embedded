@@ -27,20 +27,17 @@
 #define MAIN_HPP_
 
 /* GLOBAL VARIABLES */
-//int g_u16XYCoordinates[129]; //Array with (x,y) coordinates to determine limits
-int g_iXYCoordinatesPrevious[129];
+int g_iXYCoordinatesPrevious[128];
 Graphics_Context g_sContext; //Graphic library context
 float g_fRollAngle; //angle
 float g_fPitchAngle;//angle
 int g_iyInitPosition;
 
-int g_iDiffInitialPoint;
-int g_iDiffFinalPoint;
 
 bool done;
 
-int fXg;
-int fYg;
-int fZg;
+int g_i16XFilteredGravityVector;
+int g_i16YFilteredGravityVector;
+int g_i16ZFilteredGravityVector;
 
 #endif /* MAIN_HPP_ */

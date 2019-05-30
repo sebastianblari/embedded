@@ -92,9 +92,9 @@ void InitialConditions_setup(void){
     
     g_SystemTicks = 0;
 
-    fXg = 0;
-    fYg = 0;
-    fZg = 0;
+    g_i16XFilteredGravityVector = 0;
+    g_i16YFilteredGravityVector = 0;
+    g_i16ZFilteredGravityVector = 0;
 
     return;
 }
