@@ -2,7 +2,7 @@
  *
  * Filter.hpp
  *
- *  Created on: May 18, 2019
+ *  Created on: June 9, 2019
  *
  *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
  *
@@ -26,7 +26,7 @@ class Filter
 		Filter();
 		virtual numType getFilteredValue(void) = 0;
 	private:
-	   numType m_u8FilteredValue;
+	   numType m_filteredValue;
 
 };
 
