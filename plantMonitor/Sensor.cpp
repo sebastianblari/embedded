@@ -7,7 +7,8 @@
 
 #include "Sensor.hpp"
 
-
+//template <typename numType>
+//Sensor<numType>::Sensor()
 Sensor::Sensor()
 {
     m_u8SensorID = m_u8NextSensorID; //assign id
