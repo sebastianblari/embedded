@@ -9,8 +9,8 @@
  *      Authors: Dunia, Laura, Sebastian
  */
 
-#ifndef LOWPASSFILTER_HPP_
-#define LOWPASSFILTER_HPP_
+#ifndef LOWPASSFILTER_HPP
+#define LOWPASSFILTER_HPP
 
 #include "Filter.hpp"
 
@@ -22,7 +22,9 @@ class LowPassFilter : public Filter<numTypeReadValue>
 {
     public:
         LowPassFilter(numTypeSmoothingFactor i_smoothingFactorValue); //constructor
-        numTypeReadValue getFilteredValue(numTypeReadValue i_actualReadValue);
+        LowPassFilter(void); //constructor
+        ~LowPassFilter(void); //constructor
+        numTypeReadValue filterSignal(numTypeReadValue i_actualReadValue);
     private:
         numTypeSmoothingFactor smoothingFactorValue;
         numTypeReadValue previousFilteredValue;
@@ -30,4 +32,28 @@ class LowPassFilter : public Filter<numTypeReadValue>
 
 };
 
-#endif /* LOWPASSFILTER_HPP_ */
+template<typename numTypeReadValue, typename numTypeSmoothingFactor>
+LowPassFilter<numTypeReadValue, numTypeSmoothingFactor>::LowPassFilter(numTypeSmoothingFactor i_smoothingFactorValue)
+{
+    this->previousFilteredValue = 0;
+    this->smoothingFactorValue = i_smoothingFactorValue;
+}
+
+template<typename numTypeReadValue, typename numTypeSmoothingFactor>
+LowPassFilter<numTypeReadValue, numTypeSmoothingFactor>::LowPassFilter(void )
+{
+    this->previousFilteredValue = 0;
+}
+
+template<typename numTypeReadValue, typename numTypeSmoothingFactor>
+LowPassFilter<numTypeReadValue, numTypeSmoothingFactor>::~LowPassFilter()
+{
+}
+
+template<typename numTypeReadValue, typename numTypeSmoothingFactor>
+numTypeReadValue LowPassFilter<numTypeReadValue, numTypeSmoothingFactor>::filterSignal(numTypeReadValue i_actualReadValue){
+    this->m_filteredValue = this->previousFilteredValue + this->smoothingFactorValue * (i_actualReadValue - this->previousFilteredValue);
+    this->previousFilteredValue = this->m_filteredValue;
+    return this->m_filteredValue;
+}
+#endif /* LOWPASSFILTER_HPP */

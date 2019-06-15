@@ -1,33 +1,40 @@
-/*
- *
- * Filter.hpp
- *
- *  Created on: June 9, 2019
- *
- *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
- *
- *      Authors: Dunia, Laura, Sebastian
- */
+#if !defined(FILTER_HPP)
+#define FILTER_HPP
 
-#ifndef FILTER_HPP_
-#define FILTER_HPP_
-
-//#include "msp.h"
 
 #define NO_ERR 0
 #define RET_ERR 1
 
-#include "Filter.hpp"
 
 template <typename numType>
 class Filter
 {
-	public:
-		Filter();
-		virtual numType getFilteredValue(void) = 0;
-	private:
-	   numType m_filteredValue;
+    public:
+        Filter();
+        ~Filter();
+        virtual numType getFilteredValue(void);
+        numType m_filteredValue;
+
+    private:
 
 };
 
-#endif /* FILTER_HPP_ */
+template<typename numType>
+Filter<numType>::Filter()
+{
+
+}
+
+
+template<typename numType>
+Filter<numType>::~Filter()
+{
+
+}
+
+template<typename numType>
+numType Filter<numType>::getFilteredValue(){
+    return this->m_filteredValue;
+}
+
+#endif /* FILTER_HPP */

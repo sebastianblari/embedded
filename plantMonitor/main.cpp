@@ -63,9 +63,14 @@ int main(void)
     MAP_WDT_A_holdTimer();
     MAP_Interrupt_disableMaster();
 
+
 //    Thermometer<uint8_t> Temp1;
-    Thermometer Temp;
+////    Thermometer Temp;
     LightSensor Lux;
+    Thermometer<int> Temp1;
+//    Thermometer Temp1;
+    float smoothing = 0.5;
+    LowPassFilter<int,float> lpFilter(smoothing);
 
     Temp.setup();
     Lux.setup();
