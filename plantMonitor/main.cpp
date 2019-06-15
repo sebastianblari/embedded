@@ -46,6 +46,7 @@
 #include "LcdDriver/Crystalfontz128x128_ST7735.h"
 #include "LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h"
 //#include "HAL_TMP006.h"
+#include "LowPassFilter.hpp"
 #include "Thermometer.hpp"
 #include "LightSensor.hpp"
 #include <stdio.h>
@@ -65,9 +66,9 @@ int main(void)
 
 
 //    Thermometer<uint8_t> Temp1;
-////    Thermometer Temp;
+    Thermometer Temp;
     LightSensor Lux;
-    Thermometer<int> Temp1;
+//    Thermometer<int> Temp1;
 //    Thermometer Temp1;
     float smoothing = 0.5;
     LowPassFilter<int,float> lpFilter(smoothing);
