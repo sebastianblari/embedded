@@ -9,13 +9,13 @@
 template <typename numType>
 class Filter
 {
-    public:
-        Filter();
-        ~Filter();
-        virtual numType getFilteredValue(void);
-        numType m_filteredValue;
+	public:
+		Filter();
+		~Filter();
+		virtual numType getFilteredValue(void);
+		numType m_filteredValue;
 
-    private:
+	private:
 
 };
 

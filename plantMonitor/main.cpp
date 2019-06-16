@@ -46,13 +46,13 @@
 #include "LcdDriver/Crystalfontz128x128_ST7735.h"
 #include "LcdDriver/HAL_MSP_EXP432P401R_Crystalfontz128x128_ST7735.h"
 //#include "HAL_TMP006.h"
-#include "LowPassFilter.hpp"
-#include "Thermometer.hpp"
 #include "LightSensor.hpp"
+#include "Thermometer.hpp"
+#include "LowPassFilter.hpp"
 #include <stdio.h>
 
 
-uint8_t Sensor::m_u8NextSensorID = 0;   //init task ID
+uint8_t Sensor<int>::m_u8NextSensorID = 0;   //init task ID
 
 
 /*
@@ -64,22 +64,21 @@ int main(void)
     MAP_WDT_A_holdTimer();
     MAP_Interrupt_disableMaster();
 
-
-//    Thermometer<uint8_t> Temp1;
-    Thermometer Temp;
-    LightSensor Lux;
-//    Thermometer<int> Temp1;
-//    Thermometer Temp1;
+    Thermometer<int> Temp1;
+    LightSensor<int> Lux1;
     float smoothing = 0.5;
-    LowPassFilter<int,float> lpFilter(smoothing);
+    LowPassFilter<int,float> tempFilter(smoothing);
+    LowPassFilter<int,float> luxFilter(smoothing);
 
-    Temp.setup();
-    Lux.setup();
+    Temp1.setup();
+    Lux1.setup();
 
     while(1)
     {
-        printf("%d\n", Temp.GetValue());
-        printf("%d\n", Lux.GetValue());
+        printf("%d \t %d \t %d \t %d \n", Temp1.GetValue(), tempFilter.filterSignal(Temp1.GetValue()),Lux1.GetValue(), luxFilter.filterSignal(Lux1.GetValue()) );
+//        printf("%d \n", Temp1.GetValue());
+
+//        printf("Mola, Hundo!");
 
     }
 }
