@@ -8,7 +8,7 @@
 #ifndef SENSOR_HPP_
 #define SENSOR_HPP_
 
-#include <ti/devices/msp432p4xx/inc/msp.h>
+ #include <ti/devices/msp432p4xx/inc/msp.h>
 
 #define NO_ERR 0
 #define RET_ERR 1
