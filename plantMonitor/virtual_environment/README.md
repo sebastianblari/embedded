@@ -32,7 +32,7 @@ python manage.py runserver # to run project
 ```
 You should see the following output:
 ```bash
-Django version 2.0.7, using settings 'lab3.settings'
+Django version 2.0.7, using settings <djangoProject_name>
 Starting development server at <web_address>
 Quit the server with CONTROL-C.
 ```
