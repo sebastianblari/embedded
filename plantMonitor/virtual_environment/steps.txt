@@ -1,0 +1,16 @@
+cd <venv_area>
+virtualenv -p python3 .
+source bin/activate #(use deactivate: to deactivate virtual environment)
+pip install django==2.0.7
+pip freeze
+mkdir src
+cd src
+django-admin startproject <project_name> . #create a django project
+python manage.py runserver
+python manage.py migrate #syncs settings with our django project
+python manage.py createsuperuser #user who has access to the admin
+    #dunia
+    #duniadjango1
+python3 manage.py startapp <app_name> #create custom app
+mkdir templates #in folder with manage.py (root of project)
+
