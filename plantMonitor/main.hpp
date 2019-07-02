@@ -19,12 +19,6 @@
 #include "Hardware_setup.hpp"
 #include "Interruptions_handler.hpp"
 
-#include <stdio.h>
-#include <stdint.h>
-#include <string>
-#include <stdbool.h>
-#include "printf.h"
-
 #define TIMER32_COUNT_1ms 0x00000BB7
 
 

@@ -39,13 +39,12 @@ class SensorManager
    private:
        uint8_t m_u8OpenSlots; // Available slots
        uint8_t m_u8NextSlot;  // Next available slot
-       st_SensorInfo<numType> m_aSchedule[NUMBER_OF_SLOTS];       // Current schedule to be executed
-       st_SensorInfo<numType> m_aRemovedSensor[NUMBER_OF_SLOTS];   // Next schedule to be executed (not implemented)
+       st_SensorInfo<numType> m_aSchedule[NUMBER_OF_SLOTS];       // Current sensor to be executed
 
 };
 
 //-------------------------------------------------------
-// Scheduler constructor
+// Sensor Manager constructor
 template <typename numType>
 SensorManager<numType>::SensorManager()
 {
@@ -54,7 +53,6 @@ SensorManager<numType>::SensorManager()
     for(int index = 0; index < NUMBER_OF_SLOTS; index++)
     {
         m_aSchedule[index].pToAttach = (uintptr_t) 0; // Init to an invalid pointer
-        m_aRemovedSensor[index].pToAttach = (uintptr_t) 0;
     }
     return;
 }
@@ -84,7 +82,7 @@ uint8_t SensorManager<numType>::attach(Sensor<numType>* i_Toattach, uint64_t i_u
     return l_ErrorCode;
 }
 //-------------------------------------------------------
-// The remove function, inserts the task into the schedule slots.
+// The remove function, disable the sensor lectures
 template <typename numType>
 uint8_t SensorManager<numType>::remove(Sensor<numType> * i_ToRemove)
 {
@@ -93,7 +91,7 @@ uint8_t SensorManager<numType>::remove(Sensor<numType> * i_ToRemove)
     return NO_ERR;
 }
 //-------------------------------------------------------
-// Execute the current schedule
+// Execute the current sensors measurements
 template <typename numType>
 uint8_t SensorManager<numType>::run(void)
 {
@@ -122,7 +120,7 @@ uint8_t SensorManager<numType>::run(void)
 }
 
 //-------------------------------------------------------
-// Execute the setup function for all tasks
+// Execute the setup function for all sensors
 template <typename numType>
 uint8_t SensorManager<numType>::setup()
 {
@@ -144,15 +142,16 @@ uint8_t SensorManager<numType>::setup()
 
 
 template <typename numType>
-uint8_t SensorManager<numType>::ManageRequest(uint16_t i_Request){
-   // i_Request =  XX ID1 ID0
+uint8_t SensorManager<numType>::ManageRequest(uint16_t i_u16Request){
+   // i_Request =  OP1 OP0 ID1 ID0
 
-   /* Identify the Sensor<numType>ID requested
+   /* Identify the SensorID requested
     * by applying a mask
+    * mask = X X ID1 ID0
     */
    uint16_t l_u16IDmask = 0x11;
 
-   l_u16IDmask &= i_Request;
+   l_u16IDmask &= i_u16Request;
 
    /* Identify the operation required
     * by applying a mask
@@ -161,7 +160,7 @@ uint8_t SensorManager<numType>::ManageRequest(uint16_t i_Request){
    */
    uint16_t l_u16RequestMask = 0x1100;
 
-   l_u16RequestMask &= i_Request;
+   l_u16RequestMask &= i_u16Request;
    l_u16RequestMask = l_u16RequestMask >> 8;
 
 

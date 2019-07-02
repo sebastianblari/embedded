@@ -22,7 +22,10 @@ const eUSCI_UART_Config uartConfig =
     EUSCI_A_UART_OVERSAMPLING_BAUDRATE_GENERATION  // Oversampling
 };
 
-//*****************************************************************
+/* ****************************************************************
+*   Timer 32-2 hardware configuration, to be used for Sensor
+*   manager.
+*/
 void T32_2_setup(void){
 
     //slot time: 1ms
@@ -34,8 +37,12 @@ void T32_2_setup(void){
 
     return;
 }
+/*
+ * Uart setup to configure the serial communication between
+ * MSP432 and the nodes
+ */
 
-void Uart_setup(void){
+void UartSetup(void){
     /* Selecting P1.2 and P1.3 in UART mode */
         MAP_GPIO_setAsPeripheralModuleFunctionInputPin(GPIO_PORT_P1,
                 GPIO_PIN1 | GPIO_PIN2 | GPIO_PIN3, GPIO_PRIMARY_MODULE_FUNCTION);
@@ -55,25 +62,30 @@ void Uart_setup(void){
 
         return;
 }
-void Pin_setup(void){
+/*
+ * Led hardware setup, to represent the sensor actuators
+ */
+void PinSetup(void){
     P1->DIR |= BIT0; //P1 Red LED -  Temperature Sensor actuator
     P2->DIR |= BIT2; //P2 Blue LED - Light Sensor actuator
 }
 //*****************************************************************
-void InitialConditions_setup(void){
+void InitialConditionsSetup(void){
     P1->OUT &= ~BIT0;   // OFF
     P2->OUT &= ~BIT2;   // OFF
 
     g_SystemTicks = 0;
+    g_u8BytesCounter = 0U;
+    g_u16BytesReceived = 0U;
 
     return;
 }
 //*****************************************************************
-void Power_up(void){
-    Pin_setup();
+void PowerUp(void){
+    PinSetup();
     T32_2_setup();
-    Uart_setup();
+    UartSetup();
 
     //Initial Conditions
-    InitialConditions_setup();
+    InitialConditionsSetup();
 }
