@@ -12,6 +12,16 @@
 #include "HAL_TMP006.h"
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 #include "Sensor.hpp"
+#include "LowPassFilter.hpp"
+
+#include <stdio.h>
+#include <stdint.h>
+#include <string>
+#include <stdbool.h>
+#include "printf.h"
+
+
+
 
 template <typename numType>
 class Thermometer : public Sensor<numType>
@@ -30,14 +40,21 @@ template <typename numType>
 Thermometer<numType>::Thermometer()
 {
     // TODO Auto-generated constructor stub
+    this->sensorStatus = false;
+
 
 }
 
 template <typename numType>
 numType Thermometer<numType>::GetValue()
 {
-    // TODO Auto-generated constructor stubnumType
-    return TMP006_getTemp();
+    if(this->sensorStatus){
+        float smoothing = 0.5;
+        LowPassFilter<int,float> tempFilter(smoothing);
+
+        printf(EUSCI_A0_BASE, "TEMP%n\r\n", tempFilter.filterSignal(TMP006_getTemp()));
+    }
+    return NO_ERR;
 
 }
 
@@ -53,6 +70,8 @@ uint8_t Thermometer<numType>::setup()
 
         __delay_cycles(100000);
 
+        EnableSensor();
+
     return NO_ERR;
 }
 
@@ -60,12 +79,16 @@ uint8_t Thermometer<numType>::setup()
 template <typename numType>
 uint8_t Thermometer<numType>::EnableSensor()
 {
+    this->sensorStatus = true;
+    P1->OUT |= BIT0;
     return NO_ERR;
 }
 
 template <typename numType>
 uint8_t Thermometer<numType>::DisableSensor()
 {
+    this->sensorStatus = false;
+    P1->OUT &= ~BIT0;
     return NO_ERR;
 }
 

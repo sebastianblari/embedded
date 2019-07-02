@@ -12,6 +12,14 @@
 #include "HAL_OPT3001.h"
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 #include "Sensor.hpp"
+#include "LowPassFilter.hpp"
+
+#include <stdio.h>
+#include <stdint.h>
+#include <string>
+#include <stdbool.h>
+#include "printf.h"
+
 
 template <typename numType>
 class LightSensor : public Sensor<numType>
@@ -29,16 +37,20 @@ class LightSensor : public Sensor<numType>
 template<typename numType>
 LightSensor<numType>::LightSensor()
 {
-
+    this->sensorStatus = false;
 
 }
 
 template<typename numType>
 numType LightSensor<numType>::GetValue()
 {
+    if(this->sensorStatus){
+        float smoothing = 0.5;
+        LowPassFilter<int,float> luxFilter(smoothing);
 
-    return OPT3001_getLux();
-
+        printf(EUSCI_A0_BASE, "LUX%n\r\n", luxFilter.filterSignal(OPT3001_getLux()));
+    }
+    return NO_ERR;
 }
 
 template<typename numType>
@@ -53,18 +65,24 @@ uint8_t LightSensor<numType>::setup()
 
         __delay_cycles(100000);
 
+        EnableSensor();
+
     return NO_ERR;
 }
 
 template<typename numType>
 uint8_t LightSensor<numType>::EnableSensor()
 {
+    this->sensorStatus = true;
+    P2->OUT |= BIT2;
     return NO_ERR;
 }
 
 template<typename numType>
 uint8_t LightSensor<numType>::DisableSensor()
 {
+    this->sensorStatus = false;
+    P2->OUT &= ~BIT2;
     return NO_ERR;
 }
 

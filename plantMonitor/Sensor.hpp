@@ -20,6 +20,7 @@ class Sensor
     public:
         Sensor();
         bool sensorInstancedBefore;
+        bool sensorStatus;
         uint8_t m_u8SensorID;
         virtual numType GetValue(void) = 0;
 //        virtual uint16_t GetValue(void) =0;
