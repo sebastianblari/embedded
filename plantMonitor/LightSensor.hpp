@@ -15,7 +15,9 @@
 #include "LowPassFilter.hpp"
 
 #include <stdio.h>
+#include <stdint.h>
 #include <string>
+#include <stdbool.h>
 #include "printf.h"
 
 
@@ -32,40 +34,25 @@ class LightSensor : public Sensor<numType>
     private:
 };
 
-
-
-
-//---------------------------------------------------------------------------------------
 template<typename numType>
 LightSensor<numType>::LightSensor()
 {
-    /*  Constructor   */
     this->sensorStatus = false;
 
 }
-//---------------------------------------------------------------------------------------
-/*
- * Function that triggers the measurement
- * of the sensor
- */
+
 template<typename numType>
 numType LightSensor<numType>::GetValue()
 {
-    /* Sends the measurement only if the sensor is enable */
     if(this->sensorStatus){
-        /* Set the filter */
         float smoothing = 0.5;
         LowPassFilter<int,float> luxFilter(smoothing);
-        /* Send the filter value of the sensor */
+
         printf(EUSCI_A0_BASE, "LUX%n\r\n", luxFilter.filterSignal(OPT3001_getLux()));
     }
     return NO_ERR;
 }
 
-//---------------------------------------------------------------------------------------
-/*
- * Sensor setup
- */
 template<typename numType>
 uint8_t LightSensor<numType>::setup()
 {
@@ -78,7 +65,6 @@ uint8_t LightSensor<numType>::setup()
 
         __delay_cycles(100000);
 
-    /* Enable sensor lecture*/
         EnableSensor();
 
     return NO_ERR;
@@ -87,8 +73,8 @@ uint8_t LightSensor<numType>::setup()
 template<typename numType>
 uint8_t LightSensor<numType>::EnableSensor()
 {
-    P2->OUT |= BIT2;
     this->sensorStatus = true;
+    P2->OUT |= BIT2;
     return NO_ERR;
 }
 

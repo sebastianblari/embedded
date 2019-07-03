@@ -17,9 +17,9 @@
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
 /* GLOBAL VARIABLES */
-uint64_t g_SystemTicks;         //The system counter
-uint8_t g_u8BytesCounter;       //Counter of bytes received
-uint16_t g_u16BytesReceived;    //Save the bytes received
+uint64_t g_SystemTicks;     //The system counter
+uint8_t g_BytesCounter;
+uint16_t g_TempBytes;
 
 
 #endif /* INTERRUPTIONS_HANDLER_HPP_ */

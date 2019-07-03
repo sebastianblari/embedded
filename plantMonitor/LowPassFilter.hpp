@@ -2,6 +2,7 @@
  *
  * LowPassFilter.hpp
  *
+ *  Created on: June 9, 2019
  *
  *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
  *

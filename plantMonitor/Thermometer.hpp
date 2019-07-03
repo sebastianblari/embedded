@@ -15,7 +15,9 @@
 #include "LowPassFilter.hpp"
 
 #include <stdio.h>
+#include <stdint.h>
 #include <string>
+#include <stdbool.h>
 #include "printf.h"
 
 

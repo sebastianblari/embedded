@@ -1,16 +1,3 @@
-/*
- * Filter (template)
- *
- * Filter.hpp
- *
- *
- *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
- *
- *      Authors: Dunia, Laura, Sebastian
- */
-
-
-
 #if !defined(FILTER_HPP)
 #define FILTER_HPP
 
@@ -35,7 +22,7 @@ class Filter
 template<typename numType>
 Filter<numType>::Filter()
 {
-    //Constructor
+
 }
 
 

@@ -33,6 +33,7 @@ class Sensor
 
 template <typename numType>
 Sensor<numType>::Sensor()
+//Sensor::Sensor()
 {
     m_u8SensorID = m_u8NextSensorID; //assign id
     m_u8NextSensorID++;
