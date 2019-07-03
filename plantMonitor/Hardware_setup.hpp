@@ -13,13 +13,17 @@
 #ifndef HARDWARE_SETUP_HPP_
 #define HARDWARE_SETUP_HPP_
 
+#include <ti/devices/msp432p4xx/driverlib/driverlib.h>
+#include <ti/devices/msp432p4xx/inc/msp.h>
+#include "Interruptions_handler.hpp"
 
 #define TIMER32_COUNT_1ms 0x00000BB7
 
+
 void T32_2_setup(void);
-void Uart_setup(void);
-void Pin_setpu(void);
-void InitialConditions_setup(void);
-void Power_up(void);
+void UartSetup(void);
+void PinSetpu(void);
+void InitialConditionsSetup(void);
+void PowerUp(void);
 
 #endif /* HARDWARE_SETUP_HPP_ */

@@ -1,16 +1,15 @@
 /*
  * SensorManager.hpp
  *
- *      Author: Laura,Dunia,Sensor
+ *      Author: laura
  */
 
 #ifndef SENSORMANAGER_HPP_
 #define SENSORMANAGER_HPP_
 
 #include "Sensor.hpp"
-#include <stdio.h>
 
-#define NUMBER_OF_SLOTS 255
+#define NUMBER_OF_SENSORS 255
 #define NO_ERR 0
 
 //-------------------------------------------------------
@@ -24,6 +23,7 @@ struct st_SensorInfo {
 };
 
 //-------------------------------------------------------
+
 
 template <typename numType>
 class SensorManager
@@ -39,8 +39,7 @@ class SensorManager
    private:
        uint8_t m_u8OpenSlots; // Available slots
        uint8_t m_u8NextSlot;  // Next available slot
-       st_SensorInfo<numType> m_aSchedule[NUMBER_OF_SLOTS];       // Current schedule to be executed
-       st_SensorInfo<numType> m_aRemovedSensor[NUMBER_OF_SLOTS];   // Next schedule to be executed (not implemented)
+       st_SensorInfo<numType> m_aSchedule[NUMBER_OF_SENSORS]; // Current sensors to be executed
 
 };
 
@@ -49,12 +48,11 @@ class SensorManager
 template <typename numType>
 SensorManager<numType>::SensorManager()
 {
-    m_u8OpenSlots = static_cast<uint8_t>(NUMBER_OF_SLOTS);
+    m_u8OpenSlots = static_cast<uint8_t>(NUMBER_OF_SENSORS);
     m_u8NextSlot = 0;
-    for(int index = 0; index < NUMBER_OF_SLOTS; index++)
+    for(int index = 0; index < NUMBER_OF_SENSORS; index++)
     {
         m_aSchedule[index].pToAttach = (uintptr_t) 0; // Init to an invalid pointer
-        m_aRemovedSensor[index].pToAttach = (uintptr_t) 0;
     }
     return;
 }
@@ -71,7 +69,7 @@ uint8_t SensorManager<numType>::attach(Sensor<numType>* i_Toattach, uint64_t i_u
     l_st_StructToAttach.u64TickInterval = 0;
     l_st_StructToAttach.u64TickIntervalInitValue = i_u64TickInterval;
 
-    if((m_u8OpenSlots>0) && (m_u8NextSlot < NUMBER_OF_SLOTS))
+    if((m_u8OpenSlots>0) && (m_u8NextSlot < NUMBER_OF_SENSORS))
     {
         m_aSchedule[m_u8NextSlot] =  l_st_StructToAttach;
         m_u8OpenSlots--;
@@ -101,7 +99,7 @@ uint8_t SensorManager<numType>::run(void)
     Sensor<numType>* l_pNextSensor = (uintptr_t) 0;
     uint8_t l_u8ReturnCode = NO_ERR;
 
-    while(l_iNextSensorSlot < NUMBER_OF_SLOTS)
+    while(l_iNextSensorSlot < NUMBER_OF_SENSORS)
     {
         l_pNextSensor = static_cast<Sensor<numType> *> (m_aSchedule[l_iNextSensorSlot].pToAttach);
         if(l_pNextSensor != ((uintptr_t) 0))
@@ -130,7 +128,7 @@ uint8_t SensorManager<numType>::setup()
     Sensor<numType> * l_pNextSensor = (uintptr_t) 0;
     uint8_t l_u8ReturnCode = NO_ERR;
 
-    while(l_iNextSensorSlot < NUMBER_OF_SLOTS)
+    while(l_iNextSensorSlot < NUMBER_OF_SENSORS)
     {
         l_pNextSensor = static_cast<Sensor<numType> *> (m_aSchedule[l_iNextSensorSlot].pToAttach);
         if(l_pNextSensor != ((uintptr_t) 0))
@@ -145,7 +143,7 @@ uint8_t SensorManager<numType>::setup()
 
 template <typename numType>
 uint8_t SensorManager<numType>::ManageRequest(uint16_t i_Request){
-   // i_Request =  XX ID1 ID0
+   // i_Request =  OP0 OP1 ID1 ID0
 
    /* Identify the Sensor<numType>ID requested
     * by applying a mask
@@ -172,7 +170,7 @@ uint8_t SensorManager<numType>::ManageRequest(uint16_t i_Request){
    if (l_u16RequestMask == 0x11){
 
 
-       while(l_iNextSensorSlot < NUMBER_OF_SLOTS)
+       while(l_iNextSensorSlot < NUMBER_OF_SENSORS)
        {
            l_pNextSensor = static_cast<Sensor<numType> *> (m_aSchedule[l_iNextSensorSlot].pToAttach);
            if(l_pNextSensor != ((uintptr_t) 0) && l_pNextSensor->m_u8SensorID == l_u16IDmask)
@@ -185,7 +183,7 @@ uint8_t SensorManager<numType>::ManageRequest(uint16_t i_Request){
    }
 // Disable ---------------------------------------------------------
    else if(l_u16RequestMask == 0){
-       while(l_iNextSensorSlot < NUMBER_OF_SLOTS)
+       while(l_iNextSensorSlot < NUMBER_OF_SENSORS)
        {
            l_pNextSensor = static_cast<Sensor<numType> *> (m_aSchedule[l_iNextSensorSlot].pToAttach);
            if(l_pNextSensor != ((uintptr_t) 0) && l_pNextSensor->m_u8SensorID == l_u16IDmask)

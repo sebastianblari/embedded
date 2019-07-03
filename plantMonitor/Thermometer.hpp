@@ -20,9 +20,6 @@
 #include <stdbool.h>
 #include "printf.h"
 
-
-
-
 template <typename numType>
 class Thermometer : public Sensor<numType>
 {
@@ -39,22 +36,19 @@ class Thermometer : public Sensor<numType>
 template <typename numType>
 Thermometer<numType>::Thermometer()
 {
-    // TODO Auto-generated constructor stub
     this->sensorStatus = false;
-
-
 }
 
 template <typename numType>
 numType Thermometer<numType>::GetValue()
 {
     if(this->sensorStatus){
-        float smoothing = 0.5;
-        LowPassFilter<int,float> tempFilter(smoothing);
+            float smoothing = 0.5;
+            LowPassFilter<int,float> tempFilter(smoothing);
 
-        printf(EUSCI_A0_BASE, "TEMP%n\r\n", tempFilter.filterSignal(TMP006_getTemp()));
-    }
-    return NO_ERR;
+            printf(EUSCI_A0_BASE, "TEMP%n\r\n", tempFilter.filterSignal(TMP006_getTemp()));
+        }
+        return NO_ERR;
 
 }
 
@@ -79,8 +73,8 @@ uint8_t Thermometer<numType>::setup()
 template <typename numType>
 uint8_t Thermometer<numType>::EnableSensor()
 {
-    this->sensorStatus = true;
     P1->OUT |= BIT0;
+    this->sensorStatus = true;
     return NO_ERR;
 }
 

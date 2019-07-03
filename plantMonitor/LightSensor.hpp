@@ -20,7 +20,6 @@
 #include <stdbool.h>
 #include "printf.h"
 
-
 template <typename numType>
 class LightSensor : public Sensor<numType>
 {
@@ -38,12 +37,12 @@ template<typename numType>
 LightSensor<numType>::LightSensor()
 {
     this->sensorStatus = false;
-
 }
 
 template<typename numType>
 numType LightSensor<numType>::GetValue()
 {
+
     if(this->sensorStatus){
         float smoothing = 0.5;
         LowPassFilter<int,float> luxFilter(smoothing);
@@ -51,6 +50,7 @@ numType LightSensor<numType>::GetValue()
         printf(EUSCI_A0_BASE, "LUX%n\r\n", luxFilter.filterSignal(OPT3001_getLux()));
     }
     return NO_ERR;
+
 }
 
 template<typename numType>
@@ -73,8 +73,8 @@ uint8_t LightSensor<numType>::setup()
 template<typename numType>
 uint8_t LightSensor<numType>::EnableSensor()
 {
-    this->sensorStatus = true;
     P2->OUT |= BIT2;
+    this->sensorStatus = true;
     return NO_ERR;
 }
 

@@ -3,7 +3,6 @@
  *
  * Interruptions_handler.hpp
  *
- *  Created on: Apr 15, 2019
  *
  *      IE-1119 Temas Especiales II: Laboratorio de Introducción a los Sistemas Incrustados
  *
@@ -17,9 +16,9 @@
 #include <ti/devices/msp432p4xx/driverlib/driverlib.h>
 
 /* GLOBAL VARIABLES */
-uint64_t g_SystemTicks;     //The system counter
-uint8_t g_BytesCounter;
-uint16_t g_TempBytes;
+uint64_t g_u64SystemTicks;     //The system counter
+uint8_t g_u8BytesCounter;      //Counter of the bytes received
+uint16_t g_u16BytesReceived;   //Data received
 
 
 #endif /* INTERRUPTIONS_HANDLER_HPP_ */
