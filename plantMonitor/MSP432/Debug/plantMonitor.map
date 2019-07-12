@@ -1,0 +1,1125 @@
+******************************************************************************
+                  TI ARM Linker Unix v18.12.1                  
+******************************************************************************
+>> Linked Wed Jul  3 01:08:52 2019
+
+OUTPUT FILE NAME:   <plantMonitor.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000033a1
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  00004362  0003bc9e  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000a2c  0000f5d4  RW X
+  SRAM_DATA             20000000   00010000  00000a2c  0000f5d4  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    00004368   00004368    r-x
+  00000000    00000000    000000e4   000000e4    r-- .intvecs
+  000000e4    000000e4    00003bae   00003bae    r-x .text
+  00003c98    00003c98    000003c8   000003c8    r-- .const
+  00004060    00004060    00000088   00000088    r-- .ARM.extab
+  000040e8    000040e8    00000038   00000038    r-- .cinit
+  00004120    00004120    00000248   00000248    r-- .ARM.exidx
+20000000    20000000    00000833   00000000    rw-
+  20000000    20000000    00000800   00000000    rw- .sysmem
+  20000800    20000800    00000021   00000000    rw- .data
+  20000828    20000828    0000000b   00000000    rw- .bss
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000e4     
+                  00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
+
+.text      0    000000e4    00003bae     
+                  000000e4    000009c0     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : e_pow.c.obj (.text:pow)
+                  00000aa4    0000030c     HAL_TMP006.obj (.text:_Z14TMP006_getTempv)
+                  00000db0    00000288     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d18__TI_unwind_cpp_prE13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_Kind)
+                  00001038    00000252                                      : tdeh_pr_common.cpp.obj (.text:_Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb)
+                  0000128a    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
+                  0000128c    00000210     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : rtti.c.obj (.text:_ZN27_INTERNAL_6_rtti_c_066a44b028derived_to_base_conversion_rEPvPS0_PKN10__cxxabiv117__class_type_infoES5_jPiiPS5_P19a_result_virtualityS6_)
+                  0000149c    000001b6                                      : fd_add_t2.asm.obj (.text)
+                  00001652    00000002                                      : stdlib_exception.cpp.obj (.text:_ZNSt13bad_exceptionD1Ev)
+                  00001654    00000168     printf.obj (.text:_Z6printfjPcz)
+                  000017bc    00000158     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : e_sqrt.c.obj (.text:sqrt)
+                  00001914    00000140                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_type_match)
+                  00001a54    00000136                                      : fd_div_t2.asm.obj (.text)
+                  00001b8a    00000002                                      : stdlib_exception.cpp.obj (.text:_ZNSt9exceptionD1Ev)
+                  00001b8c    00000110                                      : s_scalbn.c.obj (.text:scalbn)
+                  00001c9c    000000fc                                      : fd_mul_t2.asm.obj (.text)
+                  00001d98    000000f4                                      : memory.c.obj (.text:aligned_alloc)
+                  00001e8c    000000e8                                      : memory.c.obj (.text:free)
+                  00001f74    000000e0                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_call_unexpected)
+                  00002054    000000d8     HAL_OPT3001.obj (.text:_Z14OPT3001_getLuxv)
+                  0000212c    000000d8     main.obj (.text:main)
+                  00002204    000000d2     main.obj (.text:_ZN13SensorManagerIiE13ManageRequestEt)
+                  000022d6    00000002     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_typeinfo.cpp.obj (.text:_ZNSt9type_infoD1Ev)
+                  000022d8    000000bc     system_msp432p401r.obj (.text:SystemInit)
+                  00002394    000000b6     main.obj (.text:_ZN13SensorManagerIiE3runEv)
+                  0000244a    0000009c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memcpy_t2.asm.obj (.text)
+                  000024e6    00000002                                      : _lock.c.obj (.text:_nop)
+                  000024e8    0000008c     HAL_I2C.obj (.text:_Z10I2C_read16h)
+                  00002574    00000088     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
+                  000025fc    00000086     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fd_cmp_t2.asm.obj (.text:__aeabi_cdcmple)
+                  00002682    00000086                                      : fd_cmp_t2.asm.obj (.text:__aeabi_cdrcmple)
+                  00002708    00000080     main.obj (.text:_ZN13SensorManagerIiE6attachEP6SensorIiEy)
+                  00002788    00000080     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : rtti.c.obj (.text:__derived_to_base_conversion)
+                  00002808    0000007c     printf.obj (.text:_ZN29_INTERNAL_8_printf_c_83c338eb4xtoaEjmPKm)
+                  00002884    0000007c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.text:split)
+                  00002900    00000075                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_allocate_exception)
+                  00002975    00000003     --HOLE-- [fill = 0]
+                  00002978    0000006c     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteFinish)
+                  000029e4    0000006c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:_ZN39_INTERNAL_17_tdeh_unwinder_cpp_f8f63fad16find_et_setup_prEP19_Unwind_Exception_sj)
+                  00002a50    0000006c                                      : tdeh_uwentry_t2.asm.obj (.text)
+                  00002abc    00000068     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteStart)
+                  00002b24    00000068     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00002b8c    00000064     Hardware_setup.obj (.text:_Z9UartSetupv)
+                  00002bf0    00000062     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_initMaster)
+                  00002c52    00000002     --HOLE-- [fill = 0]
+                  00002c54    0000005c     main.obj (.text:_ZN11ThermometerIiE8GetValueEv)
+                  00002cb0    00000058     Interruptions_handler.obj (.text:EUSCIA0_IRQHandler)
+                  00002d08    00000054     main.obj (.text:_ZN11LightSensorIiE8GetValueEv)
+                  00002d5c    00000050     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_get_globals)
+                  00002dac    0000004c     main.obj (.text:_ZN13SensorManagerIiE5setupEv)
+                  00002df8    0000004c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_end_catch)
+                  00002e44    0000004a     main.obj (.text:_ZN13LowPassFilterIifE12filterSignalEi)
+                  00002e8e    00000002     --HOLE-- [fill = 0]
+                  00002e90    00000048     HAL_I2C.obj (.text:_Z11I2C_write16hj)
+                  00002ed8    00000048     Hardware_setup.obj (.text:_ZN40_INTERNAL_18_Hardware_setup_cpp_0e9f060818__NVIC_SetPriorityE4IRQnj)
+                  00002f20    00000048     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  00002f68    00000048                                      : fd_toi_t2.asm.obj (.text)
+                  00002fb0    00000044                                      : tdeh_pr_arm.cpp.obj (.text:_Z16__TI_targ_set_prP19_Unwind_Exception_s)
+                  00002ff4    00000044                                      : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_Dreg_popEP15_Unwind_Contextjjb)
+                  00003038    00000044                                      : bsearch.c.obj (.text:bsearch)
+                  0000307c    00000040     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterReceiveMultiByteFinish)
+                  000030bc    00000040     Hardware_setup.obj (.text:_Z22InitialConditionsSetupv)
+                  000030fc    00000040     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:__TI_ut_entry_cmp)
+                  0000313c    0000003c                                      : tdeh_unwinder.cpp.obj (.text:_ZN39_INTERNAL_17_tdeh_unwinder_cpp_f8f63fad17__TI_unwind_frameEP19_Unwind_Exception_sP15_Unwind_Context)
+                  00003178    0000003a     main.obj (.text:_ZN13SensorManagerIiEC1Ev)
+                  000031b2    00000002     --HOLE-- [fill = 0]
+                  000031b4    00000038     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteStop)
+                  000031ec    00000038     HAL_TMP006.obj (.text:_Z3powIedENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_)
+                  00003224    00000038     HAL_TMP006.obj (.text:_Z3powee)
+                  0000325c    00000038     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:__TI_Unwind_RaiseException2)
+                  00003294    00000038                                      : tdeh_unwinder.cpp.obj (.text:__TI_Unwind_Resume)
+                  000032cc    00000036     HAL_TMP006.obj (.text:_Z11TMP006_initv)
+                  00003302    00000036     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_rethrow)
+                  00003338    00000034     msp432p4xx_driverlib.lib : cs.o (.text:CS_setDCOCenteredFrequency)
+                  0000336c    00000034                              : i2c.o (.text:I2C_masterSendMultiByteNext)
+                  000033a0    00000034     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  000033d4    00000032     HAL_TMP006.obj (.text:_Z3powIeiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_)
+                  00003406    00000032     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_core_popEP15_Unwind_Contextj)
+                  00003438    00000030     main.obj (.text:_ZN11LightSensorIiE5setupEv)
+                  00003468    00000030     main.obj (.text:_ZN11ThermometerIiE5setupEv)
+                  00003498    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d12next_uw_byteEP20_Unwind_Instr_Handle)
+                  000034c8    00000030     Hardware_setup.obj (.text:_ZN40_INTERNAL_18_Hardware_setup_cpp_0e9f060816__NVIC_EnableIRQE4IRQn)
+                  000034f8    0000002e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_begin_catch)
+                  00003526    0000002e                                      : i_tofd_t2.asm.obj (.text)
+                  00003554    0000002c     Interruptions_handler.obj (.text:T32_INT2_IRQHandler)
+                  00003580    0000002c     Hardware_setup.obj (.text:_Z11T32_2_setupv)
+                  000035ac    0000002c     HAL_TMP006.obj (.text:_Z3powIiiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_)
+                  000035d8    0000002c     main.obj (.text:_ZN6SensorIiEC1Ev)
+                  00003604    0000002a     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_throw)
+                  0000362e    00000002     --HOLE-- [fill = 0]
+                  00003630    00000028     main.obj (.text:_ZN13LowPassFilterIifEC1Ef)
+                  00003658    00000028     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.text:free_list_insert)
+                  00003680    00000024     printf.obj (.text:_Z4putsjPc)
+                  000036a4    00000022     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_free_exception)
+                  000036c6    00000002     --HOLE-- [fill = 0]
+                  000036c8    00000020     HAL_I2C.obj (.text:_Z8I2C_initv)
+                  000036e8    00000020     Hardware_setup.obj (.text:_Z8PinSetupv)
+                  00003708    00000020     printf.obj (.text:_Z8sendBytejc)
+                  00003728    00000020     main.obj (.text:_ZN11LightSensorIiE12EnableSensorEv)
+                  00003748    00000020     main.obj (.text:_ZN11LightSensorIiE13DisableSensorEv)
+                  00003768    00000020     main.obj (.text:_ZN11LightSensorIiEC1Ev)
+                  00003788    00000020     main.obj (.text:_ZN11ThermometerIiE12EnableSensorEv)
+                  000037a8    00000020     main.obj (.text:_ZN11ThermometerIiE13DisableSensorEv)
+                  000037c8    00000020     main.obj (.text:_ZN11ThermometerIiEC1Ev)
+                  000037e8    00000020     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:_ZSt10unexpectedv)
+                  00003808    00000020                                      : tdeh_cpp_abi.cpp.obj (.text:_ZSt9terminatev)
+                  00003828    00000020                                      : tdeh_pr_arm.cpp.obj (.text:__TI_Unwind_RaiseException)
+                  00003848    00000020                                      : rtti.c.obj (.text:__cxa_bad_typeid)
+                  00003868    0000001e                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da837__TI_setup_handler_and_call_terminateEP19_Unwind_Exception_s)
+                  00003886    0000001c     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_setMode)
+                  000038a2    00000002     --HOLE-- [fill = 0]
+                  000038a4    0000001c     HAL_I2C.obj (.text:_Z12I2C_setslavej)
+                  000038c0    0000001c     printf.obj (.text:_ZN29_INTERNAL_8_printf_c_83c338eb4puthEjj)
+                  000038dc    0000001c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.text:free_list_remove)
+                  000038f8    0000001a     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterReceiveStart)
+                  00003912    0000001a     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : s_copysign.c.obj (.text:copysign)
+                  0000392c    00000018     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_getInterruptStatus)
+                  00003944    00000018                              : i2c.o (.text:I2C_isBusBusy)
+                  0000395c    00000018     HAL_I2C.obj (.text:_Z13Init_I2C_GPIOv)
+                  00003974    00000018     main.obj (.text:_ZN6FilterIiEC1Ev)
+                  0000398c    00000018     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_exception.cpp.obj (.text:_ZNKSt13bad_exception4whatEv)
+                  000039a4    00000016     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_clearInterruptFlag)
+                  000039ba    00000016                              : i2c.o (.text:I2C_disableModule)
+                  000039d0    00000016                              : i2c.o (.text:I2C_enableModule)
+                  000039e6    00000014                              : i2c.o (.text:I2C_masterReceiveMultiByteNext)
+                  000039fa    00000014                              : i2c.o (.text:I2C_setSlaveAddress)
+                  00003a0e    00000014     HAL_OPT3001.obj (.text:_Z12OPT3001_initv)
+                  00003a22    00000014     Hardware_setup.obj (.text:_Z7PowerUpv)
+                  00003a36    00000014     main.obj (.text:_ZN11LightSensorIiED0Ev)
+                  00003a4a    00000002     --HOLE-- [fill = 0]
+                  00003a4c    00000014     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_typeinfo.cpp.obj (.text:_ZNKSt10bad_typeid4whatEv)
+                  00003a60    00000014                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidC1Ev)
+                  00003a74    00000013                                      : stdlib_exception.cpp.obj (.text:_ZNKSt9exception4whatEv)
+                  00003a87    00000001     --HOLE-- [fill = 0]
+                  00003a88    00000012     printf.obj (.text:_Z4putcjj)
+                  00003a9a    00000012     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_begin_cleanup)
+                  00003aac    00000012                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_call_terminate)
+                  00003abe    00000012                                      : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00003ad0    00000010     HAL_TMP006.obj (.text:_Z19TMP006_readDeviceIdv)
+                  00003ae0    00000010     HAL_TMP006.obj (.text:_Z24TMP006_readObjectVoltagev)
+                  00003af0    00000010     HAL_TMP006.obj (.text:_Z29TMP006_readAmbientTemperaturev)
+                  00003b00    00000010     main.obj (.text:_ZN6FilterIiEC2Ev)
+                  00003b10    00000010     main.obj (.text:_ZN6FilterIiED2Ev)
+                  00003b20    00000010     main.obj (.text:_ZN6SensorIiEC2Ev)
+                  00003b30    0000000e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.text:_ZN10__cxxabiv117__class_type_infoD0Ev)
+                  00003b3e    0000000e                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv120__si_class_type_infoD0Ev)
+                  00003b4c    0000000e                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv123__fundamental_type_infoD0Ev)
+                  00003b5a    0000000e     main.obj (.text:_ZN13LowPassFilterIifED1Ev)
+                  00003b68    0000000e     main.obj (.text:_ZN6FilterIiE16getFilteredValueEv)
+                  00003b76    0000000e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidD0Ev)
+                  00003b84    0000000e                                      : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00003b92    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
+                  00003b9e    0000000c     main.obj (.text:_ZN11LightSensorIiED1Ev)
+                  00003baa    0000000c     main.obj (.text:_ZN11ThermometerIiED1Ev)
+                  00003bb6    0000000c     main.obj (.text:_ZN6FilterIiED1Ev)
+                  00003bc2    0000000c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__TI_cxa_end_cleanup)
+                  00003bce    0000000a                                      : tdeh_unwinder.cpp.obj (.text:_Z13__TI_prel2absPKj)
+                  00003bd8    0000000a                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da825__TI_default_term_handlerEv)
+                  00003be2    0000000a                                      : new.cpp.obj (.text:_ZdlPv)
+                  00003bec    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr0)
+                  00003bf6    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr1)
+                  00003c00    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr2)
+                  00003c0a    0000000a                                      : pure_virt.c.obj (.text:__cxa_pure_virtual)
+                  00003c14    00000008                                      : tdeh_pr_arm.cpp.obj (.text:_Z24__TI_targ_regbuf_installP15_Unwind_Context)
+                  00003c1c    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv117__class_type_infoD1Ev)
+                  00003c24    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv120__si_class_type_infoD1Ev)
+                  00003c2c    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv123__fundamental_type_infoD1Ev)
+                  00003c34    00000008                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidD1Ev)
+                  00003c3c    00000008                                      : errno.c.obj (.text:__aeabi_errno_addr)
+                  00003c44    00000008                                      : tdeh_init.cpp.obj (.text:__tdeh_init)
+                  00003c4c    00000008                                      : memory.c.obj (.text:malloc)
+                  00003c54    00000006                                      : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_core_setEP15_Unwind_Context14_Unwind_Reg_Idj)
+                  00003c5a    00000006                                      : stdlib_exception.cpp.obj (.text:_ZNSt13bad_exceptionD0Ev)
+                  00003c60    00000006                                      : stdlib_exception.cpp.obj (.text:_ZNSt9exceptionD0Ev)
+                  00003c66    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z22__TI_targ_rtti_addressPjP15_Unwind_Context)
+                  00003c6a    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_pcP15_Unwind_Context)
+                  00003c6e    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_sbP15_Unwind_Context)
+                  00003c72    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_spP15_Unwind_Context)
+                  00003c76    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj)
+                  00003c7a    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj)
+                  00003c7e    00000004                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da826__TI_default_unexp_handlerEv)
+                  00003c82    00000004                                      : new.cpp.obj (.text:_ZdlPvj)
+                  00003c86    00000004                                      : error.c.obj (.text:__abort_execution)
+                  00003c8a    00000004                                      : pre_init.c.obj (.text:_system_pre_init)
+                  00003c8e    00000004                                      : exit.c.obj (.text:abort:abort)
+
+.const     0    00003c98    000003c8     
+                  00003c98    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : e_pow.c.obj (.const:$O1$$)
+                  00003cc8    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  00003cf8    00000028     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv123__fundamental_type_infoE)
+                  00003d20    00000028     printf.obj (.const:dv)
+                  00003d48    00000026     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv121__vmi_class_type_infoE)
+                  00003d6e    00000025                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv120__si_class_type_infoE)
+                  00003d93    00000024                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv119__pointer_type_infoE)
+                  00003db7    00000001     --HOLE-- [fill = 0]
+                  00003db8    00000024     Hardware_setup.obj (.const:uartConfig)
+                  00003ddc    00000022     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__class_type_infoE)
+                  00003dfe    00000022                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__pbase_type_infoE)
+                  00003e20    00000020     main.obj (.const:_ZTV11LightSensorIiE)
+                  00003e40    00000018     main.obj (.const:_ZTV11ThermometerIiE)
+                  00003e58    00000018     main.obj (.const:_ZTV6SensorIiE)
+                  00003e70    00000014     main.obj (.const:.typeinfo:_ZTS13LowPassFilterIifE)
+                  00003e84    00000014     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_typeinfo.cpp.obj (.const:_ZTVSt10bad_typeid)
+                  00003e98    00000014                                      : stdlib_exception.cpp.obj (.const:_ZTVSt13bad_exception)
+                  00003eac    00000014                                      : stdlib_exception.cpp.obj (.const:_ZTVSt9exception)
+                  00003ec0    00000014     HAL_I2C.obj (.const:i2cConfig)
+                  00003ed4    00000012     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTSSt13bad_exception)
+                  00003ee6    00000011     main.obj (.const:.typeinfo:_ZTS11LightSensorIiE)
+                  00003ef7    00000011     main.obj (.const:.typeinfo:_ZTS11ThermometerIiE)
+                  00003f08    00000010     printf.obj (.const:.string:hex$1)
+                  00003f18    00000010     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:_ZTVN10__cxxabiv117__class_type_infoE)
+                  00003f28    00000010                                      : typeinfo.c.obj (.const:_ZTVN10__cxxabiv120__si_class_type_infoE)
+                  00003f38    00000010                                      : typeinfo.c.obj (.const:_ZTVN10__cxxabiv123__fundamental_type_infoE)
+                  00003f48    0000000f                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTSSt10bad_typeid)
+                  00003f57    0000000d                                      : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTSSt9exception)
+                  00003f64    0000000d                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTSSt9type_info)
+                  00003f71    00000002                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSv)
+                  00003f73    00000001     --HOLE-- [fill = 0]
+                  00003f74    0000000c     main.obj (.const:.typeinfo:_ZTI11LightSensorIiE)
+                  00003f80    0000000c     main.obj (.const:.typeinfo:_ZTI11ThermometerIiE)
+                  00003f8c    0000000c     main.obj (.const:.typeinfo:_ZTI13LowPassFilterIifE)
+                  00003f98    0000000c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__class_type_infoE)
+                  00003fa4    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__pbase_type_infoE)
+                  00003fb0    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv119__pointer_type_infoE)
+                  00003fbc    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv120__si_class_type_infoE)
+                  00003fc8    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv121__vmi_class_type_infoE)
+                  00003fd4    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv123__fundamental_type_infoE)
+                  00003fe0    0000000c                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTISt10bad_typeid)
+                  00003fec    0000000c                                      : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTISt13bad_exception)
+                  00003ff8    0000000c     main.obj (.const:_ZTV13LowPassFilterIifE)
+                  00004004    0000000c     main.obj (.const:_ZTV6FilterIiE)
+                  00004010    0000000b     main.obj (.const:.typeinfo:_ZTS6FilterIiE)
+                  0000401b    0000000b     main.obj (.const:.typeinfo:_ZTS6SensorIiE)
+                  00004026    00000009     main.obj (.const:.string:_ZZN11ThermometerIiE8GetValueEvEs)
+                  0000402f    00000008     main.obj (.const:.string:_ZZN11LightSensorIiE8GetValueEvEs)
+                  00004037    00000001     --HOLE-- [fill = 0]
+                  00004038    00000008     main.obj (.const:.typeinfo:_ZTI6FilterIiE)
+                  00004040    00000008     main.obj (.const:.typeinfo:_ZTI6SensorIiE)
+                  00004048    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTISt9exception)
+                  00004050    00000008                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTISt9type_info)
+                  00004058    00000008                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIv)
+
+.cinit     0    000040e8    00000038     
+                  000040e8    0000000d     (.cinit..data.load) [load image, compression = lzss]
+                  000040f5    00000003     --HOLE-- [fill = 0]
+                  000040f8    0000000c     (__TI_handler_table)
+                  00004104    00000004     --HOLE-- [fill = 0]
+                  00004108    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00004110    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.sysmem    0    20000000    00000800     UNINITIALIZED
+                  20000000    00000010     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.sysmem)
+                  20000010    000007f0     --HOLE--
+
+.data      0    20000800    00000021     UNINITIALIZED
+                  20000800    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _lock.c.obj (.data:$O1$$)
+                  20000808    00000008                                      : memory.c.obj (.data:$O1$$)
+                  20000810    00000008     HAL_TMP006.obj (.data)
+                  20000818    00000004     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : errno.c.obj (.data)
+                  2000081c    00000004                                      : tdeh_cpp_abi.cpp.obj (.data)
+                  20000820    00000001     main.obj (.data:_ZN6SensorIiE16m_u8NextSensorIDE)
+
+.bss       0    20000828    0000000b     UNINITIALIZED
+                  20000828    00000008     (.common:g_u64SystemTicks)
+                  20000830    00000002     (.common:g_u16BytesReceived)
+                  20000832    00000001     (.common:g_u8BytesCounter)
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : boot_cortex_m.c.obj (.stack)
+                  2000fe04    000001fc     --HOLE--
+
+.ARM.extab 
+*          0    00004060    00000088     
+                  00004060    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.extab)
+                  00004090    0000001c     main.obj (.ARM.extab)
+                  000040ac    0000001c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.extab)
+                  000040c8    00000010     main.obj (.ARM.extab)
+                  000040d8    00000010     main.obj (.ARM.extab)
+
+.ARM.exidx 
+*          0    00004120    00000248     
+                  00004120    00000008     (.ARM.exidx.text:pow:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<e_pow.c.obj>)
+                  00004128    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.ARM.exidx)
+                  00004130    00000008                                      : tdeh_pr_common.cpp.obj (.ARM.exidx)
+                  00004138    00000008     (.ARM.exidx.text:Default_Handler:startup_msp432p401r_ccs.obj)
+                  00004140    00000008                                      : rtti.c.obj (.ARM.exidx)
+                  00004148    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fd_add_t2.asm.obj>)
+                  00004150    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004158    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fd_div_t2.asm.obj>)
+                  00004160    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004168    00000008     (.ARM.exidx.text:_Z14OPT3001_getLuxv:HAL_OPT3001.obj)
+                  00004170    00000008     main.obj (.ARM.exidx)
+                  00004178    00000008     main.obj (.ARM.exidx)
+                  00004180    00000008     (.ARM.exidx.text:_ZNSt9type_infoD1Ev:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<stdlib_typeinfo.cpp.obj>)
+                  00004188    00000008     main.obj (.ARM.exidx)
+                  00004190    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memcpy_t2.asm.obj>)
+                  00004198    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : rtti.c.obj (.ARM.exidx)
+                  000041a0    00000008     (.ARM.exidx.text:_ZN29_INTERNAL_8_printf_c_83c338eb4xtoaEjmPKm:printf.obj)
+                  000041a8    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000041b0    00000008     (.ARM.exidx.text:I2C_masterSendMultiByteFinish:msp432p4xx_driverlib.lib<i2c.o>)
+                  000041b8    00000008                                      : tdeh_unwinder.cpp.obj (.ARM.exidx)
+                  000041c0    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<tdeh_uwentry_t2.asm.obj>)
+                  000041c8    00000008     Hardware_setup.obj (.ARM.exidx)
+                  000041d0    00000008     (.ARM.exidx.text:I2C_initMaster:msp432p4xx_driverlib.lib<i2c.o>)
+                  000041d8    00000008     main.obj (.ARM.exidx)
+                  000041e0    00000008     Interruptions_handler.obj (.ARM.exidx)
+                  000041e8    00000008     main.obj (.ARM.exidx)
+                  000041f0    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000041f8    00000008     main.obj (.ARM.exidx)
+                  00004200    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004208    00000008     (.ARM.exidx.text:_ZN13LowPassFilterIifE12filterSignalEi:main.obj)
+                  00004210    00000008                                      : tdeh_pr_arm.cpp.obj (.ARM.exidx)
+                  00004218    00000008                                      : tdeh_pr_arm.cpp.obj (.ARM.exidx)
+                  00004220    00000008     (.ARM.exidx.text:bsearch:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<bsearch.c.obj>)
+                  00004228    00000008                                      : tdeh_unwinder.cpp.obj (.ARM.exidx)
+                  00004230    00000008     (.ARM.exidx.text:_ZN13SensorManagerIiEC1Ev:main.obj)
+                  00004238    00000008                                      : tdeh_unwinder.cpp.obj (.ARM.exidx)
+                  00004240    00000008                                      : tdeh_unwinder.cpp.obj (.ARM.exidx)
+                  00004248    00000008     (.ARM.exidx.text:_Z11TMP006_initv:HAL_TMP006.obj)
+                  00004250    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004258    00000008     (.ARM.exidx.text:CS_setDCOCenteredFrequency:msp432p4xx_driverlib.lib<cs.o>)
+                  00004260    00000008     main.obj (.ARM.exidx)
+                  00004268    00000008     (.ARM.exidx.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d12next_uw_byteEP20_Unwind_Instr_Handle:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<tdeh_pr_arm.cpp.obj>)
+                  00004270    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004278    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<i_tofd_t2.asm.obj>)
+                  00004280    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004288    00000008     main.obj (.ARM.exidx)
+                  00004290    00000008     (.ARM.exidx.text:free_list_insert:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memory.c.obj>)
+                  00004298    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000042a0    00000008     (.ARM.exidx.text:_Z8I2C_initv:HAL_I2C.obj)
+                  000042a8    00000008     main.obj (.ARM.exidx)
+                  000042b0    00000008     (.ARM.exidx.text:_ZN11ThermometerIiE12EnableSensorEv:main.obj)
+                  000042b8    00000008     main.obj (.ARM.exidx)
+                  000042c0    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.ARM.exidx)
+                  000042c8    00000008                                      : rtti.c.obj (.ARM.exidx)
+                  000042d0    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000042d8    00000008     (.ARM.exidx.text:I2C_setMode:msp432p4xx_driverlib.lib<i2c.o>)
+                  000042e0    00000008     Hardware_setup.obj (.ARM.exidx)
+                  000042e8    00000008     (.ARM.exidx.text:_ZN11LightSensorIiED0Ev:main.obj)
+                  000042f0    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000042f8    00000008     (.ARM.exidx.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<copy_zero_init.c.obj>)
+                  00004300    00000008     main.obj (.ARM.exidx)
+                  00004308    00000008     (.ARM.exidx.text:_ZN6FilterIiED2Ev:main.obj)
+                  00004310    00000008     main.obj (.ARM.exidx)
+                  00004318    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.ARM.exidx)
+                  00004320    00000008     (.ARM.exidx.text:_ZN6FilterIiE16getFilteredValueEv:main.obj)
+                  00004328    00000008                                      : stdlib_typeinfo.cpp.obj (.ARM.exidx)
+                  00004330    00000008     (.ARM.exidx.text:decompress:none:__TI_decompress_none:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<copy_decompress_none.c.obj>)
+                  00004338    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004340    00000008     (.ARM.exidx.text:_Z13__TI_prel2absPKj:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<tdeh_unwinder.cpp.obj>)
+                  00004348    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004350    00000008     (.ARM.exidx.text:__aeabi_errno_addr:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<errno.c.obj>)
+                  00004358    00000008                                      : tdeh_init.cpp.obj (.ARM.exidx)
+                  00004360    00000008     (.ARM.exidx.text:malloc:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memory.c.obj>)
+
+MODULE SUMMARY
+
+       Module                        code    ro data   rw data
+       ------                        ----    -------   -------
+    ./
+       main.obj                      1648    405       2      
+       HAL_TMP006.obj                1088    0         16     
+       printf.obj                    598     56        0      
+       Hardware_setup.obj            380     52        0      
+       HAL_I2C.obj                   296     20        22     
+       HAL_OPT3001.obj               236     0         0      
+       system_msp432p401r.obj        188     0         0      
+       Interruptions_handler.obj     132     8         0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        4566    541       40     
+                                                              
+    ./ccs/
+       startup_msp432p401r_ccs.obj   14      228       0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        14      228       0      
+                                                              
+    /home/laura/ti/ccs901/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi_eh.lib
+       e_pow.c.obj                   2496    48        0      
+       tdeh_cpp_abi.cpp.obj          1149    180       8      
+       tdeh_pr_arm.cpp.obj           982     32        0      
+       rtti.c.obj                    688     24        0      
+       memory.c.obj                  676     0         16     
+       tdeh_pr_common.cpp.obj        594     8         0      
+       fd_add_t2.asm.obj             438     0         0      
+       typeinfo.c.obj                66      357       0      
+       tdeh_unwinder.cpp.obj         354     32        0      
+       e_sqrt.c.obj                  344     0         0      
+       fd_div_t2.asm.obj             310     0         0      
+       s_scalbn.c.obj                272     0         0      
+       fd_cmp_t2.asm.obj             268     0         0      
+       fd_mul_t2.asm.obj             252     0         0      
+       memcpy_t2.asm.obj             156     0         0      
+       stdlib_exception.cpp.obj      59      91        0      
+       stdlib_typeinfo.cpp.obj       64      76        0      
+       tdeh_uwentry_t2.asm.obj       108     0         0      
+       copy_decompress_lzss.c.obj    104     0         0      
+       autoinit.c.obj                72      0         0      
+       fd_toi_t2.asm.obj             72      0         0      
+       bsearch.c.obj                 68      0         0      
+       boot_cortex_m.c.obj           52      0         0      
+       i_tofd_t2.asm.obj             46      0         0      
+       s_copysign.c.obj              26      0         0      
+       _lock.c.obj                   2       0         16     
+       copy_zero_init.c.obj          18      0         0      
+       errno.c.obj                   8       0         8      
+       tdeh_init.cpp.obj             8       8         0      
+       copy_decompress_none.c.obj    14      0         0      
+       new.cpp.obj                   14      0         0      
+       pure_virt.c.obj               10      0         0      
+       error.c.obj                   4       0         0      
+       exit.c.obj                    4       0         0      
+       pre_init.c.obj                4       0         0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        9802    856       48     
+                                                              
+    /home/laura/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib
+       i2c.o                         690     0         0      
+       gpio.o                        136     48        0      
+       cs.o                          52      0         0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        878     48        0      
+                                                              
+       Heap:                         0       0         4096   
+       Stack:                        0       0         1024   
+       Linker Generated:             0       289       0      
+    +--+-----------------------------+-------+---------+---------+
+       Grand Total:                  15260   1962      5208   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00004110 records: 2, size/record: 8, table size: 16
+	.data: load addr=000040e8, load size=0000000d bytes, run addr=20000800, run size=00000021 bytes, compression=lzss
+	.bss: load addr=00004108, load size=00000008 bytes, run addr=20000828, run size=0000000b bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 000040f8 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                                                                                                                                  
+-------   ----                                                                                                                                                  
+00004120  .ARM.exidx$$Base                                                                                                                                      
+00004368  .ARM.exidx$$Limit                                                                                                                                     
+0000128b  ADC14_IRQHandler                                                                                                                                      
+0000128b  AES256_IRQHandler                                                                                                                                     
+0000128b  BusFault_Handler                                                                                                                                      
+00003c8f  C$$EXIT                                                                                                                                               
+0000128b  COMP_E0_IRQHandler                                                                                                                                    
+0000128b  COMP_E1_IRQHandler                                                                                                                                    
+0000128b  CS_IRQHandler                                                                                                                                         
+00003339  CS_setDCOCenteredFrequency                                                                                                                            
+0000128b  DMA_ERR_IRQHandler                                                                                                                                    
+0000128b  DMA_INT0_IRQHandler                                                                                                                                   
+0000128b  DMA_INT1_IRQHandler                                                                                                                                   
+0000128b  DMA_INT2_IRQHandler                                                                                                                                   
+0000128b  DMA_INT3_IRQHandler                                                                                                                                   
+0000128b  DebugMon_Handler                                                                                                                                      
+0000128b  Default_Handler                                                                                                                                       
+00002cb1  EUSCIA0_IRQHandler                                                                                                                                    
+00002cb1  EUSCIA0_IRQHandler                                                                                                                                    
+0000128b  EUSCIA1_IRQHandler                                                                                                                                    
+0000128b  EUSCIA2_IRQHandler                                                                                                                                    
+0000128b  EUSCIA3_IRQHandler                                                                                                                                    
+0000128b  EUSCIB0_IRQHandler                                                                                                                                    
+0000128b  EUSCIB1_IRQHandler                                                                                                                                    
+0000128b  EUSCIB2_IRQHandler                                                                                                                                    
+0000128b  EUSCIB3_IRQHandler                                                                                                                                    
+0000128b  FLCTL_IRQHandler                                                                                                                                      
+0000128b  FPU_IRQHandler                                                                                                                                        
+00002575  GPIO_setAsPeripheralModuleFunctionOutputPin                                                                                                           
+0000128b  HardFault_Handler                                                                                                                                     
+000039a5  I2C_clearInterruptFlag                                                                                                                                
+000039bb  I2C_disableModule                                                                                                                                     
+000039d1  I2C_enableModule                                                                                                                                      
+0000392d  I2C_getInterruptStatus                                                                                                                                
+00002bf1  I2C_initMaster                                                                                                                                        
+00003945  I2C_isBusBusy                                                                                                                                         
+0000307d  I2C_masterReceiveMultiByteFinish                                                                                                                      
+000039e7  I2C_masterReceiveMultiByteNext                                                                                                                        
+000038f9  I2C_masterReceiveStart                                                                                                                                
+00002979  I2C_masterSendMultiByteFinish                                                                                                                         
+0000336d  I2C_masterSendMultiByteNext                                                                                                                           
+00002abd  I2C_masterSendMultiByteStart                                                                                                                          
+000031b5  I2C_masterSendMultiByteStop                                                                                                                           
+00003887  I2C_setMode                                                                                                                                           
+000039fb  I2C_setSlaveAddress                                                                                                                                   
+0000128b  MemManage_Handler                                                                                                                                     
+0000128b  NMI_Handler                                                                                                                                           
+0000128b  PCM_IRQHandler                                                                                                                                        
+0000128b  PORT1_IRQHandler                                                                                                                                      
+0000128b  PORT2_IRQHandler                                                                                                                                      
+0000128b  PORT3_IRQHandler                                                                                                                                      
+0000128b  PORT4_IRQHandler                                                                                                                                      
+0000128b  PORT5_IRQHandler                                                                                                                                      
+0000128b  PORT6_IRQHandler                                                                                                                                      
+0000128b  PSS_IRQHandler                                                                                                                                        
+0000128b  PendSV_Handler                                                                                                                                        
+0000128b  RTC_C_IRQHandler                                                                                                                                      
+00003b93  Reset_Handler                                                                                                                                         
+0000128b  SVC_Handler                                                                                                                                           
+0000128b  SysTick_Handler                                                                                                                                       
+000022d9  SystemInit                                                                                                                                            
+0000128b  T32_INT1_IRQHandler                                                                                                                                   
+00003555  T32_INT2_IRQHandler                                                                                                                                   
+00003555  T32_INT2_IRQHandler                                                                                                                                   
+0000128b  T32_INTC_IRQHandler                                                                                                                                   
+0000128b  TA0_0_IRQHandler                                                                                                                                      
+0000128b  TA0_N_IRQHandler                                                                                                                                      
+0000128b  TA1_0_IRQHandler                                                                                                                                      
+0000128b  TA1_N_IRQHandler                                                                                                                                      
+0000128b  TA2_0_IRQHandler                                                                                                                                      
+0000128b  TA2_N_IRQHandler                                                                                                                                      
+0000128b  TA3_0_IRQHandler                                                                                                                                      
+0000128b  TA3_N_IRQHandler                                                                                                                                      
+0000128b  UsageFault_Handler                                                                                                                                    
+4000480c  WDTCTL_SYM                                                                                                                                            
+0000128b  WDT_A_IRQHandler                                                                                                                                      
+00002a51  _Unwind_RaiseException                                                                                                                                
+00002a73  _Unwind_Resume                                                                                                                                        
+000024e9  _Z10I2C_read16h                                                                                                                                       
+00002e91  _Z11I2C_write16hj                                                                                                                                     
+00003581  _Z11T32_2_setupv                                                                                                                                      
+000032cd  _Z11TMP006_initv                                                                                                                                      
+000038a5  _Z12I2C_setslavej                                                                                                                                     
+00003a0f  _Z12OPT3001_initv                                                                                                                                     
+0000395d  _Z13Init_I2C_GPIOv                                                                                                                                    
+00003bcf  _Z13__TI_prel2absPKj                                                                                                                                  
+00002055  _Z14OPT3001_getLuxv                                                                                                                                   
+00000aa5  _Z14TMP006_getTempv                                                                                                                                   
+00002fb1  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                                            
+00003ad1  _Z19TMP006_readDeviceIdv                                                                                                                              
+000030bd  _Z22InitialConditionsSetupv                                                                                                                           
+00003c67  _Z22__TI_targ_rtti_addressPjP15_Unwind_Context                                                                                                        
+00003c6b  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                                         
+00003c6f  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                                         
+00003c73  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                                         
+00003c77  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                                        
+00003ae1  _Z24TMP006_readObjectVoltagev                                                                                                                         
+00001039  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb                        
+00003c15  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                                        
+00003c7b  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                                                     
+00003af1  _Z29TMP006_readAmbientTemperaturev                                                                                                                    
+000031ed  _Z3powIedENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+000033d5  _Z3powIeiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+000035ad  _Z3powIiiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+00003225  _Z3powee                                                                                                                                              
+00003a89  _Z4putcjj                                                                                                                                             
+00003681  _Z4putsjPc                                                                                                                                            
+00001655  _Z6printfjPcz                                                                                                                                         
+00003a23  _Z7PowerUpv                                                                                                                                           
+000036c9  _Z8I2C_initv                                                                                                                                          
+000036e9  _Z8PinSetupv                                                                                                                                          
+00003709  _Z8sendBytejc                                                                                                                                         
+00002b8d  _Z9UartSetupv                                                                                                                                         
+00003b31  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                                                
+00003c1d  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                                                
+00003c1d  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                                                
+00003b3f  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                                             
+00003c25  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                                             
+00003c25  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                                             
+00003b4d  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                                          
+00003c2d  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                                          
+00003c2d  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                                          
+00003729  _ZN11LightSensorIiE12EnableSensorEv                                                                                                                   
+00003749  _ZN11LightSensorIiE13DisableSensorEv                                                                                                                  
+00003439  _ZN11LightSensorIiE5setupEv                                                                                                                           
+00002d09  _ZN11LightSensorIiE8GetValueEv                                                                                                                        
+00003769  _ZN11LightSensorIiEC1Ev                                                                                                                               
+00003a37  _ZN11LightSensorIiED0Ev                                                                                                                               
+00003b9f  _ZN11LightSensorIiED1Ev                                                                                                                               
+00003789  _ZN11ThermometerIiE12EnableSensorEv                                                                                                                   
+000037a9  _ZN11ThermometerIiE13DisableSensorEv                                                                                                                  
+00003469  _ZN11ThermometerIiE5setupEv                                                                                                                           
+00002c55  _ZN11ThermometerIiE8GetValueEv                                                                                                                        
+000037c9  _ZN11ThermometerIiEC1Ev                                                                                                                               
+00003bab  _ZN11ThermometerIiED1Ev                                                                                                                               
+00002e45  _ZN13LowPassFilterIifE12filterSignalEi                                                                                                                
+00003631  _ZN13LowPassFilterIifEC1Ef                                                                                                                            
+00003b5b  _ZN13LowPassFilterIifED1Ev                                                                                                                            
+00002205  _ZN13SensorManagerIiE13ManageRequestEt                                                                                                                
+00002395  _ZN13SensorManagerIiE3runEv                                                                                                                           
+00002dad  _ZN13SensorManagerIiE5setupEv                                                                                                                         
+00002709  _ZN13SensorManagerIiE6attachEP6SensorIiEy                                                                                                             
+00003179  _ZN13SensorManagerIiEC1Ev                                                                                                                             
+00003b69  _ZN6FilterIiE16getFilteredValueEv                                                                                                                     
+00003975  _ZN6FilterIiEC1Ev                                                                                                                                     
+00003b01  _ZN6FilterIiEC2Ev                                                                                                                                     
+00003bb7  _ZN6FilterIiED1Ev                                                                                                                                     
+00003b11  _ZN6FilterIiED2Ev                                                                                                                                     
+20000820  _ZN6SensorIiE16m_u8NextSensorIDE                                                                                                                      
+000035d9  _ZN6SensorIiEC1Ev                                                                                                                                     
+00003b21  _ZN6SensorIiEC2Ev                                                                                                                                     
+00003a4d  _ZNKSt10bad_typeid4whatEv                                                                                                                             
+0000398d  _ZNKSt13bad_exception4whatEv                                                                                                                          
+00003a75  _ZNKSt9exception4whatEv                                                                                                                               
+00003a61  _ZNSt10bad_typeidC1Ev                                                                                                                                 
+00003a61  _ZNSt10bad_typeidC2Ev                                                                                                                                 
+00003b77  _ZNSt10bad_typeidD0Ev                                                                                                                                 
+00003c35  _ZNSt10bad_typeidD1Ev                                                                                                                                 
+00003c35  _ZNSt10bad_typeidD2Ev                                                                                                                                 
+00003c5b  _ZNSt13bad_exceptionD0Ev                                                                                                                              
+00001653  _ZNSt13bad_exceptionD1Ev                                                                                                                              
+00001653  _ZNSt13bad_exceptionD2Ev                                                                                                                              
+00003c61  _ZNSt9exceptionD0Ev                                                                                                                                   
+00001b8b  _ZNSt9exceptionD1Ev                                                                                                                                   
+00001b8b  _ZNSt9exceptionD2Ev                                                                                                                                   
+000022d7  _ZNSt9type_infoD1Ev                                                                                                                                   
+000022d7  _ZNSt9type_infoD2Ev                                                                                                                                   
+000037e9  _ZSt10unexpectedv                                                                                                                                     
+00003809  _ZSt9terminatev                                                                                                                                       
+00003f74  _ZTI11LightSensorIiE                                                                                                                                  
+00003f80  _ZTI11ThermometerIiE                                                                                                                                  
+00003f8c  _ZTI13LowPassFilterIifE                                                                                                                               
+00004038  _ZTI6FilterIiE                                                                                                                                        
+00004040  _ZTI6SensorIiE                                                                                                                                        
+00003f98  _ZTIN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003fa4  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                                                 
+00003fb0  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                                               
+00003fbc  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003fc8  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                                             
+00003fd4  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003fe0  _ZTISt10bad_typeid                                                                                                                                    
+00003fec  _ZTISt13bad_exception                                                                                                                                 
+00004048  _ZTISt9exception                                                                                                                                      
+00004050  _ZTISt9type_info                                                                                                                                      
+00004058  _ZTIv                                                                                                                                                 
+00003ee6  _ZTS11LightSensorIiE                                                                                                                                  
+00003ef7  _ZTS11ThermometerIiE                                                                                                                                  
+00003e70  _ZTS13LowPassFilterIifE                                                                                                                               
+00004010  _ZTS6FilterIiE                                                                                                                                        
+0000401b  _ZTS6SensorIiE                                                                                                                                        
+00003ddc  _ZTSN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003dfe  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                                                 
+00003d93  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                                               
+00003d6e  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003d48  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                                             
+00003cf8  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003f48  _ZTSSt10bad_typeid                                                                                                                                    
+00003ed4  _ZTSSt13bad_exception                                                                                                                                 
+00003f57  _ZTSSt9exception                                                                                                                                      
+00003f64  _ZTSSt9type_info                                                                                                                                      
+00003f71  _ZTSv                                                                                                                                                 
+00003e20  _ZTV11LightSensorIiE                                                                                                                                  
+00003e40  _ZTV11ThermometerIiE                                                                                                                                  
+00003ff8  _ZTV13LowPassFilterIifE                                                                                                                               
+00004004  _ZTV6FilterIiE                                                                                                                                        
+00003e58  _ZTV6SensorIiE                                                                                                                                        
+00003f18  _ZTVN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003f28  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003f38  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003e84  _ZTVSt10bad_typeid                                                                                                                                    
+00003e98  _ZTVSt13bad_exception                                                                                                                                 
+00003eac  _ZTVSt9exception                                                                                                                                      
+0000402f  _ZZN11LightSensorIiE8GetValueEvEs                                                                                                                     
+00004026  _ZZN11ThermometerIiE8GetValueEvEs                                                                                                                     
+00003be3  _ZdlPv                                                                                                                                                
+00003c83  _ZdlPvj                                                                                                                                               
+20010000  __STACK_END                                                                                                                                           
+00000200  __STACK_SIZE                                                                                                                                          
+00000800  __SYSMEM_SIZE                                                                                                                                         
+00004110  __TI_CINIT_Base                                                                                                                                       
+00004120  __TI_CINIT_Limit                                                                                                                                      
+000040f8  __TI_Handler_Table_Base                                                                                                                               
+00004104  __TI_Handler_Table_Limit                                                                                                                              
+00002a89  __TI_Install_CoreRegs                                                                                                                                 
+00004368  __TI_UNWIND_TABLE_END                                                                                                                                 
+00004120  __TI_UNWIND_TABLE_START                                                                                                                               
+00003829  __TI_Unwind_RaiseException                                                                                                                            
+0000325d  __TI_Unwind_RaiseException2                                                                                                                           
+00003295  __TI_Unwind_Resume                                                                                                                                    
+00002f21  __TI_auto_init_nobinit_nopinit                                                                                                                        
+00003bc3  __TI_cxa_end_cleanup                                                                                                                                  
+00002b25  __TI_decompress_lzss                                                                                                                                  
+00003b85  __TI_decompress_none                                                                                                                                  
+ffffffff  __TI_pprof_out_hndl                                                                                                                                   
+00002ab1  __TI_preserve_low_VFP                                                                                                                                 
+ffffffff  __TI_prof_data_size                                                                                                                                   
+ffffffff  __TI_prof_data_start                                                                                                                                  
+00002ab7  __TI_restore_low_VFP                                                                                                                                  
+00000000  __TI_static_base__                                                                                                                                    
+000030fd  __TI_ut_entry_cmp                                                                                                                                     
+00003abf  __TI_zero_init_nomemset                                                                                                                               
+00003c87  __abort_execution                                                                                                                                     
+000025fd  __aeabi_cdcmpeq                                                                                                                                       
+000025fd  __aeabi_cdcmple                                                                                                                                       
+00002683  __aeabi_cdrcmple                                                                                                                                      
+00002f69  __aeabi_d2iz                                                                                                                                          
+000014a7  __aeabi_dadd                                                                                                                                          
+00001a55  __aeabi_ddiv                                                                                                                                          
+00001c9d  __aeabi_dmul                                                                                                                                          
+0000149d  __aeabi_dsub                                                                                                                                          
+00003c3d  __aeabi_errno_addr                                                                                                                                    
+00003527  __aeabi_i2d                                                                                                                                           
+0000244b  __aeabi_memcpy                                                                                                                                        
+0000244b  __aeabi_memcpy4                                                                                                                                       
+0000244b  __aeabi_memcpy8                                                                                                                                       
+00003bed  __aeabi_unwind_cpp_pr0                                                                                                                                
+00003bf7  __aeabi_unwind_cpp_pr1                                                                                                                                
+00003c01  __aeabi_unwind_cpp_pr2                                                                                                                                
+ffffffff  __binit__                                                                                                                                             
+ffffffff  __c_args__                                                                                                                                            
+00002901  __cxa_allocate_exception                                                                                                                              
+00003849  __cxa_bad_typeid                                                                                                                                      
+000034f9  __cxa_begin_catch                                                                                                                                     
+00003a9b  __cxa_begin_cleanup                                                                                                                                   
+00003aad  __cxa_call_terminate                                                                                                                                  
+00001f75  __cxa_call_unexpected                                                                                                                                 
+00002df9  __cxa_end_catch                                                                                                                                       
+00002aa3  __cxa_end_cleanup                                                                                                                                     
+000036a5  __cxa_free_exception                                                                                                                                  
+00002d5d  __cxa_get_globals                                                                                                                                     
+00003c0b  __cxa_pure_virtual                                                                                                                                    
+00003303  __cxa_rethrow                                                                                                                                         
+00003605  __cxa_throw                                                                                                                                           
+00001915  __cxa_type_match                                                                                                                                      
+00002789  __derived_to_base_conversion                                                                                                                          
+UNDEFED   __mpu_init                                                                                                                                            
+2000fe00  __stack                                                                                                                                               
+00003c45  __tdeh_init                                                                                                                                           
+000033a1  _c_int00_noargs                                                                                                                                       
+20000800  _lock                                                                                                                                                 
+000024e7  _nop                                                                                                                                                  
+20000000  _sys_memory                                                                                                                                           
+UNDEFED   _system_post_cinit                                                                                                                                    
+00003c8b  _system_pre_init                                                                                                                                      
+20000804  _unlock                                                                                                                                               
+00003c8f  abort                                                                                                                                                 
+00001d99  aligned_alloc                                                                                                                                         
+ffffffff  binit                                                                                                                                                 
+00003039  bsearch                                                                                                                                               
+00003913  copysign                                                                                                                                              
+00003913  copysignl                                                                                                                                             
+20000818  errno                                                                                                                                                 
+00001e8d  free                                                                                                                                                  
+20000830  g_u16BytesReceived                                                                                                                                    
+20000828  g_u64SystemTicks                                                                                                                                      
+20000832  g_u8BytesCounter                                                                                                                                      
+00000000  interruptVectors                                                                                                                                      
+00001b8d  ldexp                                                                                                                                                 
+00001b8d  ldexpl                                                                                                                                                
+0000212d  main                                                                                                                                                  
+00003c4d  malloc                                                                                                                                                
+00001d99  memalign                                                                                                                                              
+0000244b  memcpy                                                                                                                                                
+000000e5  pow                                                                                                                                                   
+000000e5  powl                                                                                                                                                  
+00001b8d  scalbn                                                                                                                                                
+00001b8d  scalbnl                                                                                                                                               
+000017bd  sqrt                                                                                                                                                  
+000017bd  sqrtl                                                                                                                                                 
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                                                                                                                                  
+-------   ----                                                                                                                                                  
+00000000  __TI_static_base__                                                                                                                                    
+00000000  interruptVectors                                                                                                                                      
+000000e5  pow                                                                                                                                                   
+000000e5  powl                                                                                                                                                  
+00000200  __STACK_SIZE                                                                                                                                          
+00000800  __SYSMEM_SIZE                                                                                                                                         
+00000aa5  _Z14TMP006_getTempv                                                                                                                                   
+00001039  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb                        
+0000128b  ADC14_IRQHandler                                                                                                                                      
+0000128b  AES256_IRQHandler                                                                                                                                     
+0000128b  BusFault_Handler                                                                                                                                      
+0000128b  COMP_E0_IRQHandler                                                                                                                                    
+0000128b  COMP_E1_IRQHandler                                                                                                                                    
+0000128b  CS_IRQHandler                                                                                                                                         
+0000128b  DMA_ERR_IRQHandler                                                                                                                                    
+0000128b  DMA_INT0_IRQHandler                                                                                                                                   
+0000128b  DMA_INT1_IRQHandler                                                                                                                                   
+0000128b  DMA_INT2_IRQHandler                                                                                                                                   
+0000128b  DMA_INT3_IRQHandler                                                                                                                                   
+0000128b  DebugMon_Handler                                                                                                                                      
+0000128b  Default_Handler                                                                                                                                       
+0000128b  EUSCIA1_IRQHandler                                                                                                                                    
+0000128b  EUSCIA2_IRQHandler                                                                                                                                    
+0000128b  EUSCIA3_IRQHandler                                                                                                                                    
+0000128b  EUSCIB0_IRQHandler                                                                                                                                    
+0000128b  EUSCIB1_IRQHandler                                                                                                                                    
+0000128b  EUSCIB2_IRQHandler                                                                                                                                    
+0000128b  EUSCIB3_IRQHandler                                                                                                                                    
+0000128b  FLCTL_IRQHandler                                                                                                                                      
+0000128b  FPU_IRQHandler                                                                                                                                        
+0000128b  HardFault_Handler                                                                                                                                     
+0000128b  MemManage_Handler                                                                                                                                     
+0000128b  NMI_Handler                                                                                                                                           
+0000128b  PCM_IRQHandler                                                                                                                                        
+0000128b  PORT1_IRQHandler                                                                                                                                      
+0000128b  PORT2_IRQHandler                                                                                                                                      
+0000128b  PORT3_IRQHandler                                                                                                                                      
+0000128b  PORT4_IRQHandler                                                                                                                                      
+0000128b  PORT5_IRQHandler                                                                                                                                      
+0000128b  PORT6_IRQHandler                                                                                                                                      
+0000128b  PSS_IRQHandler                                                                                                                                        
+0000128b  PendSV_Handler                                                                                                                                        
+0000128b  RTC_C_IRQHandler                                                                                                                                      
+0000128b  SVC_Handler                                                                                                                                           
+0000128b  SysTick_Handler                                                                                                                                       
+0000128b  T32_INT1_IRQHandler                                                                                                                                   
+0000128b  T32_INTC_IRQHandler                                                                                                                                   
+0000128b  TA0_0_IRQHandler                                                                                                                                      
+0000128b  TA0_N_IRQHandler                                                                                                                                      
+0000128b  TA1_0_IRQHandler                                                                                                                                      
+0000128b  TA1_N_IRQHandler                                                                                                                                      
+0000128b  TA2_0_IRQHandler                                                                                                                                      
+0000128b  TA2_N_IRQHandler                                                                                                                                      
+0000128b  TA3_0_IRQHandler                                                                                                                                      
+0000128b  TA3_N_IRQHandler                                                                                                                                      
+0000128b  UsageFault_Handler                                                                                                                                    
+0000128b  WDT_A_IRQHandler                                                                                                                                      
+0000149d  __aeabi_dsub                                                                                                                                          
+000014a7  __aeabi_dadd                                                                                                                                          
+00001653  _ZNSt13bad_exceptionD1Ev                                                                                                                              
+00001653  _ZNSt13bad_exceptionD2Ev                                                                                                                              
+00001655  _Z6printfjPcz                                                                                                                                         
+000017bd  sqrt                                                                                                                                                  
+000017bd  sqrtl                                                                                                                                                 
+00001915  __cxa_type_match                                                                                                                                      
+00001a55  __aeabi_ddiv                                                                                                                                          
+00001b8b  _ZNSt9exceptionD1Ev                                                                                                                                   
+00001b8b  _ZNSt9exceptionD2Ev                                                                                                                                   
+00001b8d  ldexp                                                                                                                                                 
+00001b8d  ldexpl                                                                                                                                                
+00001b8d  scalbn                                                                                                                                                
+00001b8d  scalbnl                                                                                                                                               
+00001c9d  __aeabi_dmul                                                                                                                                          
+00001d99  aligned_alloc                                                                                                                                         
+00001d99  memalign                                                                                                                                              
+00001e8d  free                                                                                                                                                  
+00001f75  __cxa_call_unexpected                                                                                                                                 
+00002055  _Z14OPT3001_getLuxv                                                                                                                                   
+0000212d  main                                                                                                                                                  
+00002205  _ZN13SensorManagerIiE13ManageRequestEt                                                                                                                
+000022d7  _ZNSt9type_infoD1Ev                                                                                                                                   
+000022d7  _ZNSt9type_infoD2Ev                                                                                                                                   
+000022d9  SystemInit                                                                                                                                            
+00002395  _ZN13SensorManagerIiE3runEv                                                                                                                           
+0000244b  __aeabi_memcpy                                                                                                                                        
+0000244b  __aeabi_memcpy4                                                                                                                                       
+0000244b  __aeabi_memcpy8                                                                                                                                       
+0000244b  memcpy                                                                                                                                                
+000024e7  _nop                                                                                                                                                  
+000024e9  _Z10I2C_read16h                                                                                                                                       
+00002575  GPIO_setAsPeripheralModuleFunctionOutputPin                                                                                                           
+000025fd  __aeabi_cdcmpeq                                                                                                                                       
+000025fd  __aeabi_cdcmple                                                                                                                                       
+00002683  __aeabi_cdrcmple                                                                                                                                      
+00002709  _ZN13SensorManagerIiE6attachEP6SensorIiEy                                                                                                             
+00002789  __derived_to_base_conversion                                                                                                                          
+00002901  __cxa_allocate_exception                                                                                                                              
+00002979  I2C_masterSendMultiByteFinish                                                                                                                         
+00002a51  _Unwind_RaiseException                                                                                                                                
+00002a73  _Unwind_Resume                                                                                                                                        
+00002a89  __TI_Install_CoreRegs                                                                                                                                 
+00002aa3  __cxa_end_cleanup                                                                                                                                     
+00002ab1  __TI_preserve_low_VFP                                                                                                                                 
+00002ab7  __TI_restore_low_VFP                                                                                                                                  
+00002abd  I2C_masterSendMultiByteStart                                                                                                                          
+00002b25  __TI_decompress_lzss                                                                                                                                  
+00002b8d  _Z9UartSetupv                                                                                                                                         
+00002bf1  I2C_initMaster                                                                                                                                        
+00002c55  _ZN11ThermometerIiE8GetValueEv                                                                                                                        
+00002cb1  EUSCIA0_IRQHandler                                                                                                                                    
+00002cb1  EUSCIA0_IRQHandler                                                                                                                                    
+00002d09  _ZN11LightSensorIiE8GetValueEv                                                                                                                        
+00002d5d  __cxa_get_globals                                                                                                                                     
+00002dad  _ZN13SensorManagerIiE5setupEv                                                                                                                         
+00002df9  __cxa_end_catch                                                                                                                                       
+00002e45  _ZN13LowPassFilterIifE12filterSignalEi                                                                                                                
+00002e91  _Z11I2C_write16hj                                                                                                                                     
+00002f21  __TI_auto_init_nobinit_nopinit                                                                                                                        
+00002f69  __aeabi_d2iz                                                                                                                                          
+00002fb1  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                                            
+00003039  bsearch                                                                                                                                               
+0000307d  I2C_masterReceiveMultiByteFinish                                                                                                                      
+000030bd  _Z22InitialConditionsSetupv                                                                                                                           
+000030fd  __TI_ut_entry_cmp                                                                                                                                     
+00003179  _ZN13SensorManagerIiEC1Ev                                                                                                                             
+000031b5  I2C_masterSendMultiByteStop                                                                                                                           
+000031ed  _Z3powIedENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+00003225  _Z3powee                                                                                                                                              
+0000325d  __TI_Unwind_RaiseException2                                                                                                                           
+00003295  __TI_Unwind_Resume                                                                                                                                    
+000032cd  _Z11TMP006_initv                                                                                                                                      
+00003303  __cxa_rethrow                                                                                                                                         
+00003339  CS_setDCOCenteredFrequency                                                                                                                            
+0000336d  I2C_masterSendMultiByteNext                                                                                                                           
+000033a1  _c_int00_noargs                                                                                                                                       
+000033d5  _Z3powIeiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+00003439  _ZN11LightSensorIiE5setupEv                                                                                                                           
+00003469  _ZN11ThermometerIiE5setupEv                                                                                                                           
+000034f9  __cxa_begin_catch                                                                                                                                     
+00003527  __aeabi_i2d                                                                                                                                           
+00003555  T32_INT2_IRQHandler                                                                                                                                   
+00003555  T32_INT2_IRQHandler                                                                                                                                   
+00003581  _Z11T32_2_setupv                                                                                                                                      
+000035ad  _Z3powIiiENSt3__216__lazy_enable_ifIXaasr3std3__213is_arithmeticIT_EE5valuesr3std3__213is_arithmeticIT0_EE5valueENS0_9__promoteIS2_S3_vEEE4typeES2_S3_
+000035d9  _ZN6SensorIiEC1Ev                                                                                                                                     
+00003605  __cxa_throw                                                                                                                                           
+00003631  _ZN13LowPassFilterIifEC1Ef                                                                                                                            
+00003681  _Z4putsjPc                                                                                                                                            
+000036a5  __cxa_free_exception                                                                                                                                  
+000036c9  _Z8I2C_initv                                                                                                                                          
+000036e9  _Z8PinSetupv                                                                                                                                          
+00003709  _Z8sendBytejc                                                                                                                                         
+00003729  _ZN11LightSensorIiE12EnableSensorEv                                                                                                                   
+00003749  _ZN11LightSensorIiE13DisableSensorEv                                                                                                                  
+00003769  _ZN11LightSensorIiEC1Ev                                                                                                                               
+00003789  _ZN11ThermometerIiE12EnableSensorEv                                                                                                                   
+000037a9  _ZN11ThermometerIiE13DisableSensorEv                                                                                                                  
+000037c9  _ZN11ThermometerIiEC1Ev                                                                                                                               
+000037e9  _ZSt10unexpectedv                                                                                                                                     
+00003809  _ZSt9terminatev                                                                                                                                       
+00003829  __TI_Unwind_RaiseException                                                                                                                            
+00003849  __cxa_bad_typeid                                                                                                                                      
+00003887  I2C_setMode                                                                                                                                           
+000038a5  _Z12I2C_setslavej                                                                                                                                     
+000038f9  I2C_masterReceiveStart                                                                                                                                
+00003913  copysign                                                                                                                                              
+00003913  copysignl                                                                                                                                             
+0000392d  I2C_getInterruptStatus                                                                                                                                
+00003945  I2C_isBusBusy                                                                                                                                         
+0000395d  _Z13Init_I2C_GPIOv                                                                                                                                    
+00003975  _ZN6FilterIiEC1Ev                                                                                                                                     
+0000398d  _ZNKSt13bad_exception4whatEv                                                                                                                          
+000039a5  I2C_clearInterruptFlag                                                                                                                                
+000039bb  I2C_disableModule                                                                                                                                     
+000039d1  I2C_enableModule                                                                                                                                      
+000039e7  I2C_masterReceiveMultiByteNext                                                                                                                        
+000039fb  I2C_setSlaveAddress                                                                                                                                   
+00003a0f  _Z12OPT3001_initv                                                                                                                                     
+00003a23  _Z7PowerUpv                                                                                                                                           
+00003a37  _ZN11LightSensorIiED0Ev                                                                                                                               
+00003a4d  _ZNKSt10bad_typeid4whatEv                                                                                                                             
+00003a61  _ZNSt10bad_typeidC1Ev                                                                                                                                 
+00003a61  _ZNSt10bad_typeidC2Ev                                                                                                                                 
+00003a75  _ZNKSt9exception4whatEv                                                                                                                               
+00003a89  _Z4putcjj                                                                                                                                             
+00003a9b  __cxa_begin_cleanup                                                                                                                                   
+00003aad  __cxa_call_terminate                                                                                                                                  
+00003abf  __TI_zero_init_nomemset                                                                                                                               
+00003ad1  _Z19TMP006_readDeviceIdv                                                                                                                              
+00003ae1  _Z24TMP006_readObjectVoltagev                                                                                                                         
+00003af1  _Z29TMP006_readAmbientTemperaturev                                                                                                                    
+00003b01  _ZN6FilterIiEC2Ev                                                                                                                                     
+00003b11  _ZN6FilterIiED2Ev                                                                                                                                     
+00003b21  _ZN6SensorIiEC2Ev                                                                                                                                     
+00003b31  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                                                
+00003b3f  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                                             
+00003b4d  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                                          
+00003b5b  _ZN13LowPassFilterIifED1Ev                                                                                                                            
+00003b69  _ZN6FilterIiE16getFilteredValueEv                                                                                                                     
+00003b77  _ZNSt10bad_typeidD0Ev                                                                                                                                 
+00003b85  __TI_decompress_none                                                                                                                                  
+00003b93  Reset_Handler                                                                                                                                         
+00003b9f  _ZN11LightSensorIiED1Ev                                                                                                                               
+00003bab  _ZN11ThermometerIiED1Ev                                                                                                                               
+00003bb7  _ZN6FilterIiED1Ev                                                                                                                                     
+00003bc3  __TI_cxa_end_cleanup                                                                                                                                  
+00003bcf  _Z13__TI_prel2absPKj                                                                                                                                  
+00003be3  _ZdlPv                                                                                                                                                
+00003bed  __aeabi_unwind_cpp_pr0                                                                                                                                
+00003bf7  __aeabi_unwind_cpp_pr1                                                                                                                                
+00003c01  __aeabi_unwind_cpp_pr2                                                                                                                                
+00003c0b  __cxa_pure_virtual                                                                                                                                    
+00003c15  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                                        
+00003c1d  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                                                
+00003c1d  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                                                
+00003c25  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                                             
+00003c25  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                                             
+00003c2d  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                                          
+00003c2d  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                                          
+00003c35  _ZNSt10bad_typeidD1Ev                                                                                                                                 
+00003c35  _ZNSt10bad_typeidD2Ev                                                                                                                                 
+00003c3d  __aeabi_errno_addr                                                                                                                                    
+00003c45  __tdeh_init                                                                                                                                           
+00003c4d  malloc                                                                                                                                                
+00003c5b  _ZNSt13bad_exceptionD0Ev                                                                                                                              
+00003c61  _ZNSt9exceptionD0Ev                                                                                                                                   
+00003c67  _Z22__TI_targ_rtti_addressPjP15_Unwind_Context                                                                                                        
+00003c6b  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                                         
+00003c6f  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                                         
+00003c73  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                                         
+00003c77  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                                        
+00003c7b  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                                                     
+00003c83  _ZdlPvj                                                                                                                                               
+00003c87  __abort_execution                                                                                                                                     
+00003c8b  _system_pre_init                                                                                                                                      
+00003c8f  C$$EXIT                                                                                                                                               
+00003c8f  abort                                                                                                                                                 
+00003cf8  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003d48  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                                             
+00003d6e  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003d93  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                                               
+00003ddc  _ZTSN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003dfe  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                                                 
+00003e20  _ZTV11LightSensorIiE                                                                                                                                  
+00003e40  _ZTV11ThermometerIiE                                                                                                                                  
+00003e58  _ZTV6SensorIiE                                                                                                                                        
+00003e70  _ZTS13LowPassFilterIifE                                                                                                                               
+00003e84  _ZTVSt10bad_typeid                                                                                                                                    
+00003e98  _ZTVSt13bad_exception                                                                                                                                 
+00003eac  _ZTVSt9exception                                                                                                                                      
+00003ed4  _ZTSSt13bad_exception                                                                                                                                 
+00003ee6  _ZTS11LightSensorIiE                                                                                                                                  
+00003ef7  _ZTS11ThermometerIiE                                                                                                                                  
+00003f18  _ZTVN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003f28  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003f38  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003f48  _ZTSSt10bad_typeid                                                                                                                                    
+00003f57  _ZTSSt9exception                                                                                                                                      
+00003f64  _ZTSSt9type_info                                                                                                                                      
+00003f71  _ZTSv                                                                                                                                                 
+00003f74  _ZTI11LightSensorIiE                                                                                                                                  
+00003f80  _ZTI11ThermometerIiE                                                                                                                                  
+00003f8c  _ZTI13LowPassFilterIifE                                                                                                                               
+00003f98  _ZTIN10__cxxabiv117__class_type_infoE                                                                                                                 
+00003fa4  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                                                 
+00003fb0  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                                               
+00003fbc  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                                              
+00003fc8  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                                             
+00003fd4  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                                           
+00003fe0  _ZTISt10bad_typeid                                                                                                                                    
+00003fec  _ZTISt13bad_exception                                                                                                                                 
+00003ff8  _ZTV13LowPassFilterIifE                                                                                                                               
+00004004  _ZTV6FilterIiE                                                                                                                                        
+00004010  _ZTS6FilterIiE                                                                                                                                        
+0000401b  _ZTS6SensorIiE                                                                                                                                        
+00004026  _ZZN11ThermometerIiE8GetValueEvEs                                                                                                                     
+0000402f  _ZZN11LightSensorIiE8GetValueEvEs                                                                                                                     
+00004038  _ZTI6FilterIiE                                                                                                                                        
+00004040  _ZTI6SensorIiE                                                                                                                                        
+00004048  _ZTISt9exception                                                                                                                                      
+00004050  _ZTISt9type_info                                                                                                                                      
+00004058  _ZTIv                                                                                                                                                 
+000040f8  __TI_Handler_Table_Base                                                                                                                               
+00004104  __TI_Handler_Table_Limit                                                                                                                              
+00004110  __TI_CINIT_Base                                                                                                                                       
+00004120  .ARM.exidx$$Base                                                                                                                                      
+00004120  __TI_CINIT_Limit                                                                                                                                      
+00004120  __TI_UNWIND_TABLE_START                                                                                                                               
+00004368  .ARM.exidx$$Limit                                                                                                                                     
+00004368  __TI_UNWIND_TABLE_END                                                                                                                                 
+20000000  _sys_memory                                                                                                                                           
+20000800  _lock                                                                                                                                                 
+20000804  _unlock                                                                                                                                               
+20000818  errno                                                                                                                                                 
+20000820  _ZN6SensorIiE16m_u8NextSensorIDE                                                                                                                      
+20000828  g_u64SystemTicks                                                                                                                                      
+20000830  g_u16BytesReceived                                                                                                                                    
+20000832  g_u8BytesCounter                                                                                                                                      
+2000fe00  __stack                                                                                                                                               
+20010000  __STACK_END                                                                                                                                           
+4000480c  WDTCTL_SYM                                                                                                                                            
+ffffffff  __TI_pprof_out_hndl                                                                                                                                   
+ffffffff  __TI_prof_data_size                                                                                                                                   
+ffffffff  __TI_prof_data_start                                                                                                                                  
+ffffffff  __binit__                                                                                                                                             
+ffffffff  __c_args__                                                                                                                                            
+ffffffff  binit                                                                                                                                                 
+UNDEFED   __mpu_init                                                                                                                                            
+UNDEFED   _system_post_cinit                                                                                                                                    
+
+[309 symbols]

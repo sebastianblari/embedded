@@ -1,0 +1,1111 @@
+******************************************************************************
+                  TI ARM Linker Unix v18.12.1                  
+******************************************************************************
+>> Linked Mon Apr 15 13:03:09 2019
+
+OUTPUT FILE NAME:   <LightSensor_test.out>
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00003e3d
+
+
+MEMORY CONFIGURATION
+
+         name            origin    length      used     unused   attr    fill
+----------------------  --------  ---------  --------  --------  ----  --------
+  MAIN                  00000000   00040000  000049be  0003b642  R  X
+  INFO                  00200000   00004000  00000000  00004000  R  X
+  SRAM_CODE             01000000   00010000  00000de6  0000f21a  RW X
+  SRAM_DATA             20000000   00010000  00000de6  0000f21a  RW  
+
+
+SEGMENT ALLOCATION MAP
+
+run origin  load origin   length   init length attrs members
+----------  ----------- ---------- ----------- ----- -------
+00000000    00000000    000049c0   000049c0    r-x
+  00000000    00000000    000000e4   000000e4    r-- .intvecs
+  000000e4    000000e4    0000449a   0000449a    r-x .text
+  00004580    00004580    00000348   00000348    r-- .const
+  000048c8    000048c8    00000090   00000090    r-- .cinit
+  00004958    00004958    00000068   00000068    r-- .ARM.exidx
+20000000    20000000    00000be8   00000000    rw-
+  20000000    20000000    00000800   00000000    rw- .sysmem
+  20000800    20000800    000001fa   00000000    rw- .bss
+  200009fc    200009fc    000001ec   00000000    rw- .data
+2000fe00    2000fe00    00000200   00000000    rw-
+  2000fe00    2000fe00    00000200   00000000    rw- .stack
+
+
+SECTION ALLOCATION MAP
+
+ output                                  attributes/
+section   page    origin      length       input sections
+--------  ----  ----------  ----------   ----------------
+.intvecs   0    00000000    000000e4     
+                  00000000    000000e4     startup_msp432p401r_ccs.obj (.intvecs:retain)
+
+.text      0    000000e4    0000449a     
+                  000000e4    00000a4e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _printfi.c.obj (.text:__TI_printfi)
+                  00000b32    00000002     startup_msp432p401r_ccs.obj (.text:Default_Handler)
+                  00000b34    00000288     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d18__TI_unwind_cpp_prE13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_Kind)
+                  00000dbc    00000270                                      : _printfi.c.obj (.text:_pconv_a)
+                  0000102c    00000252                                      : tdeh_pr_common.cpp.obj (.text:_Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb)
+                  0000127e    00000002                                      : stdlib_exception.cpp.obj (.text:_ZNSt13bad_exceptionD1Ev)
+                  00001280    00000210                                      : rtti.c.obj (.text:_ZN27_INTERNAL_6_rtti_c_066a44b028derived_to_base_conversion_rEPvPS0_PKN10__cxxabiv117__class_type_infoES5_jPiiPS5_P19a_result_virtualityS6_)
+                  00001490    000001d0                                      : _printfi.c.obj (.text:_pconv_g)
+                  00001660    000001b6                                      : fd_add_t2.asm.obj (.text)
+                  00001816    00000002                                      : stdlib_exception.cpp.obj (.text:_ZNSt9exceptionD1Ev)
+                  00001818    0000017c     main.obj (.text:T32_INT2_IRQHandler)
+                  00001994    00000140     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_type_match)
+                  00001ad4    0000013c                                      : _printfi.c.obj (.text:_pconv_e)
+                  00001c10    00000136                                      : fd_div_t2.asm.obj (.text)
+                  00001d46    00000002                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt9type_infoD1Ev)
+                  00001d48    00000124                                      : _printfi.c.obj (.text:fcvt)
+                  00001e6c    00000114                                      : fputs.c.obj (.text:fputs)
+                  00001f80    00000110                                      : s_scalbn.c.obj (.text:scalbn)
+                  00002090    000000fc                                      : fd_mul_t2.asm.obj (.text)
+                  0000218c    000000f4                                      : memory.c.obj (.text:aligned_alloc)
+                  00002280    000000e8                                      : memory.c.obj (.text:free)
+                  00002368    000000e0                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_call_unexpected)
+                  00002448    000000dc                                      : setvbuf.c.obj (.text:setvbuf)
+                  00002524    000000d8     HAL_OPT3001.obj (.text:_Z14OPT3001_getLuxv)
+                  000025fc    000000b1     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _printfi.c.obj (.text:_ltostr)
+                  000026ad    00000001     --HOLE-- [fill = 0]
+                  000026ae    0000009c                                      : memcpy_t2.asm.obj (.text)
+                  0000274a    00000096                                      : ull_div_t2.asm.obj (.text)
+                  000027e0    0000008c     HAL_I2C.obj (.text:_Z10I2C_read16h)
+                  0000286c    0000008c     main.obj (.text:_Z23InitialConditions_setupv)
+                  000028f8    0000008c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fputc.c.obj (.text:fputc)
+                  00002984    00000088     msp432p4xx_driverlib.lib : gpio.o (.text:GPIO_setAsPeripheralModuleFunctionOutputPin)
+                  00002a0c    00000088     main.obj (.text:main)
+                  00002a94    00000086     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fd_cmp_t2.asm.obj (.text:__aeabi_cdcmple)
+                  00002b1a    00000086                                      : fd_cmp_t2.asm.obj (.text:__aeabi_cdrcmple)
+                  00002ba0    00000080                                      : rtti.c.obj (.text:__derived_to_base_conversion)
+                  00002c20    0000007c                                      : memory.c.obj (.text:split)
+                  00002c9c    0000007a                                      : memset_t2.asm.obj (.text)
+                  00002d16    00000002                                      : _lock.c.obj (.text:_nop)
+                  00002d18    00000078     system_msp432p401r.obj (.text:SystemInit)
+                  00002d90    00000075     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__cxa_allocate_exception)
+                  00002e05    00000001     --HOLE-- [fill = 0]
+                  00002e06    00000002                                      : div0.asm.obj (.text)
+                  00002e08    00000074                                      : fclose.c.obj (.text:__TI_closefile)
+                  00002e7c    00000070     main.obj (.text:ADC14_IRQHandler)
+                  00002eec    0000006e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _printfi.c.obj (.text:_mcpy)
+                  00002f5a    00000002     --HOLE-- [fill = 0]
+                  00002f5c    0000006c     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteFinish)
+                  00002fc8    0000006c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:_ZN39_INTERNAL_17_tdeh_unwinder_cpp_f8f63fad16find_et_setup_prEP19_Unwind_Exception_sj)
+                  00003034    0000006c                                      : tdeh_uwentry_t2.asm.obj (.text)
+                  000030a0    00000068                                      : hostlseek.c.obj (.text:HOSTlseek)
+                  00003108    00000068                                      : hostrename.c.obj (.text:HOSTrename)
+                  00003170    00000068     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteStart)
+                  000031d8    00000068     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  00003240    00000068                                      : printf.c.obj (.text:printf)
+                  000032a8    00000064                                      : s_frexp.c.obj (.text:frexp)
+                  0000330c    00000064                                      : fseek.c.obj (.text:fseek)
+                  00003370    00000062     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_initMaster)
+                  000033d2    00000062     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _io_perm.c.obj (.text:__TI_wrt_ok)
+                  00003434    00000060                                      : hostopen.c.obj (.text:HOSTopen)
+                  00003494    0000005c                                      : close.c.obj (.text:close)
+                  000034f0    00000058                                      : hostread.c.obj (.text:HOSTread)
+                  00003548    00000058                                      : hostwrite.c.obj (.text:HOSTwrite)
+                  000035a0    00000056                                      : _printfi.c.obj (.text:_pconv_f)
+                  000035f6    00000054                                      : ltoa.c.obj (.text:ltoa)
+                  0000364a    00000052                                      : _printfi.c.obj (.text:_ecpy)
+                  0000369c    00000050                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_get_globals)
+                  000036ec    0000004c                                      : fflush.c.obj (.text:__TI_doflush)
+                  00003738    0000004c                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_end_catch)
+                  00003784    0000004c                                      : atoi.c.obj (.text:atoi)
+                  000037d0    00000048     HAL_I2C.obj (.text:_Z11I2C_write16hj)
+                  00003818    00000048     main.obj (.text:_Z9Pin_setupv)
+                  00003860    00000048     main.obj (.text:_ZN25_INTERNAL_8_main_cpp_main18__NVIC_SetPriorityE4IRQnj)
+                  000038a8    00000048     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000038f0    00000048                                      : exit.c.obj (.text:exit)
+                  00003938    00000048                                      : fd_toi_t2.asm.obj (.text)
+                  00003980    00000044                                      : hostclose.c.obj (.text:HOSTclose)
+                  000039c4    00000044                                      : hostunlink.c.obj (.text:HOSTunlink)
+                  00003a08    00000044                                      : tdeh_pr_arm.cpp.obj (.text:_Z16__TI_targ_set_prP19_Unwind_Exception_s)
+                  00003a4c    00000044                                      : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_Dreg_popEP15_Unwind_Contextjjb)
+                  00003a90    00000044                                      : bsearch.c.obj (.text:bsearch)
+                  00003ad4    00000044                                      : getdevice.c.obj (.text:getdevice)
+                  00003b18    00000040     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterReceiveMultiByteFinish)
+                  00003b58    00000040     main.obj (.text:_Z9ADC_setupv)
+                  00003b98    00000040     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:__TI_ut_entry_cmp)
+                  00003bd8    0000003e                                      : _printfi.c.obj (.text:_fcpy)
+                  00003c16    0000003c                                      : tdeh_unwinder.cpp.obj (.text:_ZN39_INTERNAL_17_tdeh_unwinder_cpp_f8f63fad17__TI_unwind_frameEP19_Unwind_Exception_sP15_Unwind_Context)
+                  00003c52    00000002     --HOLE-- [fill = 0]
+                  00003c54    00000038     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteStop)
+                  00003c8c    00000038     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.cpp.obj (.text:__TI_Unwind_RaiseException2)
+                  00003cc4    00000038                                      : tdeh_unwinder.cpp.obj (.text:__TI_Unwind_Resume)
+                  00003cfc    00000038                                      : trgmsg.c.obj (.text:__TI_writemsg)
+                  00003d34    00000036                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_rethrow)
+                  00003d6a    00000036                                      : strncpy.c.obj (.text:strncpy)
+                  00003da0    00000034     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterSendMultiByteNext)
+                  00003dd4    00000034     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fopen.c.obj (.text:__TI_cleanup)
+                  00003e08    00000034                                      : trgmsg.c.obj (.text:__TI_readmsg)
+                  00003e3c    00000034                                      : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00003e70    00000032                                      : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_core_popEP15_Unwind_Contextj)
+                  00003ea2    00000002     --HOLE-- [fill = 0]
+                  00003ea4    00000030     main.obj (.text:_Z11T32_2_setupv)
+                  00003ed4    00000030     main.obj (.text:_ZN25_INTERNAL_8_main_cpp_main16__NVIC_EnableIRQE4IRQn)
+                  00003f04    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d12next_uw_byteEP20_Unwind_Instr_Handle)
+                  00003f34    00000030                                      : getdevice.c.obj (.text:finddevice)
+                  00003f64    0000002e                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_begin_catch)
+                  00003f92    0000002e                                      : i_tofd_t2.asm.obj (.text)
+                  00003fc0    0000002c     main.obj (.text:_Z11T32_1_setupv)
+                  00003fec    0000002c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : unlink.c.obj (.text:unlink)
+                  00004018    0000002a                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_throw)
+                  00004042    00000002     --HOLE-- [fill = 0]
+                  00004044    00000028                                      : memory.c.obj (.text:free_list_insert)
+                  0000406c    00000028                                      : lseek.c.obj (.text:lseek)
+                  00004094    00000028                                      : write.c.obj (.text:write)
+                  000040bc    00000022                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_free_exception)
+                  000040de    00000002     --HOLE-- [fill = 0]
+                  000040e0    00000020     main.obj (.text:T32_INT1_IRQHandler)
+                  00004100    00000020     main.obj (.text:_Z17LightSensor_setupv)
+                  00004120    00000020     HAL_I2C.obj (.text:_Z8I2C_initv)
+                  00004140    00000020     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:_ZSt10unexpectedv)
+                  00004160    00000020                                      : tdeh_cpp_abi.cpp.obj (.text:_ZSt9terminatev)
+                  00004180    00000020                                      : tdeh_pr_arm.cpp.obj (.text:__TI_Unwind_RaiseException)
+                  000041a0    00000020                                      : rtti.c.obj (.text:__cxa_bad_typeid)
+                  000041c0    00000020                                      : memchr.c.obj (.text:memchr)
+                  000041e0    0000001e                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da837__TI_setup_handler_and_call_terminateEP19_Unwind_Exception_s)
+                  000041fe    0000001c     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_setMode)
+                  0000421a    00000002     --HOLE-- [fill = 0]
+                  0000421c    0000001c     HAL_I2C.obj (.text:_Z12I2C_setslavej)
+                  00004238    0000001c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.text:free_list_remove)
+                  00004254    0000001c                                      : memccpy.c.obj (.text:memccpy)
+                  00004270    0000001a     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterReceiveStart)
+                  0000428a    0000001a     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : s_copysign.c.obj (.text:copysign)
+                  000042a4    00000018     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_getInterruptStatus)
+                  000042bc    00000018                              : i2c.o (.text:I2C_isBusBusy)
+                  000042d4    00000018     HAL_I2C.obj (.text:_Z13Init_I2C_GPIOv)
+                  000042ec    00000018     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_exception.cpp.obj (.text:_ZNKSt13bad_exception4whatEv)
+                  00004304    00000018                                      : strcmp.c.obj (.text:strcmp)
+                  0000431c    00000016     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_clearInterruptFlag)
+                  00004332    00000016                              : i2c.o (.text:I2C_disableModule)
+                  00004348    00000016                              : i2c.o (.text:I2C_enableModule)
+                  0000435e    00000016     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : strchr.c.obj (.text:strchr)
+                  00004374    00000014     msp432p4xx_driverlib.lib : i2c.o (.text:I2C_masterReceiveMultiByteNext)
+                  00004388    00000014                              : i2c.o (.text:I2C_setSlaveAddress)
+                  0000439c    00000014     HAL_OPT3001.obj (.text:_Z12OPT3001_initv)
+                  000043b0    00000014     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_typeinfo.cpp.obj (.text:_ZNKSt10bad_typeid4whatEv)
+                  000043c4    00000014                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidC1Ev)
+                  000043d8    00000014                                      : strcpy.c.obj (.text:strcpy)
+                  000043ec    00000014                                      : strlen.c.obj (.text:strlen)
+                  00004400    00000013                                      : stdlib_exception.cpp.obj (.text:_ZNKSt9exception4whatEv)
+                  00004413    00000001     --HOLE-- [fill = 0]
+                  00004414    00000012                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_begin_cleanup)
+                  00004426    00000012                                      : tdeh_cpp_abi.cpp.obj (.text:__cxa_call_terminate)
+                  00004438    00000012                                      : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  0000444a    00000012                                      : wcslen.c.obj (.text:wcslen)
+                  0000445c    0000000e                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv117__class_type_infoD0Ev)
+                  0000446a    0000000e                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv120__si_class_type_infoD0Ev)
+                  00004478    0000000e                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv123__fundamental_type_infoD0Ev)
+                  00004486    0000000e                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidD0Ev)
+                  00004494    0000000e                                      : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  000044a2    0000000c     startup_msp432p401r_ccs.obj (.text:Reset_Handler)
+                  000044ae    0000000c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.text:__TI_cxa_end_cleanup)
+                  000044ba    0000000a                                      : tdeh_unwinder.cpp.obj (.text:_Z13__TI_prel2absPKj)
+                  000044c4    0000000a                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da825__TI_default_term_handlerEv)
+                  000044ce    0000000a                                      : new.cpp.obj (.text:_ZdlPv)
+                  000044d8    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr0)
+                  000044e2    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr1)
+                  000044ec    0000000a                                      : tdeh_pr_arm.cpp.obj (.text:__aeabi_unwind_cpp_pr2)
+                  000044f6    00000008                                      : tdeh_pr_arm.cpp.obj (.text:_Z24__TI_targ_regbuf_installP15_Unwind_Context)
+                  000044fe    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv117__class_type_infoD1Ev)
+                  00004506    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv120__si_class_type_infoD1Ev)
+                  0000450e    00000008                                      : typeinfo.c.obj (.text:_ZN10__cxxabiv123__fundamental_type_infoD1Ev)
+                  00004516    00000008                                      : stdlib_typeinfo.cpp.obj (.text:_ZNSt10bad_typeidD1Ev)
+                  0000451e    00000002     --HOLE-- [fill = 0]
+                  00004520    00000008                                      : errno.c.obj (.text:__aeabi_errno_addr)
+                  00004528    00000008                                      : tdeh_init.cpp.obj (.text:__tdeh_init)
+                  00004530    00000008                                      : memory.c.obj (.text:malloc)
+                  00004538    00000006                                      : tdeh_pr_arm.cpp.obj (.text:_ZN37_INTERNAL_15_tdeh_pr_arm_cpp_7dc0f84d13regb_core_setEP15_Unwind_Context14_Unwind_Reg_Idj)
+                  0000453e    00000006                                      : stdlib_exception.cpp.obj (.text:_ZNSt13bad_exceptionD0Ev)
+                  00004544    00000006                                      : stdlib_exception.cpp.obj (.text:_ZNSt9exceptionD0Ev)
+                  0000454a    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z22__TI_targ_rtti_addressPjP15_Unwind_Context)
+                  0000454e    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_pcP15_Unwind_Context)
+                  00004552    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_sbP15_Unwind_Context)
+                  00004556    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_get_spP15_Unwind_Context)
+                  0000455a    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj)
+                  0000455e    00000004                                      : tdeh_pr_arm.cpp.obj (.text:_Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj)
+                  00004562    00000004                                      : tdeh_cpp_abi.cpp.obj (.text:_ZN38_INTERNAL_16_tdeh_cpp_abi_cpp_89652da826__TI_default_unexp_handlerEv)
+                  00004566    00000004                                      : new.cpp.obj (.text:_ZdlPvj)
+                  0000456a    00000004                                      : error.c.obj (.text:__abort_execution)
+                  0000456e    00000004                                      : printf.c.obj (.text:_outc)
+                  00004572    00000004                                      : printf.c.obj (.text:_outs)
+                  00004576    00000004                                      : pre_init.c.obj (.text:_system_pre_init)
+                  0000457a    00000004                                      : exit.c.obj (.text:abort:abort)
+
+.const     0    00004580    00000348     
+                  00004580    00000101     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : ctype.c.obj (.const:.string:_ctypes_)
+                  00004681    00000002                                      : tdeh_cpp_abi.cpp.obj (.const:.typeinfo:_ZTSv)
+                  00004683    00000001     --HOLE-- [fill = 0]
+                  00004684    00000030     msp432p4xx_driverlib.lib : gpio.o (.const:GPIO_PORT_TO_BASE)
+                  000046b4    00000028     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv123__fundamental_type_infoE)
+                  000046dc    00000026                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv121__vmi_class_type_infoE)
+                  00004702    00000025                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv120__si_class_type_infoE)
+                  00004727    00000024                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv119__pointer_type_infoE)
+                  0000474b    00000022                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__class_type_infoE)
+                  0000476d    00000022                                      : typeinfo.c.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__pbase_type_infoE)
+                  0000478f    00000001     --HOLE-- [fill = 0]
+                  00004790    00000014                                      : stdlib_typeinfo.cpp.obj (.const:_ZTVSt10bad_typeid)
+                  000047a4    00000014                                      : stdlib_exception.cpp.obj (.const:_ZTVSt13bad_exception)
+                  000047b8    00000014                                      : stdlib_exception.cpp.obj (.const:_ZTVSt9exception)
+                  000047cc    00000014     HAL_I2C.obj (.const:i2cConfig)
+                  000047e0    00000012     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTSSt13bad_exception)
+                  000047f2    00000002     --HOLE-- [fill = 0]
+                  000047f4    00000010                                      : typeinfo.c.obj (.const:_ZTVN10__cxxabiv117__class_type_infoE)
+                  00004804    00000010                                      : typeinfo.c.obj (.const:_ZTVN10__cxxabiv120__si_class_type_infoE)
+                  00004814    00000010                                      : typeinfo.c.obj (.const:_ZTVN10__cxxabiv123__fundamental_type_infoE)
+                  00004824    0000000f                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTSSt10bad_typeid)
+                  00004833    0000000d                                      : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTSSt9exception)
+                  00004840    0000000d                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTSSt9type_info)
+                  0000484d    00000003     --HOLE-- [fill = 0]
+                  00004850    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__class_type_infoE)
+                  0000485c    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__pbase_type_infoE)
+                  00004868    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv119__pointer_type_infoE)
+                  00004874    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv120__si_class_type_infoE)
+                  00004880    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv121__vmi_class_type_infoE)
+                  0000488c    0000000c                                      : typeinfo.c.obj (.const:.typeinfo:_ZTIN10__cxxabiv123__fundamental_type_infoE)
+                  00004898    0000000c                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTISt10bad_typeid)
+                  000048a4    0000000c                                      : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTISt13bad_exception)
+                  000048b0    00000008                                      : stdlib_exception.cpp.obj (.const:.typeinfo:_ZTISt9exception)
+                  000048b8    00000008                                      : stdlib_typeinfo.cpp.obj (.const:.typeinfo:_ZTISt9type_info)
+                  000048c0    00000008                                      : tdeh_cpp_abi.cpp.obj (.const:.typeinfo:_ZTIv)
+
+.cinit     0    000048c8    00000090     
+                  000048c8    00000069     (.cinit..data.load) [load image, compression = lzss]
+                  00004931    00000003     --HOLE-- [fill = 0]
+                  00004934    0000000c     (__TI_handler_table)
+                  00004940    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00004948    00000010     (__TI_cinit_table)
+
+.init_array 
+*          0    00000000    00000000     UNINITIALIZED
+
+.binit     0    00000000    00000000     
+
+.sysmem    0    20000000    00000800     UNINITIALIZED
+                  20000000    00000010     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.c.obj (.sysmem)
+                  20000010    000007f0     --HOLE--
+
+.bss       0    20000800    000001fa     UNINITIALIZED
+                  20000800    00000120     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : trgmsg.c.obj (.bss:_CIOBUF_)
+                  20000920    000000a0     (.common:__TI_tmpnams)
+                  200009c0    0000000c     (.common:g_u16Adc14Result)
+                  200009cc    00000008     (.common:parmbuf)
+                  200009d4    00000004     (.common:contPicos)
+                  200009d8    00000004     (.common:g_fSensorLux)
+                  200009dc    00000004     (.common:g_i1sCount)
+                  200009e0    00000004     (.common:g_iAudioSampleCount)
+                  200009e4    00000004     (.common:g_iAudioThreshold)
+                  200009e8    00000004     (.common:g_u16AudioSampleSum)
+                  200009ec    00000004     (.common:sum)
+                  200009f0    00000004     (.common:sumPicos)
+                  200009f4    00000002     (.common:g_u16Audio1sAverage)
+                  200009f6    00000002     (.common:g_u16AudioAverage)
+                  200009f8    00000001     (.common:g_BOverAudioThreshold)
+                  200009f9    00000001     (.common:g_BUnderLightThreshold)
+
+.data      0    200009fc    000001ec     UNINITIALIZED
+                  200009fc    000000f0     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : defs.c.obj (.data:_ftable)
+                  20000aec    00000078                                      : host_device.c.obj (.data:_device)
+                  20000b64    00000050                                      : host_device.c.obj (.data:_stream)
+                  20000bb4    00000010                                      : defs.c.obj (.data)
+                  20000bc4    0000000c                                      : exit.c.obj (.data:$O1$$)
+                  20000bd0    00000008                                      : _lock.c.obj (.data:$O1$$)
+                  20000bd8    00000008                                      : memory.c.obj (.data:$O1$$)
+                  20000be0    00000004                                      : errno.c.obj (.data)
+                  20000be4    00000004                                      : tdeh_cpp_abi.cpp.obj (.data)
+
+.stack     0    2000fe00    00000200     UNINITIALIZED
+                  2000fe00    00000004     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : boot_cortex_m.c.obj (.stack)
+                  2000fe04    000001fc     --HOLE--
+
+.ARM.exidx 
+*          0    00004958    00000068     
+                  00004958    00000008     (.ARM.exidx.text:__TI_printfi:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<_printfi.c.obj>)
+                  00004960    00000008     main.obj (.ARM.exidx)
+                  00004968    00000008     (.ARM.exidx.text:__aeabi_cdcmple:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fd_cmp_t2.asm.obj>)
+                  00004970    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004978    00000008     (.ARM.exidx.text:__TI_doflush:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fflush.c.obj>)
+                  00004980    00000008     main.obj (.ARM.exidx)
+                  00004988    00000008     (.ARM.exidx.text:_Z8I2C_initv:HAL_I2C.obj)
+                  00004990    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  00004998    00000008     (.ARM.exidx.text:__TI_Unwind_RaiseException:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<tdeh_pr_arm.cpp.obj>)
+                  000049a0    00000008                                      : tdeh_cpp_abi.cpp.obj (.ARM.exidx)
+                  000049a8    00000008     (.ARM.exidx.text:_ZdlPv:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<new.cpp.obj>)
+                  000049b0    00000008                                      : tdeh_init.cpp.obj (.ARM.exidx)
+                  000049b8    00000008     (.ARM.exidx.text:malloc:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memory.c.obj>)
+
+MODULE SUMMARY
+
+       Module                        code    ro data   rw data
+       ------                        ----    -------   -------
+    ./
+       main.obj                      1180    16        0      
+       HAL_I2C.obj                   296     20        100    
+       startup_msp432p401r_ccs.obj   14      228       0      
+       HAL_OPT3001.obj               236     0         0      
+       system_msp432p401r.obj        120     0         0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        1846    264       100    
+                                                              
+    /home/du/ti/ccs900/ccs/tools/compiler/ti-cgt-arm_18.12.1.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi_eh.lib
+       _printfi.c.obj                4851    0         0      
+       tdeh_cpp_abi.cpp.obj          1149    34        8      
+       tdeh_pr_arm.cpp.obj           982     0         0      
+       defs.c.obj                    0       0         832    
+       memory.c.obj                  676     0         16     
+       rtti.c.obj                    688     0         0      
+       trgmsg.c.obj                  108     0         576    
+       tdeh_pr_common.cpp.obj        594     0         0      
+       fd_add_t2.asm.obj             438     0         0      
+       typeinfo.c.obj                66      339       0      
+       host_device.c.obj             0       0         400    
+       tdeh_unwinder.cpp.obj         354     0         0      
+       fd_div_t2.asm.obj             310     0         0      
+       fputs.c.obj                   276     0         0      
+       s_scalbn.c.obj                272     0         0      
+       fd_cmp_t2.asm.obj             268     0         0      
+       ctype.c.obj                   0       257       0      
+       fd_mul_t2.asm.obj             252     0         0      
+       setvbuf.c.obj                 220     0         0      
+       memcpy_t2.asm.obj             156     0         0      
+       stdlib_exception.cpp.obj      59      91        0      
+       ull_div_t2.asm.obj            150     0         0      
+       fputc.c.obj                   140     0         0      
+       stdlib_typeinfo.cpp.obj       64      68        0      
+       memset_t2.asm.obj             122     0         0      
+       fclose.c.obj                  116     0         0      
+       getdevice.c.obj               116     0         0      
+       hostopen.c.obj                96      0         16     
+       printf.c.obj                  112     0         0      
+       tdeh_uwentry_t2.asm.obj       108     0         0      
+       copy_decompress_lzss.c.obj    104     0         0      
+       hostlseek.c.obj               104     0         0      
+       hostrename.c.obj              104     0         0      
+       exit.c.obj                    76      0         24     
+       fseek.c.obj                   100     0         0      
+       s_frexp.c.obj                 100     0         0      
+       _io_perm.c.obj                98      0         0      
+       close.c.obj                   92      0         0      
+       hostread.c.obj                88      0         0      
+       hostwrite.c.obj               88      0         0      
+       ltoa.c.obj                    84      0         0      
+       atoi.c.obj                    76      0         0      
+       fflush.c.obj                  76      0         0      
+       autoinit.c.obj                72      0         0      
+       fd_toi_t2.asm.obj             72      0         0      
+       bsearch.c.obj                 68      0         0      
+       hostclose.c.obj               68      0         0      
+       hostunlink.c.obj              68      0         0      
+       strncpy.c.obj                 54      0         0      
+       boot_cortex_m.c.obj           52      0         0      
+       fopen.c.obj                   52      0         0      
+       i_tofd_t2.asm.obj             46      0         0      
+       unlink.c.obj                  44      0         0      
+       lseek.c.obj                   40      0         0      
+       write.c.obj                   40      0         0      
+       memchr.c.obj                  32      0         0      
+       memccpy.c.obj                 28      0         0      
+       s_copysign.c.obj              26      0         0      
+       strcmp.c.obj                  24      0         0      
+       strchr.c.obj                  22      0         0      
+       strcpy.c.obj                  20      0         0      
+       strlen.c.obj                  20      0         0      
+       _lock.c.obj                   2       0         16     
+       copy_zero_init.c.obj          18      0         0      
+       wcslen.c.obj                  18      0         0      
+       errno.c.obj                   8       0         8      
+       tdeh_init.cpp.obj             8       8         0      
+       copy_decompress_none.c.obj    14      0         0      
+       new.cpp.obj                   14      0         0      
+       error.c.obj                   4       0         0      
+       pre_init.c.obj                4       0         0      
+       div0.asm.obj                  2       0         0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        14873   797       1896   
+                                                              
+    /home/du/ti/simplelink_msp432p4_sdk_3_10_00_08/source/ti/devices/msp432p4xx/driverlib/ccs/msp432p4xx_driverlib.lib
+       i2c.o                         690     0         0      
+       gpio.o                        136     48        0      
+    +--+-----------------------------+-------+---------+---------+
+       Total:                        826     48        0      
+                                                              
+       Heap:                         0       0         4096   
+       Stack:                        0       0         1024   
+       Linker Generated:             0       197       0      
+    +--+-----------------------------+-------+---------+---------+
+       Grand Total:                  17545   1306      7116   
+
+
+LINKER GENERATED COPY TABLES
+
+__TI_cinit_table @ 00004948 records: 2, size/record: 8, table size: 16
+	.data: load addr=000048c8, load size=00000069 bytes, run addr=200009fc, run size=000001ec bytes, compression=lzss
+	.bss: load addr=00004940, load size=00000008 bytes, run addr=20000800, run size=000001fa bytes, compression=zero_init
+
+
+LINKER GENERATED HANDLER TABLE
+
+__TI_handler_table @ 00004934 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
+
+
+GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
+
+address   name                                                                                                                          
+-------   ----                                                                                                                          
+00004958  .ARM.exidx$$Base                                                                                                              
+000049c0  .ARM.exidx$$Limit                                                                                                             
+00002e7d  ADC14_IRQHandler                                                                                                              
+00002e7d  ADC14_IRQHandler                                                                                                              
+00000b33  AES256_IRQHandler                                                                                                             
+00000b33  BusFault_Handler                                                                                                              
+0000457b  C$$EXIT                                                                                                                       
+00003d2b  C$$IO$$                                                                                                                       
+00000b33  COMP_E0_IRQHandler                                                                                                            
+00000b33  COMP_E1_IRQHandler                                                                                                            
+00000b33  CS_IRQHandler                                                                                                                 
+00000b33  DMA_ERR_IRQHandler                                                                                                            
+00000b33  DMA_INT0_IRQHandler                                                                                                           
+00000b33  DMA_INT1_IRQHandler                                                                                                           
+00000b33  DMA_INT2_IRQHandler                                                                                                           
+00000b33  DMA_INT3_IRQHandler                                                                                                           
+00000b33  DebugMon_Handler                                                                                                              
+00000b33  Default_Handler                                                                                                               
+00000b33  EUSCIA0_IRQHandler                                                                                                            
+00000b33  EUSCIA1_IRQHandler                                                                                                            
+00000b33  EUSCIA2_IRQHandler                                                                                                            
+00000b33  EUSCIA3_IRQHandler                                                                                                            
+00000b33  EUSCIB0_IRQHandler                                                                                                            
+00000b33  EUSCIB1_IRQHandler                                                                                                            
+00000b33  EUSCIB2_IRQHandler                                                                                                            
+00000b33  EUSCIB3_IRQHandler                                                                                                            
+00000b33  FLCTL_IRQHandler                                                                                                              
+00000b33  FPU_IRQHandler                                                                                                                
+00002985  GPIO_setAsPeripheralModuleFunctionOutputPin                                                                                   
+00003981  HOSTclose                                                                                                                     
+000030a1  HOSTlseek                                                                                                                     
+00003435  HOSTopen                                                                                                                      
+000034f1  HOSTread                                                                                                                      
+00003109  HOSTrename                                                                                                                    
+000039c5  HOSTunlink                                                                                                                    
+00003549  HOSTwrite                                                                                                                     
+00000b33  HardFault_Handler                                                                                                             
+0000431d  I2C_clearInterruptFlag                                                                                                        
+00004333  I2C_disableModule                                                                                                             
+00004349  I2C_enableModule                                                                                                              
+000042a5  I2C_getInterruptStatus                                                                                                        
+00003371  I2C_initMaster                                                                                                                
+000042bd  I2C_isBusBusy                                                                                                                 
+00003b19  I2C_masterReceiveMultiByteFinish                                                                                              
+00004375  I2C_masterReceiveMultiByteNext                                                                                                
+00004271  I2C_masterReceiveStart                                                                                                        
+00002f5d  I2C_masterSendMultiByteFinish                                                                                                 
+00003da1  I2C_masterSendMultiByteNext                                                                                                   
+00003171  I2C_masterSendMultiByteStart                                                                                                  
+00003c55  I2C_masterSendMultiByteStop                                                                                                   
+000041ff  I2C_setMode                                                                                                                   
+00004389  I2C_setSlaveAddress                                                                                                           
+00000b33  MemManage_Handler                                                                                                             
+00000b33  NMI_Handler                                                                                                                   
+00000b33  PCM_IRQHandler                                                                                                                
+00000b33  PORT1_IRQHandler                                                                                                              
+00000b33  PORT2_IRQHandler                                                                                                              
+00000b33  PORT3_IRQHandler                                                                                                              
+00000b33  PORT4_IRQHandler                                                                                                              
+00000b33  PORT5_IRQHandler                                                                                                              
+00000b33  PORT6_IRQHandler                                                                                                              
+00000b33  PSS_IRQHandler                                                                                                                
+00000b33  PendSV_Handler                                                                                                                
+00000b33  RTC_C_IRQHandler                                                                                                              
+000044a3  Reset_Handler                                                                                                                 
+00000b33  SVC_Handler                                                                                                                   
+00000b33  SysTick_Handler                                                                                                               
+00002d19  SystemInit                                                                                                                    
+000040e1  T32_INT1_IRQHandler                                                                                                           
+000040e1  T32_INT1_IRQHandler                                                                                                           
+00001819  T32_INT2_IRQHandler                                                                                                           
+00001819  T32_INT2_IRQHandler                                                                                                           
+00000b33  T32_INTC_IRQHandler                                                                                                           
+00000b33  TA0_0_IRQHandler                                                                                                              
+00000b33  TA0_N_IRQHandler                                                                                                              
+00000b33  TA1_0_IRQHandler                                                                                                              
+00000b33  TA1_N_IRQHandler                                                                                                              
+00000b33  TA2_0_IRQHandler                                                                                                              
+00000b33  TA2_N_IRQHandler                                                                                                              
+00000b33  TA3_0_IRQHandler                                                                                                              
+00000b33  TA3_N_IRQHandler                                                                                                              
+00000b33  UsageFault_Handler                                                                                                            
+4000480c  WDTCTL_SYM                                                                                                                    
+00000b33  WDT_A_IRQHandler                                                                                                              
+00003035  _Unwind_RaiseException                                                                                                        
+00003057  _Unwind_Resume                                                                                                                
+000027e1  _Z10I2C_read16h                                                                                                               
+000037d1  _Z11I2C_write16hj                                                                                                             
+00003fc1  _Z11T32_1_setupv                                                                                                              
+00003ea5  _Z11T32_2_setupv                                                                                                              
+0000421d  _Z12I2C_setslavej                                                                                                             
+0000439d  _Z12OPT3001_initv                                                                                                             
+000042d5  _Z13Init_I2C_GPIOv                                                                                                            
+000044bb  _Z13__TI_prel2absPKj                                                                                                          
+00002525  _Z14OPT3001_getLuxv                                                                                                           
+00003a09  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                    
+00004101  _Z17LightSensor_setupv                                                                                                        
+0000454b  _Z22__TI_targ_rtti_addressPjP15_Unwind_Context                                                                                
+0000286d  _Z23InitialConditions_setupv                                                                                                  
+0000454f  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                 
+00004553  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                 
+00004557  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                 
+0000455b  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                
+0000102d  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb
+000044f7  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                
+0000455f  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                             
+00004121  _Z8I2C_initv                                                                                                                  
+00003b59  _Z9ADC_setupv                                                                                                                 
+00003819  _Z9Pin_setupv                                                                                                                 
+0000445d  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                        
+000044ff  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                        
+000044ff  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                        
+0000446b  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                     
+00004507  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                     
+00004507  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                     
+00004479  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                  
+0000450f  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                  
+0000450f  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                  
+000043b1  _ZNKSt10bad_typeid4whatEv                                                                                                     
+000042ed  _ZNKSt13bad_exception4whatEv                                                                                                  
+00004401  _ZNKSt9exception4whatEv                                                                                                       
+000043c5  _ZNSt10bad_typeidC1Ev                                                                                                         
+000043c5  _ZNSt10bad_typeidC2Ev                                                                                                         
+00004487  _ZNSt10bad_typeidD0Ev                                                                                                         
+00004517  _ZNSt10bad_typeidD1Ev                                                                                                         
+00004517  _ZNSt10bad_typeidD2Ev                                                                                                         
+0000453f  _ZNSt13bad_exceptionD0Ev                                                                                                      
+0000127f  _ZNSt13bad_exceptionD1Ev                                                                                                      
+0000127f  _ZNSt13bad_exceptionD2Ev                                                                                                      
+00004545  _ZNSt9exceptionD0Ev                                                                                                           
+00001817  _ZNSt9exceptionD1Ev                                                                                                           
+00001817  _ZNSt9exceptionD2Ev                                                                                                           
+00001d47  _ZNSt9type_infoD1Ev                                                                                                           
+00001d47  _ZNSt9type_infoD2Ev                                                                                                           
+00004141  _ZSt10unexpectedv                                                                                                             
+00004161  _ZSt9terminatev                                                                                                               
+00004850  _ZTIN10__cxxabiv117__class_type_infoE                                                                                         
+0000485c  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                         
+00004868  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                       
+00004874  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                      
+00004880  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+0000488c  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00004898  _ZTISt10bad_typeid                                                                                                            
+000048a4  _ZTISt13bad_exception                                                                                                         
+000048b0  _ZTISt9exception                                                                                                              
+000048b8  _ZTISt9type_info                                                                                                              
+000048c0  _ZTIv                                                                                                                         
+0000474b  _ZTSN10__cxxabiv117__class_type_infoE                                                                                         
+0000476d  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                         
+00004727  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                       
+00004702  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                      
+000046dc  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+000046b4  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00004824  _ZTSSt10bad_typeid                                                                                                            
+000047e0  _ZTSSt13bad_exception                                                                                                         
+00004833  _ZTSSt9exception                                                                                                              
+00004840  _ZTSSt9type_info                                                                                                              
+00004681  _ZTSv                                                                                                                         
+000047f4  _ZTVN10__cxxabiv117__class_type_infoE                                                                                         
+00004804  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                      
+00004814  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00004790  _ZTVSt10bad_typeid                                                                                                            
+000047a4  _ZTVSt13bad_exception                                                                                                         
+000047b8  _ZTVSt9exception                                                                                                              
+000044cf  _ZdlPv                                                                                                                        
+00004567  _ZdlPvj                                                                                                                       
+20000800  __CIOBUF_                                                                                                                     
+20010000  __STACK_END                                                                                                                   
+00000200  __STACK_SIZE                                                                                                                  
+00000800  __SYSMEM_SIZE                                                                                                                 
+00004948  __TI_CINIT_Base                                                                                                               
+00004958  __TI_CINIT_Limit                                                                                                              
+00004934  __TI_Handler_Table_Base                                                                                                       
+00004940  __TI_Handler_Table_Limit                                                                                                      
+0000306d  __TI_Install_CoreRegs                                                                                                         
+000049c0  __TI_UNWIND_TABLE_END                                                                                                         
+00004958  __TI_UNWIND_TABLE_START                                                                                                       
+00004181  __TI_Unwind_RaiseException                                                                                                    
+00003c8d  __TI_Unwind_RaiseException2                                                                                                   
+00003cc5  __TI_Unwind_Resume                                                                                                            
+000038a9  __TI_auto_init_nobinit_nopinit                                                                                                
+00003dd5  __TI_cleanup                                                                                                                  
+20000bc4  __TI_cleanup_ptr                                                                                                              
+00002e09  __TI_closefile                                                                                                                
+000044af  __TI_cxa_end_cleanup                                                                                                          
+000031d9  __TI_decompress_lzss                                                                                                          
+00004495  __TI_decompress_none                                                                                                          
+000036ed  __TI_doflush                                                                                                                  
+20000bc8  __TI_dtors_ptr                                                                                                                
+20000bcc  __TI_enable_exit_profile_output                                                                                               
+20000bb4  __TI_ft_end                                                                                                                   
+ffffffff  __TI_pprof_out_hndl                                                                                                           
+00003095  __TI_preserve_low_VFP                                                                                                         
+000000e5  __TI_printfi                                                                                                                  
+ffffffff  __TI_prof_data_size                                                                                                           
+ffffffff  __TI_prof_data_start                                                                                                          
+00003e09  __TI_readmsg                                                                                                                  
+0000309b  __TI_restore_low_VFP                                                                                                          
+00000000  __TI_static_base__                                                                                                            
+20000920  __TI_tmpnams                                                                                                                  
+00003b99  __TI_ut_entry_cmp                                                                                                             
+00003cfd  __TI_writemsg                                                                                                                 
+000033d3  __TI_wrt_ok                                                                                                                   
+00004439  __TI_zero_init_nomemset                                                                                                       
+0000456b  __abort_execution                                                                                                             
+00002a95  __aeabi_cdcmpeq                                                                                                               
+00002a95  __aeabi_cdcmple                                                                                                               
+00002b1b  __aeabi_cdrcmple                                                                                                              
+00003939  __aeabi_d2iz                                                                                                                  
+0000166b  __aeabi_dadd                                                                                                                  
+00001c11  __aeabi_ddiv                                                                                                                  
+00002091  __aeabi_dmul                                                                                                                  
+00001661  __aeabi_dsub                                                                                                                  
+00004521  __aeabi_errno_addr                                                                                                            
+00003f93  __aeabi_i2d                                                                                                                   
+00002e07  __aeabi_idiv0                                                                                                                 
+00002e07  __aeabi_ldiv0                                                                                                                 
+00002c9d  __aeabi_memclr                                                                                                                
+00002c9d  __aeabi_memclr4                                                                                                               
+00002c9d  __aeabi_memclr8                                                                                                               
+000026af  __aeabi_memcpy                                                                                                                
+000026af  __aeabi_memcpy4                                                                                                               
+000026af  __aeabi_memcpy8                                                                                                               
+00002c9f  __aeabi_memset                                                                                                                
+00002c9f  __aeabi_memset4                                                                                                               
+00002c9f  __aeabi_memset8                                                                                                               
+20000bc0  __aeabi_stderr                                                                                                                
+20000bb8  __aeabi_stdin                                                                                                                 
+20000bbc  __aeabi_stdout                                                                                                                
+0000274b  __aeabi_uldivmod                                                                                                              
+000044d9  __aeabi_unwind_cpp_pr0                                                                                                        
+000044e3  __aeabi_unwind_cpp_pr1                                                                                                        
+000044ed  __aeabi_unwind_cpp_pr2                                                                                                        
+ffffffff  __binit__                                                                                                                     
+ffffffff  __c_args__                                                                                                                    
+00002d91  __cxa_allocate_exception                                                                                                      
+000041a1  __cxa_bad_typeid                                                                                                              
+00003f65  __cxa_begin_catch                                                                                                             
+00004415  __cxa_begin_cleanup                                                                                                           
+00004427  __cxa_call_terminate                                                                                                          
+00002369  __cxa_call_unexpected                                                                                                         
+00003739  __cxa_end_catch                                                                                                               
+00003087  __cxa_end_cleanup                                                                                                             
+000040bd  __cxa_free_exception                                                                                                          
+0000369d  __cxa_get_globals                                                                                                             
+00003d35  __cxa_rethrow                                                                                                                 
+00004019  __cxa_throw                                                                                                                   
+00001995  __cxa_type_match                                                                                                              
+00002ba1  __derived_to_base_conversion                                                                                                  
+UNDEFED   __mpu_init                                                                                                                    
+2000fe00  __stack                                                                                                                       
+00004529  __tdeh_init                                                                                                                   
+00003e3d  _c_int00_noargs                                                                                                               
+00004580  _ctypes_                                                                                                                      
+20000aec  _device                                                                                                                       
+200009fc  _ftable                                                                                                                       
+20000bd0  _lock                                                                                                                         
+00002d17  _nop                                                                                                                          
+20000b64  _stream                                                                                                                       
+20000000  _sys_memory                                                                                                                   
+UNDEFED   _system_post_cinit                                                                                                            
+00004577  _system_pre_init                                                                                                              
+20000bd4  _unlock                                                                                                                       
+0000457b  abort                                                                                                                         
+0000218d  aligned_alloc                                                                                                                 
+00003785  atoi                                                                                                                          
+ffffffff  binit                                                                                                                         
+00003a91  bsearch                                                                                                                       
+00003495  close                                                                                                                         
+200009d4  contPicos                                                                                                                     
+0000428b  copysign                                                                                                                      
+0000428b  copysignl                                                                                                                     
+20000be0  errno                                                                                                                         
+000038f1  exit                                                                                                                          
+00003f35  finddevice                                                                                                                    
+000028f9  fputc                                                                                                                         
+00001e6d  fputs                                                                                                                         
+00002281  free                                                                                                                          
+000032a9  frexp                                                                                                                         
+000032a9  frexpl                                                                                                                        
+0000330d  fseek                                                                                                                         
+200009f8  g_BOverAudioThreshold                                                                                                         
+200009f9  g_BUnderLightThreshold                                                                                                        
+200009d8  g_fSensorLux                                                                                                                  
+200009dc  g_i1sCount                                                                                                                    
+200009e0  g_iAudioSampleCount                                                                                                           
+200009e4  g_iAudioThreshold                                                                                                             
+200009c0  g_u16Adc14Result                                                                                                              
+200009f4  g_u16Audio1sAverage                                                                                                           
+200009f6  g_u16AudioAverage                                                                                                             
+200009e8  g_u16AudioSampleSum                                                                                                           
+00003ad5  getdevice                                                                                                                     
+00000000  interruptVectors                                                                                                              
+00001f81  ldexp                                                                                                                         
+00001f81  ldexpl                                                                                                                        
+0000406d  lseek                                                                                                                         
+000035f7  ltoa                                                                                                                          
+00002a0d  main                                                                                                                          
+00004531  malloc                                                                                                                        
+0000218d  memalign                                                                                                                      
+00004255  memccpy                                                                                                                       
+000041c1  memchr                                                                                                                        
+000026af  memcpy                                                                                                                        
+00002ca5  memset                                                                                                                        
+200009cc  parmbuf                                                                                                                       
+00003241  printf                                                                                                                        
+000028f9  putc                                                                                                                          
+00003fed  remove                                                                                                                        
+00001f81  scalbn                                                                                                                        
+00001f81  scalbnl                                                                                                                       
+00002449  setvbuf                                                                                                                       
+0000435f  strchr                                                                                                                        
+00004305  strcmp                                                                                                                        
+000043d9  strcpy                                                                                                                        
+000043ed  strlen                                                                                                                        
+00003d6b  strncpy                                                                                                                       
+200009ec  sum                                                                                                                           
+200009f0  sumPicos                                                                                                                      
+00003fed  unlink                                                                                                                        
+0000444b  wcslen                                                                                                                        
+00004095  write                                                                                                                         
+
+
+GLOBAL SYMBOLS: SORTED BY Symbol Address 
+
+address   name                                                                                                                          
+-------   ----                                                                                                                          
+00000000  __TI_static_base__                                                                                                            
+00000000  interruptVectors                                                                                                              
+000000e5  __TI_printfi                                                                                                                  
+00000200  __STACK_SIZE                                                                                                                  
+00000800  __SYSMEM_SIZE                                                                                                                 
+00000b33  AES256_IRQHandler                                                                                                             
+00000b33  BusFault_Handler                                                                                                              
+00000b33  COMP_E0_IRQHandler                                                                                                            
+00000b33  COMP_E1_IRQHandler                                                                                                            
+00000b33  CS_IRQHandler                                                                                                                 
+00000b33  DMA_ERR_IRQHandler                                                                                                            
+00000b33  DMA_INT0_IRQHandler                                                                                                           
+00000b33  DMA_INT1_IRQHandler                                                                                                           
+00000b33  DMA_INT2_IRQHandler                                                                                                           
+00000b33  DMA_INT3_IRQHandler                                                                                                           
+00000b33  DebugMon_Handler                                                                                                              
+00000b33  Default_Handler                                                                                                               
+00000b33  EUSCIA0_IRQHandler                                                                                                            
+00000b33  EUSCIA1_IRQHandler                                                                                                            
+00000b33  EUSCIA2_IRQHandler                                                                                                            
+00000b33  EUSCIA3_IRQHandler                                                                                                            
+00000b33  EUSCIB0_IRQHandler                                                                                                            
+00000b33  EUSCIB1_IRQHandler                                                                                                            
+00000b33  EUSCIB2_IRQHandler                                                                                                            
+00000b33  EUSCIB3_IRQHandler                                                                                                            
+00000b33  FLCTL_IRQHandler                                                                                                              
+00000b33  FPU_IRQHandler                                                                                                                
+00000b33  HardFault_Handler                                                                                                             
+00000b33  MemManage_Handler                                                                                                             
+00000b33  NMI_Handler                                                                                                                   
+00000b33  PCM_IRQHandler                                                                                                                
+00000b33  PORT1_IRQHandler                                                                                                              
+00000b33  PORT2_IRQHandler                                                                                                              
+00000b33  PORT3_IRQHandler                                                                                                              
+00000b33  PORT4_IRQHandler                                                                                                              
+00000b33  PORT5_IRQHandler                                                                                                              
+00000b33  PORT6_IRQHandler                                                                                                              
+00000b33  PSS_IRQHandler                                                                                                                
+00000b33  PendSV_Handler                                                                                                                
+00000b33  RTC_C_IRQHandler                                                                                                              
+00000b33  SVC_Handler                                                                                                                   
+00000b33  SysTick_Handler                                                                                                               
+00000b33  T32_INTC_IRQHandler                                                                                                           
+00000b33  TA0_0_IRQHandler                                                                                                              
+00000b33  TA0_N_IRQHandler                                                                                                              
+00000b33  TA1_0_IRQHandler                                                                                                              
+00000b33  TA1_N_IRQHandler                                                                                                              
+00000b33  TA2_0_IRQHandler                                                                                                              
+00000b33  TA2_N_IRQHandler                                                                                                              
+00000b33  TA3_0_IRQHandler                                                                                                              
+00000b33  TA3_N_IRQHandler                                                                                                              
+00000b33  UsageFault_Handler                                                                                                            
+00000b33  WDT_A_IRQHandler                                                                                                              
+0000102d  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb
+0000127f  _ZNSt13bad_exceptionD1Ev                                                                                                      
+0000127f  _ZNSt13bad_exceptionD2Ev                                                                                                      
+00001661  __aeabi_dsub                                                                                                                  
+0000166b  __aeabi_dadd                                                                                                                  
+00001817  _ZNSt9exceptionD1Ev                                                                                                           
+00001817  _ZNSt9exceptionD2Ev                                                                                                           
+00001819  T32_INT2_IRQHandler                                                                                                           
+00001819  T32_INT2_IRQHandler                                                                                                           
+00001995  __cxa_type_match                                                                                                              
+00001c11  __aeabi_ddiv                                                                                                                  
+00001d47  _ZNSt9type_infoD1Ev                                                                                                           
+00001d47  _ZNSt9type_infoD2Ev                                                                                                           
+00001e6d  fputs                                                                                                                         
+00001f81  ldexp                                                                                                                         
+00001f81  ldexpl                                                                                                                        
+00001f81  scalbn                                                                                                                        
+00001f81  scalbnl                                                                                                                       
+00002091  __aeabi_dmul                                                                                                                  
+0000218d  aligned_alloc                                                                                                                 
+0000218d  memalign                                                                                                                      
+00002281  free                                                                                                                          
+00002369  __cxa_call_unexpected                                                                                                         
+00002449  setvbuf                                                                                                                       
+00002525  _Z14OPT3001_getLuxv                                                                                                           
+000026af  __aeabi_memcpy                                                                                                                
+000026af  __aeabi_memcpy4                                                                                                               
+000026af  __aeabi_memcpy8                                                                                                               
+000026af  memcpy                                                                                                                        
+0000274b  __aeabi_uldivmod                                                                                                              
+000027e1  _Z10I2C_read16h                                                                                                               
+0000286d  _Z23InitialConditions_setupv                                                                                                  
+000028f9  fputc                                                                                                                         
+000028f9  putc                                                                                                                          
+00002985  GPIO_setAsPeripheralModuleFunctionOutputPin                                                                                   
+00002a0d  main                                                                                                                          
+00002a95  __aeabi_cdcmpeq                                                                                                               
+00002a95  __aeabi_cdcmple                                                                                                               
+00002b1b  __aeabi_cdrcmple                                                                                                              
+00002ba1  __derived_to_base_conversion                                                                                                  
+00002c9d  __aeabi_memclr                                                                                                                
+00002c9d  __aeabi_memclr4                                                                                                               
+00002c9d  __aeabi_memclr8                                                                                                               
+00002c9f  __aeabi_memset                                                                                                                
+00002c9f  __aeabi_memset4                                                                                                               
+00002c9f  __aeabi_memset8                                                                                                               
+00002ca5  memset                                                                                                                        
+00002d17  _nop                                                                                                                          
+00002d19  SystemInit                                                                                                                    
+00002d91  __cxa_allocate_exception                                                                                                      
+00002e07  __aeabi_idiv0                                                                                                                 
+00002e07  __aeabi_ldiv0                                                                                                                 
+00002e09  __TI_closefile                                                                                                                
+00002e7d  ADC14_IRQHandler                                                                                                              
+00002e7d  ADC14_IRQHandler                                                                                                              
+00002f5d  I2C_masterSendMultiByteFinish                                                                                                 
+00003035  _Unwind_RaiseException                                                                                                        
+00003057  _Unwind_Resume                                                                                                                
+0000306d  __TI_Install_CoreRegs                                                                                                         
+00003087  __cxa_end_cleanup                                                                                                             
+00003095  __TI_preserve_low_VFP                                                                                                         
+0000309b  __TI_restore_low_VFP                                                                                                          
+000030a1  HOSTlseek                                                                                                                     
+00003109  HOSTrename                                                                                                                    
+00003171  I2C_masterSendMultiByteStart                                                                                                  
+000031d9  __TI_decompress_lzss                                                                                                          
+00003241  printf                                                                                                                        
+000032a9  frexp                                                                                                                         
+000032a9  frexpl                                                                                                                        
+0000330d  fseek                                                                                                                         
+00003371  I2C_initMaster                                                                                                                
+000033d3  __TI_wrt_ok                                                                                                                   
+00003435  HOSTopen                                                                                                                      
+00003495  close                                                                                                                         
+000034f1  HOSTread                                                                                                                      
+00003549  HOSTwrite                                                                                                                     
+000035f7  ltoa                                                                                                                          
+0000369d  __cxa_get_globals                                                                                                             
+000036ed  __TI_doflush                                                                                                                  
+00003739  __cxa_end_catch                                                                                                               
+00003785  atoi                                                                                                                          
+000037d1  _Z11I2C_write16hj                                                                                                             
+00003819  _Z9Pin_setupv                                                                                                                 
+000038a9  __TI_auto_init_nobinit_nopinit                                                                                                
+000038f1  exit                                                                                                                          
+00003939  __aeabi_d2iz                                                                                                                  
+00003981  HOSTclose                                                                                                                     
+000039c5  HOSTunlink                                                                                                                    
+00003a09  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                    
+00003a91  bsearch                                                                                                                       
+00003ad5  getdevice                                                                                                                     
+00003b19  I2C_masterReceiveMultiByteFinish                                                                                              
+00003b59  _Z9ADC_setupv                                                                                                                 
+00003b99  __TI_ut_entry_cmp                                                                                                             
+00003c55  I2C_masterSendMultiByteStop                                                                                                   
+00003c8d  __TI_Unwind_RaiseException2                                                                                                   
+00003cc5  __TI_Unwind_Resume                                                                                                            
+00003cfd  __TI_writemsg                                                                                                                 
+00003d2b  C$$IO$$                                                                                                                       
+00003d35  __cxa_rethrow                                                                                                                 
+00003d6b  strncpy                                                                                                                       
+00003da1  I2C_masterSendMultiByteNext                                                                                                   
+00003dd5  __TI_cleanup                                                                                                                  
+00003e09  __TI_readmsg                                                                                                                  
+00003e3d  _c_int00_noargs                                                                                                               
+00003ea5  _Z11T32_2_setupv                                                                                                              
+00003f35  finddevice                                                                                                                    
+00003f65  __cxa_begin_catch                                                                                                             
+00003f93  __aeabi_i2d                                                                                                                   
+00003fc1  _Z11T32_1_setupv                                                                                                              
+00003fed  remove                                                                                                                        
+00003fed  unlink                                                                                                                        
+00004019  __cxa_throw                                                                                                                   
+0000406d  lseek                                                                                                                         
+00004095  write                                                                                                                         
+000040bd  __cxa_free_exception                                                                                                          
+000040e1  T32_INT1_IRQHandler                                                                                                           
+000040e1  T32_INT1_IRQHandler                                                                                                           
+00004101  _Z17LightSensor_setupv                                                                                                        
+00004121  _Z8I2C_initv                                                                                                                  
+00004141  _ZSt10unexpectedv                                                                                                             
+00004161  _ZSt9terminatev                                                                                                               
+00004181  __TI_Unwind_RaiseException                                                                                                    
+000041a1  __cxa_bad_typeid                                                                                                              
+000041c1  memchr                                                                                                                        
+000041ff  I2C_setMode                                                                                                                   
+0000421d  _Z12I2C_setslavej                                                                                                             
+00004255  memccpy                                                                                                                       
+00004271  I2C_masterReceiveStart                                                                                                        
+0000428b  copysign                                                                                                                      
+0000428b  copysignl                                                                                                                     
+000042a5  I2C_getInterruptStatus                                                                                                        
+000042bd  I2C_isBusBusy                                                                                                                 
+000042d5  _Z13Init_I2C_GPIOv                                                                                                            
+000042ed  _ZNKSt13bad_exception4whatEv                                                                                                  
+00004305  strcmp                                                                                                                        
+0000431d  I2C_clearInterruptFlag                                                                                                        
+00004333  I2C_disableModule                                                                                                             
+00004349  I2C_enableModule                                                                                                              
+0000435f  strchr                                                                                                                        
+00004375  I2C_masterReceiveMultiByteNext                                                                                                
+00004389  I2C_setSlaveAddress                                                                                                           
+0000439d  _Z12OPT3001_initv                                                                                                             
+000043b1  _ZNKSt10bad_typeid4whatEv                                                                                                     
+000043c5  _ZNSt10bad_typeidC1Ev                                                                                                         
+000043c5  _ZNSt10bad_typeidC2Ev                                                                                                         
+000043d9  strcpy                                                                                                                        
+000043ed  strlen                                                                                                                        
+00004401  _ZNKSt9exception4whatEv                                                                                                       
+00004415  __cxa_begin_cleanup                                                                                                           
+00004427  __cxa_call_terminate                                                                                                          
+00004439  __TI_zero_init_nomemset                                                                                                       
+0000444b  wcslen                                                                                                                        
+0000445d  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                        
+0000446b  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                     
+00004479  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                  
+00004487  _ZNSt10bad_typeidD0Ev                                                                                                         
+00004495  __TI_decompress_none                                                                                                          
+000044a3  Reset_Handler                                                                                                                 
+000044af  __TI_cxa_end_cleanup                                                                                                          
+000044bb  _Z13__TI_prel2absPKj                                                                                                          
+000044cf  _ZdlPv                                                                                                                        
+000044d9  __aeabi_unwind_cpp_pr0                                                                                                        
+000044e3  __aeabi_unwind_cpp_pr1                                                                                                        
+000044ed  __aeabi_unwind_cpp_pr2                                                                                                        
+000044f7  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                
+000044ff  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                        
+000044ff  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                        
+00004507  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                     
+00004507  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                     
+0000450f  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                  
+0000450f  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                  
+00004517  _ZNSt10bad_typeidD1Ev                                                                                                         
+00004517  _ZNSt10bad_typeidD2Ev                                                                                                         
+00004521  __aeabi_errno_addr                                                                                                            
+00004529  __tdeh_init                                                                                                                   
+00004531  malloc                                                                                                                        
+0000453f  _ZNSt13bad_exceptionD0Ev                                                                                                      
+00004545  _ZNSt9exceptionD0Ev                                                                                                           
+0000454b  _Z22__TI_targ_rtti_addressPjP15_Unwind_Context                                                                                
+0000454f  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                 
+00004553  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                 
+00004557  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                 
+0000455b  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                
+0000455f  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                             
+00004567  _ZdlPvj                                                                                                                       
+0000456b  __abort_execution                                                                                                             
+00004577  _system_pre_init                                                                                                              
+0000457b  C$$EXIT                                                                                                                       
+0000457b  abort                                                                                                                         
+00004580  _ctypes_                                                                                                                      
+00004681  _ZTSv                                                                                                                         
+000046b4  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                   
+000046dc  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+00004702  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                      
+00004727  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                       
+0000474b  _ZTSN10__cxxabiv117__class_type_infoE                                                                                         
+0000476d  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                         
+00004790  _ZTVSt10bad_typeid                                                                                                            
+000047a4  _ZTVSt13bad_exception                                                                                                         
+000047b8  _ZTVSt9exception                                                                                                              
+000047e0  _ZTSSt13bad_exception                                                                                                         
+000047f4  _ZTVN10__cxxabiv117__class_type_infoE                                                                                         
+00004804  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                      
+00004814  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00004824  _ZTSSt10bad_typeid                                                                                                            
+00004833  _ZTSSt9exception                                                                                                              
+00004840  _ZTSSt9type_info                                                                                                              
+00004850  _ZTIN10__cxxabiv117__class_type_infoE                                                                                         
+0000485c  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                         
+00004868  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                       
+00004874  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                      
+00004880  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+0000488c  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00004898  _ZTISt10bad_typeid                                                                                                            
+000048a4  _ZTISt13bad_exception                                                                                                         
+000048b0  _ZTISt9exception                                                                                                              
+000048b8  _ZTISt9type_info                                                                                                              
+000048c0  _ZTIv                                                                                                                         
+00004934  __TI_Handler_Table_Base                                                                                                       
+00004940  __TI_Handler_Table_Limit                                                                                                      
+00004948  __TI_CINIT_Base                                                                                                               
+00004958  .ARM.exidx$$Base                                                                                                              
+00004958  __TI_CINIT_Limit                                                                                                              
+00004958  __TI_UNWIND_TABLE_START                                                                                                       
+000049c0  .ARM.exidx$$Limit                                                                                                             
+000049c0  __TI_UNWIND_TABLE_END                                                                                                         
+20000000  _sys_memory                                                                                                                   
+20000800  __CIOBUF_                                                                                                                     
+20000920  __TI_tmpnams                                                                                                                  
+200009c0  g_u16Adc14Result                                                                                                              
+200009cc  parmbuf                                                                                                                       
+200009d4  contPicos                                                                                                                     
+200009d8  g_fSensorLux                                                                                                                  
+200009dc  g_i1sCount                                                                                                                    
+200009e0  g_iAudioSampleCount                                                                                                           
+200009e4  g_iAudioThreshold                                                                                                             
+200009e8  g_u16AudioSampleSum                                                                                                           
+200009ec  sum                                                                                                                           
+200009f0  sumPicos                                                                                                                      
+200009f4  g_u16Audio1sAverage                                                                                                           
+200009f6  g_u16AudioAverage                                                                                                             
+200009f8  g_BOverAudioThreshold                                                                                                         
+200009f9  g_BUnderLightThreshold                                                                                                        
+200009fc  _ftable                                                                                                                       
+20000aec  _device                                                                                                                       
+20000b64  _stream                                                                                                                       
+20000bb4  __TI_ft_end                                                                                                                   
+20000bb8  __aeabi_stdin                                                                                                                 
+20000bbc  __aeabi_stdout                                                                                                                
+20000bc0  __aeabi_stderr                                                                                                                
+20000bc4  __TI_cleanup_ptr                                                                                                              
+20000bc8  __TI_dtors_ptr                                                                                                                
+20000bcc  __TI_enable_exit_profile_output                                                                                               
+20000bd0  _lock                                                                                                                         
+20000bd4  _unlock                                                                                                                       
+20000be0  errno                                                                                                                         
+2000fe00  __stack                                                                                                                       
+20010000  __STACK_END                                                                                                                   
+4000480c  WDTCTL_SYM                                                                                                                    
+ffffffff  __TI_pprof_out_hndl                                                                                                           
+ffffffff  __TI_prof_data_size                                                                                                           
+ffffffff  __TI_prof_data_start                                                                                                          
+ffffffff  __binit__                                                                                                                     
+ffffffff  __c_args__                                                                                                                    
+ffffffff  binit                                                                                                                         
+UNDEFED   __mpu_init                                                                                                                    
+UNDEFED   _system_post_cinit                                                                                                            
+
+[321 symbols]
