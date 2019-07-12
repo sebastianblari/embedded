@@ -1,59 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Sensor Monitoring</title>
+		<title>Sensor Monitoring</title>
   
-    {% include 'base/css.html' %}
-    {% include 'base/bootstrap_defaults.html' %}
-    
-  </head>
+		{% include './base/css.html' %}
+		{% include './base/bootstrap_defaults.html' %} 
+	</head>
   
-  <body>
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-  </script>
-<!-- ## -->
-    <div class='container'>
-		<h1 class="mt-4">Sensor Monitoring </h1>
-        <p>Track your company's sensors activity in real time.</p>
-        
-		<div class="sidebar-wrapper">
-			<a href="/">Home</a>
-			<a href="/contact">  About us</a>
-		</div>	
+	<body>
+		<!-- content -->
+		<div class='container'>
 			
-		{% block content %}
-		{% endblock content %}
-		
-		<!-- Sticky Footer -->
-		<footer>
-			<div class="container my-auto">
-				<div class="copyright text-center my-auto">
-					<span>Copyright © Circuititos S.A. 2019</span>
-				</div>
+			<!-- Navegation bar -->
+			<ul class="nav nav-tabs">
+				<li class="nav-item">
+					<a class="nav-link active" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/temperature">Temperature</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/light">Light</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">About us</a>
+				</li>
+			</ul>
+	
+			<!-- Jumbotron -->
+			<div class="jumbotron">
+				<h2 class="display-4">Sensor Monitoring</h2>
+				<p class="lead">Track your company's sensors activity in real time.</p>
+				<hr class="my-4">
+				<p class="lead">Select the sensor you want to track, in the navigation bar above.</p>
 			</div>
-		</footer> 
+			
+			{% block content %}
+			{% endblock content %}
+			
+			<!-- Sticky Footer -->
+			<footer>
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright © Circuititos S.A. 2019</span>
+					</div>
+				</div>
+			</footer> 	
+		</div>
 		
-    </div>
-    {% include 'base/js.html' %}
-    <script>
-    $(document).ready(function(){
-      {% block jquery %}{% endblock %}
-    })
-    </script>
-  </body>
+		{% include './base/js.html' %}
+		<script>
+			$(document).ready(function(){
+				{% block jquery %}{% endblock %}
+			})
+		</script>
+	</body>
 </html>
-
-<head>
-
-  
-
-</head>

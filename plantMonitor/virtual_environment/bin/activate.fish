@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/du/Documents/UCR/Incrustados/LAB_3_git/embedded/plantMonitor/virtual_environment"
+set -gx VIRTUAL_ENV "/home/du/Documents/UCR/Incrustados/Lab3/Django/venv_lab3_v2"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

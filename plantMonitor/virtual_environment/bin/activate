@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/du/Documents/UCR/Incrustados/LAB_3_git/embedded/plantMonitor/virtual_environment"
+VIRTUAL_ENV="/home/du/Documents/UCR/Incrustados/Lab3/Django/venv_lab3_v2"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

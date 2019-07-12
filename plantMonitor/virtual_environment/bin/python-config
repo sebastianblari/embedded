@@ -1,4 +1,4 @@
-#!/home/du/Documents/UCR/Incrustados/LAB_3_git/embedded/plantMonitor/virtual_environment/bin/python
+#!/home/du/Documents/UCR/Incrustados/Lab3/Django/venv_lab3_v2/bin/python
 
 import sys
 import getopt

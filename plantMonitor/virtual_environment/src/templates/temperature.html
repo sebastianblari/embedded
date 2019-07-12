@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="plotly.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+    
+<body>
+    <div class="navbar"><h3>Temperature sensor</h3></div>
+    <div class="wrapper">
+	<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+	<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+	<div id="chart"></div>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				var ranval = 0;
+				var endpoint = '/api/temperature/data/'
+				var articleData = articleLabels = []
+			
+				$.ajax({
+					success: function(data){
+						articleChart()
+					},
+					error: function(error_data){
+						console.log("error")
+					},
+				})
+			
+				function getData() {
+					//ranval = Math.random();
+					$.ajax({
+						method: "GET",
+						url: endpoint,
+						success: function(data){
+							ranval = data.temp_value
+						},
+						error: function(error_data){
+							console.log("error")
+							console.log(error_data)
+						}
+					})
+					return ranval
+				}  
+
+				function articleChart(){
+					Plotly.plot('chart',[{
+						y:[0],
+						type:'line'
+					}]);
+			
+					var cnt = 0;
+					setInterval(function(){
+						xx = getData();
+						if(xx != 0){
+							Plotly.extendTraces('chart',{ 
+							//y:[[getData()]]}, 
+								y:[[xx]]
+							},[0]);
+						}
+						cnt++;
+						if(cnt > 700) {
+							Plotly.relayout('chart',{
+								xaxis: {
+									range: [cnt-700,cnt]
+								}
+							});
+						}
+					},900);
+				}
+			})
+        </script>
+    </div>
+    </body>
+</html>
+{% endblock %}

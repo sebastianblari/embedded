@@ -1,25 +1,74 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Hello World!</h1>
-{{ request.user.is_authenticated }}
-<p>this is a template</p>
 
-<p>
-{{ my_text }} {{ my_number }}
-</p>
+<p class="lead">Use these buttons to activate or deactivate the sensors.</p>
 
-<ul>
-	<li>Item 1</li>
-	<li>Item 2</li>
-</ul>
+<div style="margin-bottom:1cm;" class="btn-group btn-group-justified" role="group" aria-label="...">
+	<div class="btn-group" role="group">
+		<button id="onts" type="button" class="btn btn-success">Turn on Temperature sensor</button>
+	</div>
+	<div class="btn-group" role="group">
+		<button id="offts" type="button" class="btn btn-default">Turn off Temperature sensor</button>
+	</div>
+	<div class="btn-group" role="group">
+		<button id="onls" type="button" class="btn btn-info">Turn on Light sensor</button>
+	</div>
+	<div class="btn-group" role="group">
+		<button id="offls" type="button" class="btn btn-default">Turn off Light sensor</button>
+	</div>
+</div>
 
-<ul>
-{% for my_sub_item in my_list %}
-	<li>{{ forloop.counter }} - {{ my_sub_item }}</li>
-{% endfor %}
-</ul>
+<p id="lsAlert" class="alert alert-info" role="alert">Light sensor</p>
+<p id="tsAlert" class="alert alert-success" role="alert">Temperature sensor</p>
 
-{% endblock %}
+<script type="text/javascript">
+	let onts = document.getElementById('onts');
+	let onls = document.getElementById('onls');
+	let offts = document.getElementById('offts');
+	let offls = document.getElementById('offls');
+	
+	let tsAlert = document.getElementById('tsAlert');
+	let lsAlert = document.getElementById('lsAlert');
+		
+	onts.addEventListener('click', function() {
+		$("#tsAlert").text("Temperature sensor on");
+		$.post( "/api/switch/", { sensor: "TEMP", stat: 1 } );
+	});
+	
+	offts.addEventListener('click', function() {
+		$("#tsAlert").text("Temperature sensor off");
+		$.post( "/api/switch/", { sensor: "TEMP", stat: 0 } );
+	});
+	
+	onls.addEventListener('click', function() {
+		$("#lsAlert").text("Light sensor on");
+		$.post( "/api/switch/", { sensor: "LUX", stat: 1 } );
+	});
+	
+	offls.addEventListener('click', function() {
+		$("#lsAlert").text("Light sensor off");
+		$.post( "/api/switch/", { sensor: "LUX", stat: 0 } );
+	});
+</script>
+
+<!--
+<h1 id="title">Hello Punker!</h1>
+<p id="text-area">This is some text...</p>
+<button id="ok-button">hellohello</button>
+
+<script type="text/javascript">
+	let textArea = document.getElementById('text-area');
+	let okButton = document.getElementById('ok-button');
+	
+	okButton.addEventListener('click', function() {
+		textArea.innerText = 'Button clicked!';
+		$("#ok-button").text("New Button Value");
+		$.post( "/api/switch/", { name: "John", time: "2pm" } );
+	});
+</script>
+-->
+
+{% endblock %} 
 	
 

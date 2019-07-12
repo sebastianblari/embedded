@@ -4,7 +4,9 @@
 {% block jquery %}
 var endpoint = '/api/chart/data/'
 var defaultData = []
+var defaultData1 = []
 var labels = [];
+var labels1 = [];
 
 $.ajax({
     method: "GET",
@@ -12,9 +14,18 @@ $.ajax({
     success: function(data){
 		//console.log(data)
         labels = data.labels
+        labels1 = data.labels1
         defaultData = data.default
         defaultData1 = data.default1
-        setChart()
+        defaultData2 = data.default2
+        
+        value = data.value
+        device = data.device
+        
+        setInterval(function(){
+			setChart()
+        },3000);
+        get_value()
     },
     error: function(error_data){
         console.log("error")
@@ -22,16 +33,17 @@ $.ajax({
     }
 })
 
+	
 function setChart(){
     var ctx = document.getElementById("myChart");
     var ctx2 = document.getElementById("myChart2");
     var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
         labels: labels,
         datasets: [{
             //label: 'Ligth measure/s',
-            data: defaultData,
+            data: value,
             backgroundColor: [
 				'rgba(255,99,132,1)',
                 'rgba(54, 162, 235, 1)',
@@ -57,7 +69,8 @@ function setChart(){
         },
         title: {
             display: true,
-            text: 'Ligth Sensor'
+            //text: 'Ligth Sensor'
+            text: device
         },
         scales: {
             yAxes: [{
@@ -75,7 +88,7 @@ function setChart(){
         labels: labels,
         datasets: [{
             Vlabel: 'Celsius/s',
-            data: defaultData1,
+            data: defaultData2,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -115,12 +128,18 @@ function setChart(){
 }
 // var ctx = document.getElementById("myChart");
 
-
+	
 
 {% endblock %}
 </script>
 
 {% block content %}
+
+	<ul>
+		<li>{{value}}</li>
+		<li>{{device}}</li>
+	</ul>
+	
 
 <div class='row'>
     <div class='col-sm-12' url-endpoint='{% url "api-data" %}'>
@@ -130,8 +149,10 @@ function setChart(){
         <div class='col-sm-6'>
             <canvas id="myChart2" width="400" height="400"></canvas>
         </div>
-
-
     </div>
+    
+    
+    
+    
 </div>
 {% endblock content %}
