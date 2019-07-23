@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<title>Sensor Monitoring</title>
+  
+		{% include './base/css.html' %}
+		{% include './base/bootstrap_defaults.html' %}
+		 
+	</head>
+	<body>
+		<!-- content -->
+		<div class='container'>
+			
+			<!-- Navegation bar -->
+			<ul class="nav nav-tabs" style="margin-top: 3em;">
+				<li class="nav-item">
+					<a class="nav-link active" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">About us</a>
+				</li>
+			</ul>
+-
+	
+			<!-- Jumbotron -->
+			<div class="jumbotron">
+				<h1 class="display-4">STL Controller</h1>
+				<p class="lead">Manually swap Smart Traffic Light operation mode.</p>
+			</div>
+			
+			{% block content %}
+			{% endblock content %}
+			
+			<!-- Sticky Footer -->
+			<footer>
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright © Circuititos S.A. 2019</span>
+					</div>
+				</div>
+			</footer> 	
+		</div>
+		
+		{% include './base/js.html' %}
+		<script>
+			$(document).ready(function(){
+				{% block jquery %}{% endblock %}
+			})
+		</script>
+	</body>
+</html>

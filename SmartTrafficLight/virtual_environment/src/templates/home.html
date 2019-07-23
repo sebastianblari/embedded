@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row" style="margin-top: 2em; margin-bottom: 5em;">
+  <div class="col-sm-4">
+    <div class="card text-white bg-info mb-3">
+      <div class="card-body">
+        <h2 id="ligth0Alert" class="card-text" style="margin: 0.5em;">Force Light 0:  OFF</h2>
+        <button id="ligth0" type="button" class="btn btn-primary" onclick="light0_button()" style="margin-bottom: 1em; margin-left: 1em;">FORCE LIGHT 0</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card text-white bg-info mb-3">
+      <div class="card-body">
+        <h2 id="ligth1Alert" class="card-text" style="margin: 0.5em;">Force Light 1:  OFF</h2>
+        <button id="ligth1" type="button" class="btn btn-primary" onclick="light1_button()" style="margin-bottom: 1em; margin-left: 1em;">FORCE LIGHT 1</button>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-4">
+    <div class="card text-white bg-info mb-3">
+      <div class="card-body">
+        <h2 id="dummyAlert" class="card-text" style="margin: 0.5em;">Dummy Mode:  OFF</h2>
+        <button id="dummy" type="button" class="btn btn-primary" onclick="dummy_button()" style="margin-bottom: 1em; margin-left: 1em;">DUMMY MODE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function light0_button() {
+	var x = document.getElementById("ligth0Alert");
+	var y = document.getElementById("ligth1Alert");
+	var z = document.getElementById("dummyAlert");
+	if ((x.innerHTML === "Force Light 0:  OFF") && (y.innerHTML === "Force Light 1:  OFF")) {
+		x.innerHTML = "Force Light 0:  ON";
+		z.innerHTML = "Dummy Mode:  OFF";
+		$.post( "api/updateflags/", { FL0_stat: "1", FL1_stat: "0", Dummy_stat: "0" } );
+	}
+	else if (x.innerHTML === "Force Light 0:  ON") {
+		x.innerHTML = "Force Light 0:  OFF";
+		$.post( "api/updateflags/", { FL0_stat: "0", FL1_stat: "0", Dummy_stat: "0" } );
+	}
+}
+</script>
+
+<script>
+function light1_button() {
+	var x = document.getElementById("ligth1Alert");
+	var y = document.getElementById("ligth0Alert");
+	var z = document.getElementById("dummyAlert");
+	if ((x.innerHTML === "Force Light 1:  OFF") && (y.innerHTML === "Force Light 0:  OFF")) {
+		x.innerHTML = "Force Light 1:  ON";
+		z.innerHTML = "Dummy Mode:  OFF";
+		$.post( "api/updateflags/", { FL0_stat: "0", FL1_stat: "1", Dummy_stat: "0" } );
+	}
+	else if (x.innerHTML === "Force Light 1:  ON") { 
+		x.innerHTML = "Force Light 1:  OFF";
+		$.post( "api/updateflags/", { FL0_stat: "0", FL1_stat: "0", Dummy_stat: "0" } );
+	}
+}
+</script>
+
+<script>
+function dummy_button() {
+	var x = document.getElementById("dummyAlert");
+	var y = document.getElementById("ligth0Alert");
+	var z = document.getElementById("ligth1Alert");
+	if ((x.innerHTML === "Dummy Mode:  OFF") && (y.innerHTML === "Force Light 0:  OFF") && (z.innerHTML === "Force Light 1:  OFF")) {
+		x.innerHTML = "Dummy Mode:  ON";
+		$.post( "api/updateflags/", { FL0_stat: "0", FL1_stat: "0", Dummy_stat: "1" } );
+	} 
+	else if (x.innerHTML === "Dummy Mode:  ON") {
+		x.innerHTML = "Dummy Mode:  OFF";
+		$.post( "api/updateflags/", { FL0_stat: "0", FL1_stat: "0", Dummy_stat: "0" } );
+	}
+}
+</script>
+
+<script>
+function getData() {
+	$.ajax({
+		method: "GET",
+		url: "/api/flags/data/",
+		success: function(data){
+			flag_state = data.received_flag_state
+		},
+		error: function(error_data){
+			console.log("error")
+			console.log(error_data)
+		}
+	})
+	return flag_state
+}
+				
+setInterval(function(){
+	var xx = getData();
+	var x = document.getElementById("ligth0Alert");
+	var y = document.getElementById("ligth1Alert");
+	var z = document.getElementById("dummyAlert");
+	
+	if(xx == "000") {
+		x.innerHTML = "Force Light 0:  OFF";
+		y.innerHTML = "Force Light 1:  OFF";
+		z.innerHTML = "Dummy Mode:  OFF";
+	}
+	else if(xx == "100") {
+		x.innerHTML = "Force Light 0:  ON";
+		y.innerHTML = "Force Light 1:  OFF";
+		z.innerHTML = "Dummy Mode:  OFF";
+	}
+	else if(xx == "010") {
+		x.innerHTML = "Force Light 0:  OFF";
+		y.innerHTML = "Force Light 1:  ON";
+		z.innerHTML = "Dummy Mode:  OFF";
+	}
+	else if(xx == "001") {
+		x.innerHTML = "Force Light 0:  OFF";
+		y.innerHTML = "Force Light 1:  OFF";
+		z.innerHTML = "Dummy Mode:  ON";
+	}
+},1000);		
+</script>
+
+{% endblock %} 
+	
+

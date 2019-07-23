@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<center><h2>Circuititos S.A. </h2></center>
+<center><h4>Offers practical solutions in the Embedded Systems area.</h4></center>
+
+<h3>Contributors:</h3>
+<ul>
+{% for my_sub_item in names_list %}
+	<li>{{ my_sub_item }}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
