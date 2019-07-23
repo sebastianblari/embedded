@@ -14,7 +14,7 @@ make run # run Web Interface
 
 Once your done:
 ```bash
-deactivate	# to stop virtual environment
+deactivate # to stop virtual environment
 ```
 
 ## Contributing
