@@ -1,42 +1,35 @@
-# Sensor monitoring app: Framework
+# STL app: Web Interface
 
 Built using Django, which is a high-level Python Web framework. [Find Django documentation here.](https://www.djangoproject.com/)
 
-## Installation
+//## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) or **pip3** to install.
+//Use the package manager [pip](https://pip.pypa.io/en/stable/) or **pip3** to install.
 
-If running for the first time, it's necessary to set up Python virtual environment:
+//If running for the first time, it's necessary to set up Python virtual environment:
 
-```bash
-cd <virtual_environment_directory> # go to work area: where Django project is stored
-sudo apt-get install python-virtualenv
+//```bash
+//cd <virtual_environment_directory> # go to work area: where Django project is stored
+//sudo apt-get install python-virtualenv
 
-# create virtual environment
-virtualenv -p python3 . # use python or python3 depending on the version installed
+//# create virtual environment
+//virtualenv -p python3 . # use python or python3 depending on the version installed
 
-source bin/activate     # to activate python virtual environment
-pip install django==2.0.7 # install Django in venv
-pip freeze # to see Django version installed in venv 
-deactivate # to stop virtual environment
-```
+//source bin/activate     # to activate python virtual environment
+//pip install django==2.0.7 # install Django in venv
+//pip freeze # to see Django version installed in venv 
+//deactivate # to stop virtual environment
+//```
 
 ## Usage
 
 ```bash
-cd <virtual_environment_directory> # go to work area: where Django project is stored
-source bin/activate        # to activate python virtual environment
+cd <virtual_environment_directory>	# go to work area: where Django project is stored
 
-cd src # go to Django project root directory: where 'manage.py' file is
-python manage.py runserver # to run project 
+source bin/activate	# to activate python virtual environment
+
+make run # run Web Interface 
 ```
-You should see the following output:
-```bash
-Django version 2.0.7, using settings <djangoProject_name>
-Starting development server at <web_address>
-Quit the server with CONTROL-C.
-```
-Point your browser at **<web_address>** and you should see the Web page for the Sensor Monitoring app.
 
 Once your done:
 ```bash
