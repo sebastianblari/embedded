@@ -9,12 +9,12 @@ cd <virtual_environment_directory>	# go to work area: where Django project is st
 
 source bin/activate	# to activate python virtual environment
 
-make run # run Web Interface 
+make run	# run Web Interface 
 ```
 
 Once your done:
 ```bash
-deactivate # to stop virtual environment
+deactivate	# to stop virtual environment
 ```
 
 ## Contributing
