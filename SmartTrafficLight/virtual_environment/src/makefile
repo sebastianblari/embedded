@@ -1,4 +1,4 @@
-HOST := 192.168.0.29
+Pi_HOST := 192.168.0.29
 TOPIC := stl/message
 LOG_PATH := ../flags.txt
 
@@ -12,6 +12,6 @@ local_browser:
 	firefox http://127.0.0.1:8000/
 
 listen:
-	mosquitto_sub -h $(HOST) -t "$(TOPIC)" >> $(LOG_PATH) &
+	mosquitto_sub -h $(Pi_HOST) -t "$(TOPIC)" >> $(LOG_PATH) &
 
 run: listen exec

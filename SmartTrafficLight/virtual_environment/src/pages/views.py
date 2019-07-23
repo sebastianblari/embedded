@@ -18,8 +18,8 @@ parentDir = os.path.dirname(os.path.abspath(__file__))
 parentDir = os.path.dirname(parentDir)
 parentDir = os.path.dirname(parentDir)
 logPath = os.path.join(parentDir,'flags.txt')
-HOST = "192.168.0.34"
-#HOST = "192.168.0.29"
+PC_HOST = "192.168.0.34"
+#Pi_HOST = "192.168.0.29"
 TOPIC = "stl/message"
 	
 #----------------------------------------------
@@ -52,7 +52,7 @@ class PostStatus(APIView):
 		
 		print("FLAGS: " + str(FLAGS)+"\n")
 		
-		l_StrExcecutionCall = "mosquitto_pub -h "+ HOST +" -t \""+ TOPIC +"\" -m \"" + FLAGS + "\""
+		l_StrExcecutionCall = "mosquitto_pub -h "+ PC_HOST +" -t \""+ TOPIC +"\" -m \"" + FLAGS + "\""
 		print(l_StrExcecutionCall)
 		l_StrProcessOutput = subprocess.Popen(l_StrExcecutionCall, stdout=subprocess.PIPE, shell=True)
 		print(l_StrProcessOutput)

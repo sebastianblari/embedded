@@ -16,8 +16,8 @@ from trafficlight import TrafficLight
 parentDir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 logPath = os.path.join(parentDir,'flags.txt')
 
-#HOST = "192.168.0.34"
-HOST = "192.168.0.29"
+#PC_HOST = "192.168.0.34"
+Pi_HOST = "192.168.0.29"
 TOPIC = "stl/message"
 CREDENTIALS_FILE = "credentials.json"
 TIMEX = 7
@@ -62,7 +62,7 @@ class TrafficLightManager:
     # send message
     def sendMessage(self, message):
         try:
-            l_StrExcecutionCall = "mosquitto_pub -h " + HOST + " -t \"" + TOPIC + "\" -m \"" + message + "\""
+            l_StrExcecutionCall = "mosquitto_pub -h " + Pi_HOST + " -t \"" + TOPIC + "\" -m \"" + message + "\""
             l_StrProcessOutput = subprocess.Popen(l_StrExcecutionCall, stdout=subprocess.PIPE, shell=True)
         except:
             #pass
