@@ -5,11 +5,11 @@ Built using Django, which is a high-level Python Web framework. [Find Django doc
 ## Usage
 
 ```bash
-cd <virtual_environment_directory>	# go to work area: where Django project is stored
+cd <virtual_environment_directory> # go to work area: where Django project is stored
 
-source bin/activate	# to activate python virtual environment
+source bin/activate # to activate python virtual environment
 
-make run	# run Web Interface 
+make run # run Web Interface 
 ```
 
 Once your done:
